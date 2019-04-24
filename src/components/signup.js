@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 // import { withRouter } from "react-router-dom";
 
 class Signup extends Component {
@@ -23,7 +24,7 @@ class Signup extends Component {
       },
       body: JSON.stringify({
         user: {
-          username: 'guy',
+          username: 'dana',
           password: 'hi'
         }
       })
@@ -37,6 +38,7 @@ class Signup extends Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <h1>Signup</h1>
@@ -62,4 +64,9 @@ class Signup extends Component {
   }
 }
 
-export default Signup
+const mapStateToProps = (whatIsThis) => {
+  console.log(whatIsThis);
+  return {name: 'xavier'}
+}
+
+export default connect(mapStateToProps)(Signup)

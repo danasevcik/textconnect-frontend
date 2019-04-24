@@ -9,6 +9,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ActionCableProvider } from 'react-actioncable-provider'
 import { SAY_HI } from './actions/types'
+import thunk from 'redux-thunk'
 
 const initialState = {name: 'Dana'}
 
