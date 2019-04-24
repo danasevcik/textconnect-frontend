@@ -4,6 +4,7 @@ import ContactContainer from '../containers/ContactContainer'
 import AddContactContainer from '../containers/AddContactContainer'
 import ChatsContainer from '../containers/ChatsContainer'
 import Profile from '../components/Profile'
+import Error from '../components/Error'
 
 class NavBar extends Component {
 
@@ -22,6 +23,9 @@ class NavBar extends Component {
         </Link>
         <Link to='/Profile'>
           My Profile
+        </Link>
+        <Link to='/'>
+          Logout
         </Link>
       </div>
     )

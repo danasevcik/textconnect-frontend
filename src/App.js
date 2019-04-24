@@ -4,7 +4,8 @@ import './App.css';
 import Menu from './components/Menu.js'
 import Login from './components/Login.js'
 import Signup from './components/Signup.js'
-import Profile from './components/Profile'
+import Profile from './components/Profile.js'
+import Error from './components/Error.js'
 import ContactContainer from './containers/ContactContainer'
 import AddContactContainer from './containers/AddContactContainer'
 import ChatsContainer from './containers/ChatsContainer'
@@ -15,6 +16,8 @@ class App extends Component {
       <div className="App">
         <h1>HELLO WORLD</h1>
         <Menu />
+        <Login />
+        <Signup />
         <Switch>
           <Route
             path='/Login'
@@ -39,6 +42,10 @@ class App extends Component {
           <Route
             path='/Profile'
             render={() => <Profile />}
+          />
+          <Route
+            path='/'
+            render={() => <Error />}
           />
         </Switch>
       </div>
