@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from "react-router-dom";
 import './index.css';
 // import 'semantic-ui-css/semantic.min.css';
 import { createStore } from 'redux'
@@ -25,7 +26,9 @@ const store = createStore(reducer);
 ReactDOM.render(
   <Provider store={store}>
     <ActionCableProvider url={'ws://localhost:3001/cable'}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ActionCableProvider>
   </Provider>,
   document.getElementById('root')
