@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ContactContainer from '../containers/ContactContainer'
 import AddContactContainer from '../containers/AddContactContainer'
 import ChatsContainer from '../containers/ChatsContainer'
+import Profile from '../components/Profile'
 
 class NavBar extends Component {
 
@@ -18,6 +19,9 @@ class NavBar extends Component {
         </Link>
         <Link to='/Chats'>
           My Chats
+        </Link>
+        <Link to='/Profile'>
+          My Profile
         </Link>
       </div>
     )

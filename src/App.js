@@ -4,6 +4,7 @@ import './App.css';
 import Menu from './components/Menu.js'
 import Login from './components/Login.js'
 import Signup from './components/Signup.js'
+import Profile from './components/Profile'
 import ContactContainer from './containers/ContactContainer'
 import AddContactContainer from './containers/AddContactContainer'
 import ChatsContainer from './containers/ChatsContainer'
@@ -34,6 +35,10 @@ class App extends Component {
           <Route
             path='/Chats'
             render={() => <ChatsContainer />}
+          />
+          <Route
+            path='/Profile'
+            render={() => <Profile />}
           />
         </Switch>
       </div>
