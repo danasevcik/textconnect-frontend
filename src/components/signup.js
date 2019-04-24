@@ -17,21 +17,8 @@ class Signup extends Component {
 
   submitHandler = e => {
     e.preventDefault();
-    // fetch('http://localhost:3000/api/v1/users', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     Accept: 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     user: {
-    //       username: this.state.username,
-    //       password: this.state.password
-    //     }
-    //   })
-    // })
-    //   .then(r => r.json())
-    //   .then(console.log)
+    console.log('here');
+    this.props.createUser(this.state)
     this.setState({
       username: "",
       password: ""
@@ -58,12 +45,15 @@ class Signup extends Component {
             value={this.state.password}
             onChange={this.changeHandler}
           />
-        <button onClick={() => this.props.createUser(this.state)}>Submit</button>
+        <button onClick={
+            this.submitHandler
+          }>Submit</button>
         </form>
       </div>
     )
   }
 }
+// () => this.props.createUser(this.state)
 
 const mapStateToProps = ({user, token}) => {
   console.log('in map state to props');
