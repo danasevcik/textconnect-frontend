@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+import * as actions from '../actions'
 // import { withRouter } from "react-router-dom";
 
 class Signup extends Component {
@@ -16,21 +17,21 @@ class Signup extends Component {
 
   submitHandler = e => {
     e.preventDefault();
-    fetch('http://localhost:3000/api/v1/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      },
-      body: JSON.stringify({
-        user: {
-          username: 'dana',
-          password: 'hi'
-        }
-      })
-    })
-      .then(r => r.json())
-      .then(console.log)
+    // fetch('http://localhost:3000/api/v1/users', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     Accept: 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     user: {
+    //       username: this.state.username,
+    //       password: this.state.password
+    //     }
+    //   })
+    // })
+    //   .then(r => r.json())
+    //   .then(console.log)
     this.setState({
       username: "",
       password: ""
@@ -57,16 +58,19 @@ class Signup extends Component {
             value={this.state.password}
             onChange={this.changeHandler}
           />
-        <button>Submit</button>
+        <button onClick={() => this.props.createUser(this.state)}>Submit</button>
         </form>
       </div>
     )
   }
 }
 
-const mapStateToProps = (whatIsThis) => {
-  console.log(whatIsThis);
-  return {name: 'xavier'}
+const mapStateToProps = ({user, token}) => {
+  console.log('in map state to props');
+  return {
+    user,
+    token
+  }
 }
 
-export default connect(mapStateToProps)(Signup)
+export default connect(mapStateToProps, actions)(Signup)

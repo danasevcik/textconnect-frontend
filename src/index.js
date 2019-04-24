@@ -8,15 +8,17 @@ import { Provider } from 'react-redux'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ActionCableProvider } from 'react-actioncable-provider'
-import { SAY_HI } from './actions/types'
+import { SAY_HI, CREATE_USER } from './actions/types'
 import thunk from 'redux-thunk'
 
-const initialState = {name: 'Dana'}
+const initialState = {user: null, token: null}
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {
     case SAY_HI:
       return {...state, greeting: action.payload}
+    case CREATE_USER:
+      return {...state, user: action.payload.user, token: action.payload.jwt}
     default:
       return state
   }
