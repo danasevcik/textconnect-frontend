@@ -9,9 +9,18 @@ import Error from './components/Error.js'
 import ContactContainer from './containers/ContactContainer'
 import AddContactContainer from './containers/AddContactContainer'
 import ChatsContainer from './containers/ChatsContainer'
+import { connect } from 'react-redux';
+import * as actions from './actions'
 
 class App extends Component {
+
+  componentDidMount() {
+    console.log(this.props.getUser);
+    this.props.getUser()
+  }
+
   render() {
+    console.log(this.props);
     return (
       <div className="App">
         <h1>HELLO WORLD</h1>
@@ -54,4 +63,12 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+const mapStateToProps = ({user, token}) => {
+  console.log('in map state to props');
+  return {
+    user,
+    token
+  }
+}
+
+export default withRouter(connect(mapStateToProps, actions)(App));

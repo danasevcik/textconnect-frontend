@@ -1,7 +1,8 @@
 import {
   SAY_HI,
   CREATE_USER,
-  FIND_USER
+  FIND_USER,
+  GET_USER
 } from './types'
 
 const sayHi = () => {
@@ -38,6 +39,7 @@ export function createUser(userInfo) {
 }
 
 export function findUser(userInfo) {
+  console.log('in find user');
   console.log('in find user', userInfo);
   return dispatch => {
     fetch('http://localhost:3000/api/v1/login', {
@@ -62,6 +64,29 @@ export function findUser(userInfo) {
         dispatch({type: FIND_USER, payload: {user: data.user, jwt: data.jwt}})
       }
     })
+  }
+}
+
+export function getUser() {
+  return dispatch => {
+    let token = localStorage.getItem("token");
+    if (!!token) {
+      fetch("http://localhost:3000/api/v1/get_user", {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          accepts: "application/json",
+          Authorization: `${token}`
+        }
+      })
+      .then(resp => resp.json())
+      .then(data => {
+        console.log(data);
+        dispatch({type: GET_USER, payload: {user: data.user, jwt: localStorage.token}})
+      });
+    } else {
+      console.log('no token');
+    }
   }
 }
 
