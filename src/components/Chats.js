@@ -1,19 +1,18 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import Chats from '../components/Chats'
-import * as actions from '../actions'
+import ChatSliver from './ChatSliver'
 // import { withRouter } from "react-router-dom";
 
-class ChatsContainer extends Component {
-  componentDidMount() {
-    this.props.fetchConversations(this.props)
-  }
+class Chats extends Component {
 
   render() {
+    let conversations = this.props.conversations.map(conversation => {
+      return <ChatSliver key={conversation.id} conversation={conversation}/>
+    })
     return (
       <div>
-        <h1>ChatsContainer</h1>
-        <Chats />
+        <h1>Chats</h1>
+        {conversations}
       </div>
     )
   }
@@ -28,4 +27,4 @@ const mapStateToProps = ({user, token, contacts, conversations}) => {
   }
 }
 
-export default connect(mapStateToProps, actions)(ChatsContainer)
+export default connect(mapStateToProps)(Chats)

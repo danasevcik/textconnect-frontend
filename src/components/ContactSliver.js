@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+import * as actions from '../actions'
 // import { withRouter } from "react-router-dom";
 
 class ContactSliver extends Component {
+
   render() {
-    console.log('IN SLIVER', this.props.contact);
+    console.log(this.props);
     return (
       <div>
         <h1>ContactSliver</h1>
         <h3>{this.props.contact.username}</h3>
-        <button>+Start Conversation</button>
+        <button onClick={() => this.props.startConversation(this.props)}>+Start Conversation</button>
         <button>Remove Friend</button>
       </div>
     )
@@ -24,4 +26,4 @@ const mapStateToProps = ({user, token, contacts}) => {
   }
 }
 
-export default connect(mapStateToProps)(ContactSliver)
+export default connect(mapStateToProps, actions)(ContactSliver)

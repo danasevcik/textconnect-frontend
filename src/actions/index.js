@@ -4,7 +4,9 @@ import {
   FIND_USER,
   GET_USER,
   LOGOUT,
-  GET_CONTACTS
+  GET_CONTACTS,
+  GET_CONVERSATIONS,
+  START_CONVERSATION
 } from './types'
 
 const sayHi = () => {
@@ -113,8 +115,73 @@ export function fetchContacts(props) {
     })
     .then(resp => resp.json())
     .then(data => {
+      console.log(data.amigas);
+      dispatch({type: GET_CONTACTS, payload: {contacts: data.amigas}})
+    })
+  }
+}
+
+export function fetchConversations(props) {
+  let token = localStorage.getItem("token");
+  let id = props.user.id
+  return dispatch => {
+    fetch(`http://localhost:3000/api/v1/users/${id}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data.conversations);
+      dispatch({type: GET_CONVERSATIONS, payload: {conversations: data.conversations}})
+    })
+  }
+}
+
+export function startConversation(props) {
+  let token = localStorage.getItem("token");
+  let id = props.user.id
+  return dispatch => {
+    fetch('http://localhost:3000/api/v1/user_conversations', {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        user: {
+          user_id: id,
+          amiga_id: props.contact.id
+        }
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => {
       console.log(data);
-      dispatch({type: GET_CONTACTS, payload: {contacts: data}})
+    })
+  }
+}
+
+export function renderConversation(props) {
+  console.log('here');
+  let token = localStorage.getItem("token");
+  let conversation_id = props.conversation.id
+  return dispatch => {
+    fetch(`http://localhost:3000/api/v1/conversations/${conversation_id}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data);
     })
   }
 }

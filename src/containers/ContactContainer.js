@@ -10,7 +10,6 @@ class ContactContainer extends Component {
   }
 
   render() {
-    console.log('contact container', this.props);
     return (
       <div>
         <h1>ContactContainer</h1>
@@ -21,7 +20,6 @@ class ContactContainer extends Component {
 }
 
 const mapStateToProps = ({user, token, contacts}) => {
-  console.log('in map state to props');
   return {
     user,
     token,

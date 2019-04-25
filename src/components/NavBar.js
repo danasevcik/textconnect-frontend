@@ -11,9 +11,7 @@ import * as actions from '../actions'
 class NavBar extends Component {
 
   logout = () => {
-    console.log('clicked');
     localStorage.removeItem("token")
-    console.log(localStorage);
     this.props.logout()
   }
 
@@ -42,7 +40,6 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = ({user, token}) => {
-  console.log(user);
   return {
     user,
     token
