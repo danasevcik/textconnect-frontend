@@ -8,7 +8,7 @@ import { Provider } from 'react-redux'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ActionCableProvider } from 'react-actioncable-provider'
-import { SAY_HI, CREATE_USER, FIND_USER, GET_USER, LOGOUT, GET_CONTACTS, GET_CONVERSATIONS, SET_CURRENT_CONVO } from './actions/types'
+import { SAY_HI, CREATE_USER, FIND_USER, GET_USER, LOGOUT, GET_CONTACTS, GET_CONVERSATIONS, SET_CURRENT_CONVO, CREATE_MESSAGE } from './actions/types'
 import thunk from 'redux-thunk'
 
 const initialState = {user: null, token: null, contacts: [], conversations: []}
@@ -40,7 +40,7 @@ const store = createStore(reducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
-    <ActionCableProvider url={'ws://localhost:3001/cable'}>
+    <ActionCableProvider url={'ws://localhost:3000/cable'}>
       <BrowserRouter>
         <App />
       </BrowserRouter>

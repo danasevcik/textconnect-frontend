@@ -6,7 +6,8 @@ import {
   LOGOUT,
   GET_CONTACTS,
   GET_CONVERSATIONS,
-  SET_CURRENT_CONVO
+  SET_CURRENT_CONVO,
+  CREATE_MESSAGE
 } from './types'
 
 const sayHi = () => {
@@ -167,7 +168,6 @@ export function startConversation(props) {
 }
 
 export function renderConversation(props) {
-  console.log(props);
   let token = localStorage.getItem("token");
   let conversation_id = props.conversation.id
   return dispatch => {
@@ -183,6 +183,35 @@ export function renderConversation(props) {
     .then(data => {
       console.log(data);
       dispatch({type: SET_CURRENT_CONVO, payload: {messages: data.messages, conversation_id: data.conversation_id, conversation: data.conversation}})
+    })
+  }
+}
+
+export function createMessage(message, props) {
+  console.log(message);
+  let token = localStorage.getItem("token");
+  let user_id = props.user.id
+  let conversation_id = props.conversationId
+  return dispatch => {
+    fetch('http://localhost:3000/api/v1/messages', {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        message: {
+          content: message.message,
+          user_id: user_id,
+          conversation_id: conversation_id
+        }
+      })
+    })
+    .then(resp => resp.json())
+    .then(message => {
+      console.log(message);
+      dispatch({type: CREATE_MESSAGE, payload: {message: message}})
     })
   }
 }
