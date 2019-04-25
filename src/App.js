@@ -6,6 +6,7 @@ import Login from './components/Login.js'
 import Signup from './components/Signup.js'
 import Profile from './components/Profile.js'
 import Error from './components/Error.js'
+import Conversation from './components/Conversation.js'
 import ContactContainer from './containers/ContactContainer'
 import AddContactContainer from './containers/AddContactContainer'
 import ChatsContainer from './containers/ChatsContainer'
@@ -26,6 +27,10 @@ class App extends Component {
         <Login />
         <Signup />
         <Switch>
+          <Route
+            path='/Conversation/:id'
+            render={() => <Conversation />}
+          />
           <Route
             path='/Login'
             render={() => <Login />}

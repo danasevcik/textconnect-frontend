@@ -1,16 +1,22 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+import { Link, Redirect } from "react-router-dom";
 import * as actions from '../actions'
-// import { withRouter } from "react-router-dom";
+import Conversation from './Conversation.js'
 
 class ChatSliver extends Component {
+
   render() {
-    console.log(this.props);
+    console.log('in chat sliver', this.props);
     return (
       <div>
         <h1>ChatSliver</h1>
-        <button onClick={() => this.props.renderConversation(this.props)}>{this.props.conversation.title}</button>
-      </div>
+        <div>
+          <Link to={`/Conversation/${this.props.conversation.id}`}>
+            <button onClick={() => this.props.renderConversation(this.props)}>{this.props.conversation.title}</button>
+          </Link>
+        </div>
+    </div>
     )
   }
 }

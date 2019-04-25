@@ -6,7 +6,7 @@ import {
   LOGOUT,
   GET_CONTACTS,
   GET_CONVERSATIONS,
-  START_CONVERSATION
+  SET_CURRENT_CONVO
 } from './types'
 
 const sayHi = () => {
@@ -167,7 +167,7 @@ export function startConversation(props) {
 }
 
 export function renderConversation(props) {
-  console.log('here');
+  console.log(props);
   let token = localStorage.getItem("token");
   let conversation_id = props.conversation.id
   return dispatch => {
@@ -182,6 +182,7 @@ export function renderConversation(props) {
     .then(resp => resp.json())
     .then(data => {
       console.log(data);
+      dispatch({type: SET_CURRENT_CONVO, payload: {messages: data.messages, conversation_id: data.conversation_id, conversation: data.conversation}})
     })
   }
 }
