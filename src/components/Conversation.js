@@ -2,15 +2,20 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import MessageForm from './MessageForm'
 import { ActionCableConsumer } from 'react-actioncable-provider'
+import * as actions from '../actions'
 // import { withRouter } from "react-router-dom";
 
 class Conversation extends Component {
+
   render() {
-    console.log('in conversation', this.props);
+    console.log('in conversation', this.props.current_conversation);
     return (
       <div>
       {this.props.current_conversation && <ActionCableConsumer
-        onReceived={(data) => console.log('working', data)}
+        onReceived={(data) => {
+          console.log(data)
+          this.props.updateConvo(data, this.props)
+        }}
         channel={{channel: 'MessagesChannel', conversation_id: this.props.current_conversation.id}} />}
         <h1>{this.props.current_conversation ? this.props.current_conversation.title : 'Conversation'}</h1>
         {this.props.current_conversation_messages ? this.props.current_conversation_messages.map(message => {
@@ -33,4 +38,4 @@ const mapStateToProps = ({user, token, contacts, conversations, current_conversa
   }
 }
 
-export default connect(mapStateToProps)(Conversation)
+export default connect(mapStateToProps, actions)(Conversation)

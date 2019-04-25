@@ -7,7 +7,8 @@ import {
   GET_CONTACTS,
   GET_CONVERSATIONS,
   SET_CURRENT_CONVO,
-  CREATE_MESSAGE
+  CREATE_MESSAGE,
+  UPDATE_CONVO
 } from './types'
 
 const sayHi = () => {
@@ -213,6 +214,14 @@ export function createMessage(message, props) {
       console.log(message);
       dispatch({type: CREATE_MESSAGE, payload: {message: message}})
     })
+  }
+}
+
+export function updateConvo(data, props) {
+  console.log('updating convo data', data);
+  console.log('updating convo props', props);
+  return dispatch => {
+    dispatch({type: UPDATE_CONVO, payload: {message: data}})
   }
 }
 
