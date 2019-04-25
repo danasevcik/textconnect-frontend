@@ -2,7 +2,8 @@ import {
   SAY_HI,
   CREATE_USER,
   FIND_USER,
-  GET_USER
+  GET_USER,
+  LOGOUT
 } from './types'
 
 const sayHi = () => {
@@ -89,6 +90,13 @@ export function getUser() {
     }
   }
 }
+
+export function logout() {
+  return dispatch => {
+    dispatch({type: LOGOUT, payload: {user: null, jwt: localStorage.token}})
+  }
+}
+
 
 export default {
   sayHi

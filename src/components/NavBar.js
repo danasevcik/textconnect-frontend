@@ -1,12 +1,22 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from 'react-redux';
 import ContactContainer from '../containers/ContactContainer'
 import AddContactContainer from '../containers/AddContactContainer'
 import ChatsContainer from '../containers/ChatsContainer'
 import Profile from '../components/Profile'
 import Error from '../components/Error'
+import * as actions from '../actions'
 
 class NavBar extends Component {
+
+  logout = () => {
+    console.log('clicked');
+    localStorage.removeItem("token")
+    console.log(localStorage);
+    this.props.logout()
+    console.log(this.props);
+  }
 
   render() {
     return (
@@ -24,7 +34,7 @@ class NavBar extends Component {
         <Link to='/Profile'>
           My Profile
         </Link>
-        <Link to='/'>
+        <Link to='/' onClick={this.logout}>
           Logout
         </Link>
       </div>
@@ -32,4 +42,12 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar
+const mapStateToProps = ({user, token}) => {
+  console.log(user);
+  return {
+    user,
+    token
+  }
+}
+
+export default connect(mapStateToProps, actions)(NavBar)

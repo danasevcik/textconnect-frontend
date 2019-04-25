@@ -14,11 +14,12 @@ class Menu extends Component {
   }
 
   render() {
-    console.log(this.props);
+    let token = localStorage.getItem("token")
+    console.log('in menu', !!token);
     return (
       <div>
-        <button onClick={this.handleClick}>Menu</button>
-        {this.state.clicked ? <NavBar /> : null}
+        {!!token ? <button onClick={this.handleClick}>Menu</button> : null}
+        {(!!token && this.state.clicked) ? <NavBar /> : null}
       </div>
     )
   }

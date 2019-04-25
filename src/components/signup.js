@@ -17,7 +17,6 @@ class Signup extends Component {
 
   submitHandler = e => {
     e.preventDefault();
-    console.log('here');
     this.props.createUser(this.state)
     this.setState({
       username: "",
@@ -26,7 +25,6 @@ class Signup extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <h1>Signup</h1>
@@ -56,7 +54,6 @@ class Signup extends Component {
 // () => this.props.createUser(this.state)
 
 const mapStateToProps = ({user, token}) => {
-  console.log('in map state to props');
   return {
     user,
     token
