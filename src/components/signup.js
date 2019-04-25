@@ -25,33 +25,37 @@ class Signup extends Component {
   };
 
   render() {
-    return (
-      <div>
-        <h1>Signup</h1>
-        <form onSubmit={this.submitHandler}>
-          <input
-            type="text"
-            placeholder="username"
-            name="username"
-            value={this.state.username}
-            onChange={this.changeHandler}
-          />
-          <input
-            type="password"
-            placeholder="password"
-            name="password"
-            value={this.state.password}
-            onChange={this.changeHandler}
-          />
-        <button onClick={
-            this.submitHandler
-          }>Submit</button>
-        </form>
-      </div>
-    )
+    let token = localStorage.getItem("token")
+    if (!!token) {
+      return null
+    } else if (!token) {
+      return (
+        <div>
+          <h1>Signup</h1>
+          <form onSubmit={this.submitHandler}>
+            <input
+              type="text"
+              placeholder="username"
+              name="username"
+              value={this.state.username}
+              onChange={this.changeHandler}
+              />
+            <input
+              type="password"
+              placeholder="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.changeHandler}
+              />
+            <button onClick={
+                this.submitHandler
+              }>Submit</button>
+            </form>
+          </div>
+        )
+    }
   }
 }
-// () => this.props.createUser(this.state)
 
 const mapStateToProps = ({user, token}) => {
   return {
