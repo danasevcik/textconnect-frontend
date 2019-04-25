@@ -15,7 +15,6 @@ class Menu extends Component {
 
   render() {
     let token = localStorage.getItem("token")
-    console.log('in menu', !!token);
     return (
       <div>
         {!!token ? <button onClick={this.handleClick}>Menu</button> : null}
@@ -26,7 +25,6 @@ class Menu extends Component {
 }
 
 const mapStateToProps = ({user, token}) => {
-  console.log('in map state to props menu');
   return {
     user,
     token

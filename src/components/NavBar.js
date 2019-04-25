@@ -15,7 +15,6 @@ class NavBar extends Component {
     localStorage.removeItem("token")
     console.log(localStorage);
     this.props.logout()
-    console.log(this.props);
   }
 
   render() {

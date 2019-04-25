@@ -3,7 +3,8 @@ import {
   CREATE_USER,
   FIND_USER,
   GET_USER,
-  LOGOUT
+  LOGOUT,
+  GET_CONTACTS
 } from './types'
 
 const sayHi = () => {
@@ -11,7 +12,6 @@ const sayHi = () => {
 }
 
 export function createUser(userInfo) {
-  console.log('in create user', userInfo);
   return dispatch => {
     fetch('http://localhost:3000/api/v1/users', {
       method: 'POST',
@@ -40,8 +40,6 @@ export function createUser(userInfo) {
 }
 
 export function findUser(userInfo) {
-  console.log('in find user');
-  console.log('in find user', userInfo);
   return dispatch => {
     fetch('http://localhost:3000/api/v1/login', {
       method: 'POST',
@@ -94,6 +92,30 @@ export function getUser() {
 export function logout() {
   return dispatch => {
     dispatch({type: LOGOUT, payload: {user: null, jwt: localStorage.token}})
+  }
+}
+
+export function fetchContacts(props) {
+  console.log('in fetch contacts');
+  console.log(props.user);
+  let token = localStorage.getItem("token");
+  console.log(token);
+  let id = props.user.id
+  console.log(id);
+  return dispatch => {
+    fetch(`http://localhost:3000/api/v1/users/${id}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data);
+      dispatch({type: GET_CONTACTS, payload: {contacts: data}})
+    })
   }
 }
 

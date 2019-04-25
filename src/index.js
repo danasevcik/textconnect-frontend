@@ -8,10 +8,10 @@ import { Provider } from 'react-redux'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ActionCableProvider } from 'react-actioncable-provider'
-import { SAY_HI, CREATE_USER, FIND_USER, GET_USER, LOGOUT } from './actions/types'
+import { SAY_HI, CREATE_USER, FIND_USER, GET_USER, LOGOUT, GET_CONTACTS } from './actions/types'
 import thunk from 'redux-thunk'
 
-const initialState = {user: null, token: null}
+const initialState = {user: null, token: null, contacts: []}
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {
@@ -24,8 +24,9 @@ const reducer = (state = initialState, action) => {
     case GET_USER:
       return {...state, user: action.payload.user, token: action.payload.jwt}
     case LOGOUT:
-      console.log(state);
       return {...state, user: action.payload.user, token: action.payload.jwt}
+    case GET_CONTACTS:
+      return {...state, contacts: action.payload.contacts}
     default:
       return state
   }
