@@ -21,12 +21,6 @@ class Chats extends Component {
 }
 
 const mapStateToProps = (state) => {
-  // return {
-  //   user,
-  //   token,
-  //   contacts,
-  //   conversations
-  // }
   return state
 }
 

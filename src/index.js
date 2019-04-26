@@ -8,10 +8,10 @@ import { Provider } from 'react-redux'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ActionCableProvider } from 'react-actioncable-provider'
-import { SAY_HI, CREATE_USER, FIND_USER, GET_USER, LOGOUT, GET_CONTACTS, GET_CONVERSATIONS, SET_CURRENT_CONVO, CREATE_MESSAGE, UPDATE_CONVO } from './actions/types'
+import { SAY_HI, CREATE_USER, FIND_USER, GET_USER, LOGOUT, GET_CONTACTS, GET_CONVERSATIONS, SET_CURRENT_CONVO, CREATE_MESSAGE, UPDATE_CONVO, FETCH_NON_CONTACTS, ADD_FRIEND } from './actions/types'
 import thunk from 'redux-thunk'
 
-const initialState = {user: null, token: null, contacts: [], conversations: []}
+const initialState = {user: null, token: null, contacts: [], conversations: [], non_amigas: []}
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {
@@ -35,6 +35,10 @@ const reducer = (state = initialState, action) => {
       return {...state, current_conversation_messages: [...state.current_conversation_messages, action.payload.message]}
     case UPDATE_CONVO:
       return {...state, current_conversation_messages: [...state.current_conversation_messages, action.payload.message]}
+    case FETCH_NON_CONTACTS:
+      return {...state, non_amigas: action.payload.non_amigas}
+    case ADD_FRIEND:
+      return {...state, non_amigas: [...state.non_amigas]}
     default:
       return state
   }

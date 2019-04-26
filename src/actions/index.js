@@ -8,7 +8,9 @@ import {
   GET_CONVERSATIONS,
   SET_CURRENT_CONVO,
   CREATE_MESSAGE,
-  UPDATE_CONVO
+  UPDATE_CONVO,
+  FETCH_NON_CONTACTS,
+  ADD_FRIEND
 } from './types'
 
 const sayHi = () => {
@@ -224,6 +226,57 @@ export function updateConvo(data, props) {
   return dispatch => {
     // Update current_conversation_messages in the store
     dispatch({type: UPDATE_CONVO, payload: {message: data}})
+  }
+}
+
+export function fetchNonContacts(props) {
+  let token = localStorage.getItem("token");
+  let id = props.user.id
+  return dispatch => {
+    fetch(`http://localhost:3000/api/v1/add-contacts`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        user: {
+          user_id: id
+        }
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data);
+      dispatch({type: FETCH_NON_CONTACTS, payload: {non_amigas: data.non_amigas}})
+    })
+  }
+}
+
+export function addFriend(props, nonAmigaId) {
+  let token = localStorage.getItem("token");
+  let id = props.user.id
+  return dispatch => {
+    fetch(`http://localhost:3000/api/v1/friendships`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        user: {
+          user_id: id,
+          amiga_id: nonAmigaId
+        }
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data);
+      dispatch({type: ADD_FRIEND, payload: {amiga: data.amiga, friendship: data.friendship}})
+    })
   }
 }
 
