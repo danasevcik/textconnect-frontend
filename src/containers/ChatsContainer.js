@@ -6,7 +6,9 @@ import * as actions from '../actions'
 
 class ChatsContainer extends Component {
   componentDidMount() {
-    this.props.fetchConversations(this.props)
+    if (this.props.user) {
+      this.props.fetchConversations(this.props)
+    }
   }
 
   render() {

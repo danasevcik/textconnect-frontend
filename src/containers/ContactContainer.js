@@ -6,7 +6,9 @@ import * as actions from '../actions'
 
 class ContactContainer extends Component {
   componentDidMount() {
-    this.props.fetchContacts(this.props)
+    if (this.props.user) {
+      this.props.fetchContacts(this.props)
+    }
   }
 
   render() {

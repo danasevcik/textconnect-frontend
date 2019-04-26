@@ -182,7 +182,7 @@ export function renderConversation(props) {
     })
     .then(resp => resp.json())
     .then(data => {
-      console.log(data);
+      console.log('we have fetched the convo', data);
       dispatch({type: SET_CURRENT_CONVO, payload: {messages: data.messages, conversation_id: data.conversation_id, conversation: data.conversation}})
     })
   }
@@ -209,12 +209,12 @@ export function createMessage(message, props) {
         }
       })
     })
-    .then(resp => resp.json())
-    .then(message => {
-      console.log(message);
-      // force re-render of Conversation component
-      dispatch({type: CREATE_MESSAGE, payload: {message: message}})
-    })
+    // .then(resp => resp.json())
+    // .then(message => {
+    //   console.log(message);
+    //   // force re-render of Conversation component
+    //   dispatch({type: CREATE_MESSAGE, payload: {message: message}})
+    // })
   }
 }
 

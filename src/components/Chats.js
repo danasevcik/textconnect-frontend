@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import ChatSliver from './ChatSliver'
+import { ActionCableConsumer } from 'react-actioncable-provider'
+import { updateConvo } from '../actions'
 // import { withRouter } from "react-router-dom";
 
 class Chats extends Component {
@@ -18,13 +20,14 @@ class Chats extends Component {
   }
 }
 
-const mapStateToProps = ({user, token, contacts, conversations}) => {
-  return {
-    user,
-    token,
-    contacts,
-    conversations
-  }
+const mapStateToProps = (state) => {
+  // return {
+  //   user,
+  //   token,
+  //   contacts,
+  //   conversations
+  // }
+  return state
 }
 
-export default connect(mapStateToProps)(Chats)
+export default connect(mapStateToProps, { updateConvo })(Chats)
