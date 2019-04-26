@@ -11,15 +11,22 @@ class Conversation extends Component {
     console.log('in conversation', this.props.current_conversation);
     return (
       <div>
+      {/* action cable consumer */}
       {this.props.current_conversation && <ActionCableConsumer
         onReceived={(data) => {
           console.log(data)
           this.props.updateConvo(data, this.props)
         }}
         channel={{channel: 'MessagesChannel', conversation_id: this.props.current_conversation.id}} />}
+
+        {/* TITLE */}
         <h1>{this.props.current_conversation ? this.props.current_conversation.title : 'Conversation'}</h1>
+
+        {/* MESSAGES */}
         {this.props.current_conversation_messages ? this.props.current_conversation_messages.map(message => {
           return <p>{message.content}</p>}) : null}
+
+        {/* MESSAGE FORM */}
         {this.props.current_conversation ? <MessageForm conversationId={this.props.current_conversation.id}/> : null}
       </div>
     )

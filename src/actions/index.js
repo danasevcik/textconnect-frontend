@@ -212,6 +212,7 @@ export function createMessage(message, props) {
     .then(resp => resp.json())
     .then(message => {
       console.log(message);
+      // force re-render of Conversation component
       dispatch({type: CREATE_MESSAGE, payload: {message: message}})
     })
   }
@@ -221,6 +222,7 @@ export function updateConvo(data, props) {
   console.log('updating convo data', data);
   console.log('updating convo props', props);
   return dispatch => {
+    // Update current_conversation_messages in the store
     dispatch({type: UPDATE_CONVO, payload: {message: data}})
   }
 }
