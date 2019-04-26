@@ -10,7 +10,6 @@ class ChatSliver extends Component {
     console.log('in chat sliver', this.props);
     return (
       <div>
-        <h1>ChatSliver</h1>
         <div>
           <Link to={`/Conversation/${this.props.conversation.id}`}>
             <button onClick={() => this.props.renderConversation(this.props)}>{this.props.conversation.title}</button>

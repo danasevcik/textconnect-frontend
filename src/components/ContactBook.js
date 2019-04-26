@@ -12,7 +12,6 @@ class ContactBook extends Component {
     console.log('in map state to props', this.props);
     return (
       <div>
-        <h1>ContactBook</h1>
         {contacts}
       </div>
     )

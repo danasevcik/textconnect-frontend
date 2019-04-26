@@ -15,7 +15,6 @@ class AddContactContainer extends Component {
   render() {
     return (
       <div>
-        <h1>AddContactContainer</h1>
         <AddContact />
       </div>
     )

@@ -14,7 +14,6 @@ class ChatsContainer extends Component {
   render() {
     return (
       <div>
-        <h1>ChatsContainer</h1>
         <Chats />
       </div>
     )

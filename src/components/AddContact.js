@@ -12,7 +12,6 @@ class AddContact extends Component {
     })
     return (
       <div>
-        <h1>Add Contacts</h1>
         {non_amigas}
       </div>
     )

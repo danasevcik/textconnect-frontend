@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from 'react-redux';
 import ContactContainer from '../containers/ContactContainer'
-import AddContactContainer from '../containers/AddContactContainer'
+import AddContactContainer from '../containers/AddContactContainer' 
 import ChatsContainer from '../containers/ChatsContainer'
 import Profile from '../components/Profile'
 import Error from '../components/Error'

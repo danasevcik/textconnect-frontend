@@ -35,7 +35,6 @@ class AddContactSliver extends Component {
     console.log(this.props);
     return (
       <div>
-        <h1>AddContactSliver</h1>
         <h3>{this.props.non_amiga.username}</h3>
         <button onClick={() => this.addFriend(this.props, this.props.non_amiga.id)}>+Add Friend</button>
       </div>

@@ -13,7 +13,6 @@ class Chats extends Component {
     })
     return (
       <div>
-        <h1>Chats</h1>
         {conversations}
       </div>
     )

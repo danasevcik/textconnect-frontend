@@ -14,7 +14,6 @@ class ContactContainer extends Component {
   render() {
     return (
       <div>
-        <h1>ContactContainer</h1>
         <ContactBook />
       </div>
     )
