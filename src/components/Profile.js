@@ -32,7 +32,7 @@ class Profile extends Component {
         {/* EDIT FORM BUTTON */}
         {this.props.user && <button onClick={() => this.handleClick()}>Edit Profile</button>}
         {/* EDIT FORM RENDER */}
-        {(this.props.user && this.state.clicked) ? <ProfileEdit /> : null}
+        {(this.props.user && this.state.clicked) && <ProfileEdit />}
 
       </div>
     )

@@ -10,7 +10,8 @@ import {
   CREATE_MESSAGE,
   UPDATE_CONVO,
   FETCH_NON_CONTACTS,
-  ADD_FRIEND
+  ADD_FRIEND,
+  UPDATE_USER
 } from './types'
 
 const sayHi = () => {
@@ -280,6 +281,34 @@ export function addFriend(props, nonAmigaId) {
   }
 }
 
+export function updateUser(props, userInfo) {
+  console.log(props);
+  console.log(userInfo);
+
+  let token = localStorage.getItem("token");
+  let id = props.user.id
+  // return dispatch => {
+  //   fetch(`http://localhost:3000/api/v1/friendships`, {
+  //     method: "PATCH",
+  //     headers: {
+  //       "content-type": "application/json",
+  //       accepts: "application/json",
+  //       Authorization: `Bearer ${token}`
+  //     },
+  //     body: JSON.stringify({
+  //       user: {
+  //         user_id: id,
+  //         amiga_id: nonAmigaId
+  //       }
+  //     })
+  //   })
+  //   .then(resp => resp.json())
+  //   .then(data => {
+  //     console.log(data);
+      // dispatch({type: ADD_FRIEND, payload: {amiga: data.amiga, friendship: data.friendship}})
+    // })
+  // }
+}
 
 export default {
   sayHi

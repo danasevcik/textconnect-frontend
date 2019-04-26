@@ -20,7 +20,7 @@ class ProfileEdit extends Component {
 
   submitHandler = e => {
     e.preventDefault();
-    // this.props.createUser(this.state)
+    this.props.updateUser(this.props, this.state)
     this.setState({
       name: "",
       age: "",
@@ -53,9 +53,30 @@ class ProfileEdit extends Component {
               value={this.state.age}
               onChange={this.changeHandler}
               />
+            <input
+              type="text"
+              placeholder="bio"
+              name="bio"
+              value={this.state.bio}
+              onChange={this.changeHandler}
+              />
+            <input
+              type="text"
+              placeholder="phone number"
+              name="phone_number"
+              value={this.state.phone_number}
+              onChange={this.changeHandler}
+              />
+            <input
+              type="text"
+              placeholder="your photo"
+              name="photo"
+              value={this.state.photo}
+              onChange={this.changeHandler}
+              />
             <button onClick={
                 this.submitHandler
-              }>Submit</button>
+              }>Save These Changes</button>
             </form>
           </div>
         )
