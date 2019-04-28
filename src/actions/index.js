@@ -37,7 +37,7 @@ export function createUser(userInfo) {
     .then(data => {
       console.log(data);
       if (data.error) {
-        console.log(data.error);
+        alert(data.error);
       } else {
         localStorage.setItem("token", data.jwt);
         dispatch({type: CREATE_USER, payload: {user: data.user, jwt: data.jwt}})
@@ -63,8 +63,9 @@ export function findUser(userInfo) {
     })
     .then(r => r.json())
     .then(data => {
-      if (data.error) {
-        console.log(data.error);
+      console.log(data);
+      if (data.message) {
+        alert(data.message);
       } else {
         localStorage.setItem("token", data.jwt);
         dispatch({type: FIND_USER, payload: {user: data.user, jwt: data.jwt}})

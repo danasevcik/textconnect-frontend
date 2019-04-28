@@ -18,6 +18,7 @@ class Signup extends Component {
   submitHandler = e => {
     e.preventDefault();
     this.props.createUser(this.state)
+    console.log(this.props);
     this.setState({
       username: "",
       password: ""
