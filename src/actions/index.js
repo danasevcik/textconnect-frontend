@@ -179,17 +179,17 @@ export function renderConversation(props) {
   let id = props.user.id
   return dispatch => {
     fetch(`http://localhost:3000/api/v1/conversations/${conversation_id}`, {
-      method: "GET",
+      method: "POST",
       headers: {
         "content-type": "application/json",
         accepts: "application/json",
         Authorization: `Bearer ${token}`
       },
-      // body: JSON.stringify({
-      //   user: {
-      //     user_id: id
-      //   }
-      // })
+      body: JSON.stringify({
+        user: {
+          user_id: id
+        }
+      })
     })
     .then(resp => resp.json())
     .then(data => {

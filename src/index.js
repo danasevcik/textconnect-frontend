@@ -34,7 +34,7 @@ const reducer = (state = initialState, action) => {
     case CREATE_MESSAGE:
       return {...state, current_conversation_messages: [...state.current_conversation_messages, action.payload.message]}
     case UPDATE_CONVO:
-      return {...state, current_conversation_messages: [...state.current_conversation_messages, action.payload.message]}
+      return {...state, current_conversation_messages: [...state.current_conversation_messages, {text: action.payload.message}]}
     case FETCH_NON_CONTACTS:
       return {...state, non_amigas: action.payload.non_amigas}
     case ADD_FRIEND:
