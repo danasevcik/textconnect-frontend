@@ -288,27 +288,30 @@ export function updateUser(props, userInfo) {
 
   let token = localStorage.getItem("token");
   let id = props.user.id
-  // return dispatch => {
-  //   fetch(`http://localhost:3000/api/v1/friendships`, {
-  //     method: "PATCH",
-  //     headers: {
-  //       "content-type": "application/json",
-  //       accepts: "application/json",
-  //       Authorization: `Bearer ${token}`
-  //     },
-  //     body: JSON.stringify({
-  //       user: {
-  //         user_id: id,
-  //         amiga_id: nonAmigaId
-  //       }
-  //     })
-  //   })
-  //   .then(resp => resp.json())
-  //   .then(data => {
-  //     console.log(data);
-      // dispatch({type: ADD_FRIEND, payload: {amiga: data.amiga, friendship: data.friendship}})
-    // })
-  // }
+  return dispatch => {
+    fetch(`http://localhost:3000/api/v1/users/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        user: {
+          name: userInfo.name,
+          age: userInfo.age,
+          bio: userInfo.bio,
+          phone_number: userInfo.phone_number,
+          photo: userInfo.photo
+        }
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data);
+      dispatch({type: UPDATE_USER, payload: {user: data}})
+    })
+  }
 }
 
 export default {

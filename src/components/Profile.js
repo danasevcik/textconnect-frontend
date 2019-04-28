@@ -13,6 +13,11 @@ class Profile extends Component {
     this.setState({clicked: !this.state.clicked})
   }
 
+  handleSubmit = e => {
+    console.log('here');
+    this.setState({clicked: !this.state.clicked})
+  }
+
   render() {
     console.log(this.props.user);
     return (
@@ -32,7 +37,7 @@ class Profile extends Component {
         {/* EDIT FORM BUTTON */}
         {this.props.user && <button onClick={() => this.handleClick()}>Edit Profile</button>}
         {/* EDIT FORM RENDER */}
-        {(this.props.user && this.state.clicked) && <ProfileEdit />}
+        {(this.props.user && this.state.clicked) && <ProfileEdit handleSubmit={this.handleSubmit}/>}
 
       </div>
     )

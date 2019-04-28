@@ -5,11 +5,11 @@ import * as actions from '../actions'
 
 class ProfileEdit extends Component {
   state = {
-    name: "",
-    age: "",
-    bio: "",
-    phone_number: "",
-    photo: ""
+    name: this.props.user.name,
+    age: this.props.user.age,
+    bio: this.props.user.bio,
+    phone_number: this.props.user.phone_number,
+    photo: this.props.user.photo
   };
 
   changeHandler = e => {
@@ -21,16 +21,18 @@ class ProfileEdit extends Component {
   submitHandler = e => {
     e.preventDefault();
     this.props.updateUser(this.props, this.state)
+    this.props.handleSubmit(e)
     this.setState({
-      name: "",
-      age: "",
-      bio: "",
-      phone_number: "",
-      photo: ""
+      name: this.props.user.name,
+      age: this.props.user.age,
+      bio: this.props.user.bio,
+      phone_number: this.props.user.phone_number,
+      photo: this.props.user.photo
     });
   };
 
   render() {
+    console.log(this.props.user);
     let token = localStorage.getItem("token")
     if (!token) {
       return null
