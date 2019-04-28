@@ -7,7 +7,6 @@ import Conversation from './Conversation.js'
 class ChatSliver extends Component {
 
   render() {
-    console.log('in chat sliver', this.props);
     return (
       <div>
         <div>

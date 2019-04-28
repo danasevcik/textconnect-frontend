@@ -24,7 +24,7 @@ class Conversation extends Component {
 
         {/* MESSAGES */}
         {this.props.current_conversation_messages ? this.props.current_conversation_messages.map(message => {
-          return <p>{message.content}</p>}) : null}
+          return <p>{message.text}</p>}) : null}
 
         {/* MESSAGE FORM */}
         {this.props.current_conversation ? <MessageForm conversationId={this.props.current_conversation.id}/> : null}
