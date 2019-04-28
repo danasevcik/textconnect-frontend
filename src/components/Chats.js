@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import ChatSliver from './ChatSliver'
-import { ActionCableConsumer } from 'react-actioncable-provider'
+// import { ActionCableConsumer } from 'react-actioncable-provider'
 import { updateConvo } from '../actions'
 // import { withRouter } from "react-router-dom";
 

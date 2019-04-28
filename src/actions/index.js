@@ -19,6 +19,7 @@ const sayHi = () => {
 }
 
 export function createUser(userInfo) {
+  console.log('before fetch in create user', userInfo);
   return dispatch => {
     fetch('http://localhost:3000/api/v1/users', {
       method: 'POST',
@@ -29,13 +30,14 @@ export function createUser(userInfo) {
       body: JSON.stringify({
         user: {
           username: userInfo.username,
-          password: userInfo.password
+          password: userInfo.password,
+          language: userInfo.language
         }
       })
     })
     .then(r => r.json())
     .then(data => {
-      console.log(data);
+      console.log('after post in create user', data.user);
       if (data.error) {
         alert(data.error);
       } else {

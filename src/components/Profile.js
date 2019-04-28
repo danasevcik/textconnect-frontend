@@ -33,7 +33,7 @@ class Profile extends Component {
         {/* PHONE NUMBER */}
         {(this.props.user && this.props.user.phone_number) && <h3>Phone Number: {this.props.user.phone_number}</h3>}
         {/* PHOTO */}
-        {(this.props.user && this.props.user.photo) && <img src={this.props.user.photo}/>}
+        {(this.props.user && this.props.user.photo) && <img src={this.props.user.photo} alt="profile pic"/>}
         {/* EDIT FORM BUTTON */}
         {this.props.user && <button onClick={() => this.handleClick()}>Edit Profile</button>}
         {/* EDIT FORM RENDER */}
