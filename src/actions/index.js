@@ -179,17 +179,17 @@ export function renderConversation(props) {
   let id = props.user.id
   return dispatch => {
     fetch(`http://localhost:3000/api/v1/conversations/${conversation_id}`, {
-      method: "POST",
+      method: "GET",
       headers: {
         "content-type": "application/json",
         accepts: "application/json",
         Authorization: `Bearer ${token}`
       },
-      body: JSON.stringify({
-        user: {
-          user_id: id
-        }
-      })
+      // body: JSON.stringify({
+      //   user: {
+      //     user_id: id
+      //   }
+      // })
     })
     .then(resp => resp.json())
     .then(data => {
@@ -225,17 +225,17 @@ export function createMessage(message, props) {
     .then(message => {
       console.log(message);
       // force re-render of Conversation component
-      // dispatch({type: CREATE_MESSAGE, payload: {message: message}})
+      dispatch({type: CREATE_MESSAGE, payload: {message: message.content}})
     })
   }
 }
 
 export function updateConvo(data, props) {
-  console.log('updating convo data', data);
+  console.log('updating convo data', data.content);
   console.log('updating convo props', props);
   return dispatch => {
     // Update current_conversation_messages in the store
-    dispatch({type: UPDATE_CONVO, payload: {message: data}})
+    dispatch({type: UPDATE_CONVO, payload: {message: data.content}})
   }
 }
 
