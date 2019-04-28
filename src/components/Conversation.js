@@ -9,6 +9,7 @@ class Conversation extends Component {
 
   render() {
     console.log('in conversation', this.props.current_conversation);
+    console.log('in conversation', this.props.current_conversation_messages);
     return (
       <div>
       {/* action cable consumer */}
@@ -16,6 +17,7 @@ class Conversation extends Component {
         onReceived={(data) => {
           console.log(data)
           this.props.updateConvo(data, this.props)
+          this.props.renderConversation(this.props)
         }}
         channel={{channel: 'MessagesChannel', conversation_id: this.props.current_conversation.id}} />}
 

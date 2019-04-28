@@ -174,29 +174,57 @@ export function startConversation(props) {
 }
 
 export function renderConversation(props) {
+  console.log(props);
   let token = localStorage.getItem("token");
-  let conversation_id = props.conversation.id
-  let id = props.user.id
-  return dispatch => {
-    fetch(`http://localhost:3000/api/v1/conversations/${conversation_id}`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        accepts: "application/json",
-        Authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify({
-        user: {
-          user_id: id
-        }
+  if (props.conversation) {
+    let conversation_id = props.conversation.id
+    let id = props.user.id
+    return dispatch => {
+      fetch(`http://localhost:3000/api/v1/conversations/${conversation_id}`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          accepts: "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          user: {
+            user_id: id
+          }
+        })
       })
-    })
-    .then(resp => resp.json())
-    .then(data => {
-      console.log(data);
-      dispatch({type: SET_CURRENT_CONVO, payload: {messages: data.messages, conversation_id: data.conversation_id, conversation: data.conversation}})
-    })
+      .then(resp => resp.json())
+      .then(data => {
+        console.log(data);
+        dispatch({type: SET_CURRENT_CONVO, payload: {messages: data.messages, conversation_id: data.conversation_id, conversation: data.conversation}})
+      })
+    }
   }
+  else if (props.current_conversation_id) {
+    let conversation_id = props.current_conversation_id
+    let id = props.user.id
+    return dispatch => {
+      fetch(`http://localhost:3000/api/v1/conversations/${conversation_id}`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          accepts: "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          user: {
+            user_id: id
+          }
+        })
+      })
+      .then(resp => resp.json())
+      .then(data => {
+        console.log(data);
+        dispatch({type: SET_CURRENT_CONVO, payload: {messages: data.messages, conversation_id: data.conversation_id, conversation: data.conversation}})
+      })
+    }
+  }
+
 }
 
 export function createMessage(message, props) {
@@ -225,7 +253,7 @@ export function createMessage(message, props) {
     .then(message => {
       console.log(message);
       // force re-render of Conversation component
-      dispatch({type: CREATE_MESSAGE, payload: {message: message.content}})
+      // dispatch({type: CREATE_MESSAGE, payload: {message: message.content}})
     })
   }
 }
