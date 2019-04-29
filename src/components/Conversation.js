@@ -9,7 +9,9 @@ class Conversation extends Component {
 
   handleClick = (messageText) => {
     // text-to-speech audio
-    let msg = new SpeechSynthesisUtterance(`${messageText}`);
+    let text = messageText.split(':')
+    console.log(text);
+    let msg = new SpeechSynthesisUtterance(`${text[1]}`);
     window.speechSynthesis.speak(msg);
     // fetch('http://localhost:3000/api/v1/listen-to-message', {
     //   method: "POST",
@@ -53,7 +55,7 @@ class Conversation extends Component {
           return (
             <div>
                 <p>{message}</p>
-                <button onClick={() => this.handleClick(message.text)}>Play</button>
+                <button onClick={() => this.handleClick(message)}>Play</button>
             </div>
           )})
            : null}
