@@ -8,21 +8,24 @@ import * as actions from '../actions'
 class Conversation extends Component {
 
   handleClick = (messageText) => {
+    let msg = new SpeechSynthesisUtterance(`${messageText}`);
+    window.speechSynthesis.speak(msg);
     console.log('in click');
-    fetch('http://localhost:3000/api/v1/listen-to-message', {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        accepts: "application/json"
-      },
-      body: JSON.stringify({
-        message: messageText
-      })
-    })
-    .then(resp => resp.json())
-    .then(data => {
-      console.log(data);
-    })
+    // fetch('http://localhost:3000/api/v1/listen-to-message', {
+    //   method: "POST",
+    //   headers: {
+    //     "content-type": "application/json",
+    //     accepts: "application/json"
+    //   },
+    //   body: JSON.stringify({
+    //     message: messageText,
+    //     user: this.props.user
+    //   })
+    // })
+    // .then(resp => resp.json())
+    // .then(data => {
+    //   console.log(data);
+    // })
   }
 
   render() {
@@ -44,7 +47,13 @@ class Conversation extends Component {
 
         {/* MESSAGES */}
         {this.props.current_conversation_messages ? this.props.current_conversation_messages.map(message => {
-          return <p onClick={() => this.handleClick(message.text)}>{message.text}</p>}) : null}
+          return (
+            <div>
+              <p onClick={() => this.handleClick(message.text)}>{message.text}</p>
+
+            </div>
+          )})
+           : null}
 
         {/* MESSAGE FORM */}
         {this.props.current_conversation ? <MessageForm conversationId={this.props.current_conversation.id}/> : null}
