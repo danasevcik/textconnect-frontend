@@ -8,9 +8,9 @@ import * as actions from '../actions'
 class Conversation extends Component {
 
   handleClick = (messageText) => {
+    // text-to-speech audio
     let msg = new SpeechSynthesisUtterance(`${messageText}`);
     window.speechSynthesis.speak(msg);
-    console.log('in click');
     // fetch('http://localhost:3000/api/v1/listen-to-message', {
     //   method: "POST",
     //   headers: {
@@ -29,14 +29,11 @@ class Conversation extends Component {
   }
 
   render() {
-    console.log('in conversation', this.props.current_conversation);
-    console.log('in conversation', this.props.current_conversation_messages);
     return (
       <div>
       {/* action cable consumer */}
       {this.props.current_conversation && <ActionCableConsumer
         onReceived={(data) => {
-          console.log(data)
           this.props.updateConvo(data, this.props)
           this.props.renderConversation(this.props)
         }}
@@ -49,8 +46,8 @@ class Conversation extends Component {
         {this.props.current_conversation_messages ? this.props.current_conversation_messages.map(message => {
           return (
             <div>
-              <p onClick={() => this.handleClick(message.text)}>{message.text}</p>
-
+                <p>{message.text}</p>
+                <button onClick={() => this.handleClick(message.text)}>Play</button>
             </div>
           )})
            : null}

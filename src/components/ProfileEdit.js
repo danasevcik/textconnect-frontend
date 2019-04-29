@@ -32,7 +32,6 @@ class ProfileEdit extends Component {
   };
 
   render() {
-    console.log(this.props.user);
     let token = localStorage.getItem("token")
     if (!token) {
       return null

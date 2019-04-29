@@ -24,15 +24,12 @@ class AddContactSliver extends Component {
     })
     .then(resp => resp.json())
     .then(data => {
-      console.log(data);
-      console.log(this.props);
       this.props.fetchNonContacts(this.props)
       // dispatch({type: ADD_FRIEND, payload: {amiga: data.amiga, friendship: data.friendship}})
     })
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <h3>{this.props.non_amiga.username}</h3>

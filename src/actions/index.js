@@ -174,7 +174,6 @@ export function startConversation(props) {
 }
 
 export function renderConversation(props) {
-  console.log(props);
   let token = localStorage.getItem("token");
   if (props.conversation) {
     let conversation_id = props.conversation.id

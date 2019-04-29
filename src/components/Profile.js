@@ -14,12 +14,10 @@ class Profile extends Component {
   }
 
   handleSubmit = e => {
-    console.log('here');
     this.setState({clicked: !this.state.clicked})
   }
 
   render() {
-    console.log(this.props.user);
     return (
       <div>
         {/* USERNAME */}

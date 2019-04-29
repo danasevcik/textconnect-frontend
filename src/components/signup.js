@@ -11,7 +11,6 @@ class Signup extends Component {
   };
 
   changeHandler = e => {
-    console.log('in change handler');
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -20,7 +19,6 @@ class Signup extends Component {
   submitHandler = e => {
     e.preventDefault();
     this.props.createUser(this.state)
-    console.log(this.props);
     this.setState({
       username: "",
       password: "",

@@ -7,7 +7,6 @@ import * as actions from '../actions'
 class ContactSliver extends Component {
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <h3>{this.props.contact.username}</h3>

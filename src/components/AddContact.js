@@ -5,9 +5,7 @@ import AddContactSliver from './AddContactSliver'
 
 class AddContact extends Component {
   render() {
-    console.log('ADD CONTACT COMPONENT', this.props.non_amigas);
     let non_amigas = this.props.non_amigas.map(non_amiga => {
-      console.log(non_amiga);
       return <AddContactSliver key={non_amiga.id} non_amiga={non_amiga}/>
     })
     return (

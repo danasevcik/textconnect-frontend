@@ -9,7 +9,6 @@ class ContactBook extends Component {
     let contacts = this.props.contacts.map(contact => {
       return <ContactSliver key={contact.id} contact={contact}/>
     })
-    console.log('in map state to props', this.props);
     return (
       <div>
         {contacts}
