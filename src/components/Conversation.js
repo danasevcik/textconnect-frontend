@@ -35,6 +35,7 @@ class Conversation extends Component {
       {/* action cable consumer */}
       {this.props.current_conversation && <ActionCableConsumer
         onReceived={(data) => {
+          console.log(data);
           this.props.updateConvo(data, this.props)
           this.props.renderConversation(this.props)
         }}
@@ -48,9 +49,10 @@ class Conversation extends Component {
 
         {/* MESSAGES */}
         {this.props.current_conversation_messages ? this.props.current_conversation_messages.map(message => {
+          console.log(message)
           return (
             <div>
-                <p>{message.text}</p>
+                <p>{message}</p>
                 <button onClick={() => this.handleClick(message.text)}>Play</button>
             </div>
           )})
