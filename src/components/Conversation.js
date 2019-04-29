@@ -29,6 +29,7 @@ class Conversation extends Component {
   }
 
   render() {
+    let date = new Date()
     return (
       <div>
       {/* action cable consumer */}
@@ -41,6 +42,9 @@ class Conversation extends Component {
 
         {/* TITLE */}
         <h1>{this.props.current_conversation ? this.props.current_conversation.title : 'Conversation'}</h1>
+
+        {/* TIME STAMP */}
+        <h3>{this.props.current_conversation && date.toDateString() }</h3>
 
         {/* MESSAGES */}
         {this.props.current_conversation_messages ? this.props.current_conversation_messages.map(message => {
