@@ -7,6 +7,24 @@ import * as actions from '../actions'
 
 class Conversation extends Component {
 
+  handleClick = (messageText) => {
+    console.log('in click');
+    fetch('http://localhost:3000/api/v1/listen-to-message', {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json"
+      },
+      body: JSON.stringify({
+        message: messageText
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data);
+    })
+  }
+
   render() {
     console.log('in conversation', this.props.current_conversation);
     console.log('in conversation', this.props.current_conversation_messages);
@@ -26,7 +44,7 @@ class Conversation extends Component {
 
         {/* MESSAGES */}
         {this.props.current_conversation_messages ? this.props.current_conversation_messages.map(message => {
-          return <p>{message.text}</p>}) : null}
+          return <p onClick={() => this.handleClick(message.text)}>{message.text}</p>}) : null}
 
         {/* MESSAGE FORM */}
         {this.props.current_conversation ? <MessageForm conversationId={this.props.current_conversation.id}/> : null}
