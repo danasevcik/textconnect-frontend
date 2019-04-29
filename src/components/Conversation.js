@@ -41,7 +41,7 @@ class Conversation extends Component {
         channel={{channel: 'MessagesChannel', conversation_id: this.props.current_conversation.id}} />}
 
         {/* TITLE */}
-        <h1>{this.props.current_conversation ? this.props.current_conversation.title : 'Conversation'}</h1>
+        <h1>{this.props.current_conversation && this.props.current_conversation.title}</h1>
 
         {/* TIME STAMP */}
         <h3>{this.props.current_conversation && date.toDateString() }</h3>

@@ -243,6 +243,7 @@ export function createMessage(message, props) {
       body: JSON.stringify({
         message: {
           content: message.message,
+          user_name: props.user.name,
           user_id: user_id,
           conversation_id: conversation_id
         }
