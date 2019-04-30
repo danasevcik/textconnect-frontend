@@ -12,16 +12,17 @@ class SearchAddContacts extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+    this.props.handleChange(this.state.searchTerm)
   };
 
-  submitHandler = e => {
-    e.preventDefault();
-    this.props.updateUser(this.props, this.state)
-    this.props.handleSubmit(e)
-    this.setState({
-      searchTerm: ""
-    });
-  };
+  // submitHandler = e => {
+  //   e.preventDefault();
+  //   this.props.updateUser(this.props, this.state)
+  //   this.props.handleSubmit(e)
+  //   this.setState({
+  //     searchTerm: ""
+  //   });
+  // };
 
   render() {
     // print profile edit form
