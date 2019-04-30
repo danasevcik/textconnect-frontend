@@ -5,15 +5,23 @@ import * as actions from '../actions'
 
 class ContactContainer extends Component {
 
-  componentDidMount() {
+  state = {
+    haveUserInfo: false
+  }
+
+  getContacts() {
     if (this.props.user) {
       this.props.fetchContacts(this.props)
     }
+    this.setState({
+      haveUserInfo: true
+    })
   }
 
   render() {
     return (
       <div>
+        {(!this.state.haveUserInfo && this.props.user) ? this.getContacts() : null}
         <ContactBook />
       </div>
     )

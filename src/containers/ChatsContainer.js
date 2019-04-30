@@ -4,16 +4,24 @@ import Chats from '../components/Chats'
 import * as actions from '../actions'
 
 class ChatsContainer extends Component {
-  
-  componentDidMount() {
+
+  state = {
+    haveUserInfo: false
+  }
+
+  getChats() {
     if (this.props.user) {
       this.props.fetchConversations(this.props)
     }
+    this.setState({
+      haveUserInfo: true
+    })
   }
 
   render() {
     return (
       <div>
+        {(!this.state.haveUserInfo && this.props.user) ? this.getChats() : null}
         <Chats />
       </div>
     )

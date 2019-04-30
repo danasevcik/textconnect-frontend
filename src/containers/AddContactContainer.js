@@ -5,15 +5,23 @@ import * as actions from '../actions'
 
 class AddContactContainer extends Component {
 
-  componentDidMount() {
+  state = {
+    haveUserInfo: false
+  }
+
+  getNonContacts() {
     if (this.props.user) {
       this.props.fetchNonContacts(this.props)
     }
+    this.setState({
+      haveUserInfo: true
+    })
   }
 
   render() {
     return (
       <div>
+        {(!this.state.haveUserInfo && this.props.user) ? this.getNonContacts() : null}
         <AddContact />
       </div>
     )

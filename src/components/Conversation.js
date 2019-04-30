@@ -9,16 +9,13 @@ class Conversation extends Component {
 
   // local state to toggle conversation title edit form
   state = {
-    renameClicked: false
+    renameClicked: false,
+    haveUserInfo: false
   }
 
   handleClick = (name, text) => {
     // text-to-speech audio
-    console.log(name);
-    console.log('text', text);
-    console.log(this.props.user.username);
-    // debugger
-    if (name == this.props.user.username) {
+    if (name === this.props.user.username) {
       let name = 'you'
       let msg = new SpeechSynthesisUtterance(`${name} said ${text}`);
       window.speechSynthesis.speak(msg);
@@ -36,17 +33,33 @@ class Conversation extends Component {
     this.setState({renameClicked: !this.state.renameClicked})
   }
 
+  getConversation() {
+    if (this.props.user) {
+      let conversationId = this.props.match.params.id
+      this.props.renderConversation(this.props, conversationId)
+    }
+    this.setState({
+      haveUserInfo: true
+    })
+  }
+
   render() {
     let date = new Date()
     return (
       <div>
-      {/* action cable consumer */}
-      {this.props.current_conversation && <ActionCableConsumer
+      {/* GET CONVO ON REFRESH */}
+      {(!this.state.haveUserInfo && this.props.user) ? this.getConversation() : null}
+
+      {/* ACTION CABLE CONSUMER */}
+      {this.props.current_conversation &&
+        (<ActionCableConsumer
         onReceived={(data) => {
           this.props.updateConvo(data, this.props)
           this.props.renderConversation(this.props)
         }}
-        channel={{channel: 'MessagesChannel', conversation_id: this.props.current_conversation.id}} />}
+        channel={{channel: 'MessagesChannel', conversation_id: this.props.current_conversation.id}}
+        />)
+      }
 
         {/* TITLE */}
         <h1>{this.props.current_conversation && this.props.current_conversation.title}</h1>
