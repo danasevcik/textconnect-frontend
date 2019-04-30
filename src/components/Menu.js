@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-// import { withRouter } from "react-router-dom";
 import NavBar from './NavBar'
 
 class Menu extends Component {
 
+  // local state to toggle navbar
   state = {
     clicked: false
   }
@@ -14,6 +14,8 @@ class Menu extends Component {
   }
 
   render() {
+    // if there is a token, show menu button
+    // if there is a token and menu is clicked, show nav bar
     let token = localStorage.getItem("token")
     return (
       <div>

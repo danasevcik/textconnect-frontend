@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import * as actions from '../actions'
-// import { withRouter } from "react-router-dom";
 
 class AddContactSliver extends Component {
 
   addFriend = (props, nonAmigaId) => {
+    // post to /friendships and create friendship
     let token = localStorage.getItem("token");
     let id = props.user.id
     fetch(`http://localhost:3000/api/v1/friendships`, {
@@ -25,11 +25,11 @@ class AddContactSliver extends Component {
     .then(resp => resp.json())
     .then(data => {
       this.props.fetchNonContacts(this.props)
-      // dispatch({type: ADD_FRIEND, payload: {amiga: data.amiga, friendship: data.friendship}})
     })
   }
 
   render() {
+    // print username and add friend button for each
     return (
       <div>
         <h3>{this.props.non_amiga.username}</h3>

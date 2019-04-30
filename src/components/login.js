@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import * as actions from '../actions'
-// import { withRouter } from "react-router-dom";
 
 class Login extends Component {
+
   state = {
     username: "",
     password: ""
@@ -25,6 +25,7 @@ class Login extends Component {
   };
 
   render() {
+    // if there is no token, show login form
     let token = localStorage.getItem("token")
     if (!!token) {
       return null

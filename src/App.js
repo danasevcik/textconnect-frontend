@@ -16,10 +16,12 @@ import * as actions from './actions'
 class App extends Component {
 
   componentDidMount() {
+    // get user on refresh
     this.props.getUser()
   }
 
   render() {
+    // define routes
     return (
       <div className="App">
         <h1>TEXTCONNECT</h1>

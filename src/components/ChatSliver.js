@@ -7,6 +7,7 @@ import Conversation from './Conversation.js'
 class ChatSliver extends Component {
 
   render() {
+    // print button with link conversation for each chat
     return (
       <div>
         <div>

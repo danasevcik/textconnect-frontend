@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import AddContact from '../components/AddContact'
 import * as actions from '../actions'
-// import { withRouter } from "react-router-dom";
 
 class AddContactContainer extends Component {
 

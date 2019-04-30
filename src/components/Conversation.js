@@ -4,10 +4,10 @@ import MessageForm from './MessageForm'
 import { ActionCableConsumer } from 'react-actioncable-provider'
 import * as actions from '../actions'
 import ConversationEdit from './ConversationEdit'
-// import { withRouter } from "react-router-dom";
 
 class Conversation extends Component {
 
+  // local state to toggle conversation title edit form
   state = {
     renameClicked: false
   }

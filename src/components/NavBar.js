@@ -16,6 +16,7 @@ class NavBar extends Component {
   }
 
   render() {
+    // print links to each route
     return (
       <div>
         <Link to='/Contacts'>

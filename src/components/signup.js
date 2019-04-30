@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import * as actions from '../actions'
-// import { withRouter } from "react-router-dom";
 
 class Signup extends Component {
+
   state = {
     username: "",
     password: "",
@@ -27,7 +27,8 @@ class Signup extends Component {
   };
 
   render() {
-    console.log(this.state);
+    // if there is no token, show signup form
+    // language values correspond to google translate language codes
     let token = localStorage.getItem("token")
     if (!!token) {
       return null

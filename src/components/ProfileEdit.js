@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import * as actions from '../actions'
-// import { withRouter } from "react-router-dom";
 
 class ProfileEdit extends Component {
+
   state = {
     name: this.props.user.name,
     age: this.props.user.age,
@@ -32,57 +32,53 @@ class ProfileEdit extends Component {
   };
 
   render() {
-    let token = localStorage.getItem("token")
-    if (!token) {
-      return null
-    } else if (!!token) {
-      return (
-        <div>
-          <h1>ProfileEdit</h1>
-          <form onSubmit={this.submitHandler}>
-            <input
-              type="text"
-              placeholder="name"
-              name="name"
-              value={this.state.name}
-              onChange={this.changeHandler}
-              />
-            <input
-              type="number"
-              placeholder="age"
-              name="age"
-              value={this.state.age}
-              onChange={this.changeHandler}
-              />
-            <input
-              type="text"
-              placeholder="bio"
-              name="bio"
-              value={this.state.bio}
-              onChange={this.changeHandler}
-              />
-            <input
-              type="text"
-              placeholder="phone number"
-              name="phone_number"
-              value={this.state.phone_number}
-              onChange={this.changeHandler}
-              />
-            <input
-              type="text"
-              placeholder="your photo"
-              name="photo"
-              value={this.state.photo}
-              onChange={this.changeHandler}
-              />
-            <button onClick={
-                this.submitHandler
-              }>Save These Changes</button>
-            </form>
-          </div>
-        )
+    // print profile edit form
+    return (
+      <div>
+        <h1>ProfileEdit</h1>
+        <form onSubmit={this.submitHandler}>
+          <input
+            type="text"
+            placeholder="name"
+            name="name"
+            value={this.state.name}
+            onChange={this.changeHandler}
+            />
+          <input
+            type="number"
+            placeholder="age"
+            name="age"
+            value={this.state.age}
+            onChange={this.changeHandler}
+            />
+          <input
+            type="text"
+            placeholder="bio"
+            name="bio"
+            value={this.state.bio}
+            onChange={this.changeHandler}
+            />
+          <input
+            type="text"
+            placeholder="phone number"
+            name="phone_number"
+            value={this.state.phone_number}
+            onChange={this.changeHandler}
+            />
+          <input
+            type="text"
+            placeholder="your photo"
+            name="photo"
+            value={this.state.photo}
+            onChange={this.changeHandler}
+            />
+          <button onClick={
+              this.submitHandler
+            }>Save These Changes</button>
+          </form>
+        </div>
+      )
     }
-  }
 }
 
 const mapStateToProps = ({user, token}) => {

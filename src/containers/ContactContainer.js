@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import ContactBook from '../components/ContactBook'
 import * as actions from '../actions'
-// import { withRouter } from "react-router-dom";
 
 class ContactContainer extends Component {
+
   componentDidMount() {
     if (this.props.user) {
       this.props.fetchContacts(this.props)

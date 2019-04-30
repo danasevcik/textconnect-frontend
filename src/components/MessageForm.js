@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import * as actions from '../actions'
-// import { withRouter } from "react-router-dom";
 
 class MessageForm extends Component {
+
   state = {
     message: ""
   };
@@ -23,6 +23,7 @@ class MessageForm extends Component {
   };
 
   render() {
+    // print message text area form
     return (
       <div>
         <form onSubmit={this.submitHandler}>

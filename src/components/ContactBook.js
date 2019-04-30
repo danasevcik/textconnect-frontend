@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import ContactSliver from './ContactSliver'
-// import { withRouter } from "react-router-dom";
 
 class ContactBook extends Component {
 
   render() {
-    console.log(this.props);
+    // map through "amigas" and render ContactSliver for each
     let contacts = this.props.contacts.map(contact => {
       return <ContactSliver key={contact.id} contact={contact}/>
     })
