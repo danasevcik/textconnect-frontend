@@ -7,30 +7,22 @@ import * as actions from '../actions'
 
 class Conversation extends Component {
 
-  handleClick = (messageText) => {
+  // componentDidMount() {
+  //   this.props.getUser()
+  //   console.log(this.props);
+  //   console.log(this.props.match.params.id);
+  //   const conversation_id = this.props.match.params.id
+  //   this.props.renderConversation(conversation_id)
+  // }
+
+  handleClick = (text) => {
     // text-to-speech audio
-    let text = messageText.split(':')
-    console.log(text);
-    let msg = new SpeechSynthesisUtterance(`${text[1]}`);
+    let msg = new SpeechSynthesisUtterance(`${text}`);
     window.speechSynthesis.speak(msg);
-    // fetch('http://localhost:3000/api/v1/listen-to-message', {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //     accepts: "application/json"
-    //   },
-    //   body: JSON.stringify({
-    //     message: messageText,
-    //     user: this.props.user
-    //   })
-    // })
-    // .then(resp => resp.json())
-    // .then(data => {
-    //   console.log(data);
-    // })
   }
 
   render() {
+    console.log(this.props)
     let date = new Date()
     return (
       <div>
@@ -52,10 +44,14 @@ class Conversation extends Component {
         {/* MESSAGES */}
         {this.props.current_conversation_messages ? this.props.current_conversation_messages.map(message => {
           console.log(message)
+          let arr = message.split(":")
+          let name = arr[0]
+          let text = arr[1]
           return (
             <div>
-                <p>{message}</p>
-                <button onClick={() => this.handleClick(message)}>Play</button>
+                <p>{name}:</p>
+                <p>{text}</p>
+                <button onClick={() => this.handleClick(text)}>Play</button>
             </div>
           )})
            : null}

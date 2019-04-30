@@ -11,7 +11,8 @@ import {
   UPDATE_CONVO,
   FETCH_NON_CONTACTS,
   ADD_FRIEND,
-  UPDATE_USER
+  UPDATE_USER,
+  REMOVE_FRIEND
 } from './types'
 
 const sayHi = () => {
@@ -174,7 +175,9 @@ export function startConversation(props) {
 }
 
 export function renderConversation(props) {
+  console.log('RENDER CONVO ACTION', props)
   let token = localStorage.getItem("token");
+  // debugger
   if (props.conversation) {
     let conversation_id = props.conversation.id
     let id = props.user.id
@@ -198,8 +201,7 @@ export function renderConversation(props) {
         dispatch({type: SET_CURRENT_CONVO, payload: {messages: data.messages, conversation_id: data.conversation_id, conversation: data.conversation}})
       })
     }
-  }
-  else if (props.current_conversation_id) {
+  } else if (props.current_conversation_id) {
     let conversation_id = props.current_conversation_id
     let id = props.user.id
     return dispatch => {
@@ -223,8 +225,33 @@ export function renderConversation(props) {
       })
     }
   }
+  // else if (typeof conversation_id === 'string') {
+  //   console.log('here');
+  //   let conversation_id = conversation_id
+  //   return dispatch => {
+  //     fetch(`http://localhost:3000/api/v1/conversations/${conversation_id}`, {
+  //       method: "POST",
+  //       headers: {
+  //         "content-type": "application/json",
+  //         accepts: "application/json",
+  //         Authorization: `Bearer ${token}`
+  //       },
+  //       body: JSON.stringify({
+  //         user: {
+  //           user_id: id
+  //         }
+  //       })
+  //     })
+  //     .then(resp => resp.json())
+  //     .then(data => {
+  //       console.log(data);
+  //       dispatch({type: SET_CURRENT_CONVO, payload: {messages: data.messages, conversation_id: data.conversation_id, conversation: data.conversation}})
+  //     })
+  //   }
+  // }
+  }
 
-}
+
 
 export function createMessage(message, props) {
   console.log(message);
@@ -268,6 +295,7 @@ export function updateConvo(data, props) {
 }
 
 export function fetchNonContacts(props) {
+  console.log('in fetch non contacts', props);
   let token = localStorage.getItem("token");
   let id = props.user.id
   return dispatch => {
@@ -319,9 +347,6 @@ export function addFriend(props, nonAmigaId) {
 }
 
 export function updateUser(props, userInfo) {
-  console.log(props);
-  console.log(userInfo);
-
   let token = localStorage.getItem("token");
   let id = props.user.id
   return dispatch => {
@@ -348,6 +373,36 @@ export function updateUser(props, userInfo) {
       dispatch({type: UPDATE_USER, payload: {user: data}})
     })
   }
+}
+
+export function removeFriend(props, contact) {
+  console.log(props);
+  console.log(contact);
+  let token = localStorage.getItem("token");
+  let id = props.user.id
+  // send to custom route instead of delete :id since we don't have friendship id
+  return dispatch => {
+    fetch(`http://localhost:3000/api/v1/remove-friend`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        user: {
+          user_id: id,
+          amiga_id: contact.id
+        }
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data);
+      dispatch({type: REMOVE_FRIEND, payload: {amiga: data.amiga, friendship: data.friendship}})
+    })
+  }
+
 }
 
 export default {

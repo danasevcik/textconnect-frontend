@@ -11,7 +11,7 @@ class ContactSliver extends Component {
       <div>
         <h3>{this.props.contact.username}</h3>
           <button onClick={() => this.props.startConversation(this.props)}>+Start Conversation</button>
-        <button>Remove Friend</button>
+          <button onClick={() => this.props.removeFriend(this.props, this.props.contact)}>Remove Friend</button>
       </div>
     )
   }

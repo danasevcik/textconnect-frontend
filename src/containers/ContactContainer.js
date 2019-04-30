@@ -20,12 +20,8 @@ class ContactContainer extends Component {
   }
 }
 
-const mapStateToProps = ({user, token, contacts}) => {
-  return {
-    user,
-    token,
-    contacts
-  }
+const mapStateToProps = (state) => {
+  return state
 }
 
 export default connect(mapStateToProps, actions)(ContactContainer)

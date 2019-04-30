@@ -6,6 +6,7 @@ import ContactSliver from './ContactSliver'
 class ContactBook extends Component {
 
   render() {
+    console.log(this.props);
     let contacts = this.props.contacts.map(contact => {
       return <ContactSliver key={contact.id} contact={contact}/>
     })

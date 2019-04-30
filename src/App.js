@@ -29,7 +29,7 @@ class App extends Component {
         <Switch>
           <Route
             path='/Conversation/:id'
-            render={() => <Conversation />}
+            render={(routerProps) => <Conversation {...routerProps}/>}
           />
           <Route
             path='/Login'
