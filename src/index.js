@@ -22,7 +22,8 @@ import {
   FETCH_NON_CONTACTS,
   ADD_FRIEND,
   UPDATE_USER,
-  REMOVE_FRIEND
+  REMOVE_FRIEND,
+  RENAME_CONVERSATION
 } from './actions/types'
 import thunk from 'redux-thunk'
 
@@ -58,6 +59,8 @@ const reducer = (state = initialState, action) => {
       return {...state, user: action.payload.user}
     case REMOVE_FRIEND:
       return {...state, contacts: [...state.contacts].filter(contactObj => contactObj.id !== action.payload.amiga.id), non_amigas: [...state.non_amigas, action.payload.amiga]}
+    case RENAME_CONVERSATION:
+      return {...state, current_conversation: action.payload.conversation.conversation}
     default:
       return state
   }

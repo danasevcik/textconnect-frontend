@@ -3,10 +3,14 @@ import { connect } from 'react-redux';
 import MessageForm from './MessageForm'
 import { ActionCableConsumer } from 'react-actioncable-provider'
 import * as actions from '../actions'
+import ConversationEdit from './ConversationEdit'
 // import { withRouter } from "react-router-dom";
 
 class Conversation extends Component {
 
+  state = {
+    renameClicked: false
+  }
   // componentDidMount() {
   //   this.props.getUser()
   //   console.log(this.props);
@@ -21,8 +25,17 @@ class Conversation extends Component {
     window.speechSynthesis.speak(msg);
   }
 
+  handleRename = (props) => {
+    this.setState({renameClicked: !this.state.renameClicked})
+  }
+
+  handleSubmit = e => {
+    this.setState({renameClicked: !this.state.renameClicked})
+  }
+
   render() {
-    console.log(this.props)
+    console.log(this.props.current_conversation)
+    console.log(this.state.renameClicked)
     let date = new Date()
     return (
       <div>
@@ -37,6 +50,12 @@ class Conversation extends Component {
 
         {/* TITLE */}
         <h1>{this.props.current_conversation && this.props.current_conversation.title}</h1>
+
+        {/* RENAME CONVERSATION TITLE BUTTON */}
+        {this.props.current_conversation && <button onClick={() => this.handleRename(this.props)}>Rename</button>}
+
+        {/* RENAME CONVERSATION FORM */}
+        {(this.props.current_conversation && this.state.renameClicked) && <ConversationEdit handleSubmit={this.handleSubmit}/>}
 
         {/* TIME STAMP */}
         <h3>{this.props.current_conversation && date.toDateString() }</h3>

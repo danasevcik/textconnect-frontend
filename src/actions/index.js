@@ -12,7 +12,8 @@ import {
   FETCH_NON_CONTACTS,
   ADD_FRIEND,
   UPDATE_USER,
-  REMOVE_FRIEND
+  REMOVE_FRIEND,
+  RENAME_CONVERSATION
 } from './types'
 
 const sayHi = () => {
@@ -177,7 +178,6 @@ export function startConversation(props) {
 export function renderConversation(props) {
   console.log('RENDER CONVO ACTION', props)
   let token = localStorage.getItem("token");
-  // debugger
   if (props.conversation) {
     let conversation_id = props.conversation.id
     let id = props.user.id
@@ -400,6 +400,32 @@ export function removeFriend(props, contact) {
     .then(data => {
       console.log(data);
       dispatch({type: REMOVE_FRIEND, payload: {amiga: data.amiga, friendship: data.friendship}})
+    })
+  }
+}
+
+export function renameConversation(title, props) {
+  console.log('title', title);
+  console.log('props', props);
+  let token = localStorage.getItem("token");
+  return dispatch => {
+    fetch(`http://localhost:3000/api/v1/conversations/${props.current_conversation_id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+          title: title,
+          id: props.current_conversation_id
+
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data);
+      dispatch({type: RENAME_CONVERSATION, payload: {conversation: data}})
     })
   }
 
