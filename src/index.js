@@ -9,7 +9,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ActionCableProvider } from 'react-actioncable-provider'
 import {
-  SAY_HI,
   CREATE_USER,
   FIND_USER,
   GET_USER,

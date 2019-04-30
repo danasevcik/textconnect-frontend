@@ -1,5 +1,4 @@
 import {
-  SAY_HI,
   CREATE_USER,
   FIND_USER,
   GET_USER,
@@ -16,12 +15,8 @@ import {
   RENAME_CONVERSATION
 } from './types'
 
-const sayHi = () => {
-  return {type: SAY_HI, payload: "HI"}
-}
-
+// CREATE A USER WITH USERNAME, PASSWORD AND LANGUAGE
 export function createUser(userInfo) {
-  console.log('before fetch in create user', userInfo);
   return dispatch => {
     fetch('http://localhost:3000/api/v1/users', {
       method: 'POST',
@@ -50,6 +45,7 @@ export function createUser(userInfo) {
   }
 }
 
+// FIND A USER (CALLED FROM LOGIN)
 export function findUser(userInfo) {
   return dispatch => {
     fetch('http://localhost:3000/api/v1/login', {
@@ -78,6 +74,7 @@ export function findUser(userInfo) {
   }
 }
 
+// GET USER (CALLED ON REFRESH)
 export function getUser() {
   return dispatch => {
     let token = localStorage.getItem("token");
@@ -101,12 +98,14 @@ export function getUser() {
   }
 }
 
+// LOGOUT (CALLED FROM CLICK ON NAV BAR LOGOUT)
 export function logout() {
   return dispatch => {
     dispatch({type: LOGOUT, payload: {user: null, jwt: localStorage.token}})
   }
 }
 
+// FETCH CONTACTS (CALLED FROM CLICK ON NAV BAR CONTACTS) ALPHABETICAL ORDER
 export function fetchContacts(props) {
   console.log('in fetch contacts');
   console.log(props.user);
@@ -131,6 +130,7 @@ export function fetchContacts(props) {
   }
 }
 
+// FETCH CONVERSATIONS (CALLED FROM CLICK ON NAV BAR CHATS) ALPHABETICAL ORDER
 export function fetchConversations(props) {
   let token = localStorage.getItem("token");
   let id = props.user.id
@@ -150,6 +150,7 @@ export function fetchConversations(props) {
   }
 }
 
+// CREATE CONVERSATION - USERCONVERSATION + CONVERSATION (CALLED FROM CONTACT SLIVER)
 export function startConversation(props) {
   let token = localStorage.getItem("token");
   let id = props.user.id
@@ -175,6 +176,7 @@ export function startConversation(props) {
   }
 }
 
+// RENDER CONVO AND SET CURRENT CONVO/MESSAGES
 export function renderConversation(props) {
   console.log('RENDER CONVO ACTION', props)
   let token = localStorage.getItem("token");
@@ -225,10 +227,9 @@ export function renderConversation(props) {
       })
     }
   }
-  }
+}
 
-
-
+// CREATE MESSAGE AND PERSIST IN DB
 export function createMessage(message, props) {
   console.log(message);
   console.log('props', props);
@@ -255,12 +256,13 @@ export function createMessage(message, props) {
     .then(resp => resp.json())
     .then(message => {
       console.log(message);
-      // force re-render of Conversation component
+      // dont have to force re-render of Conversation component b/c action cable unsubscribe fix
       // dispatch({type: CREATE_MESSAGE, payload: {message: message.content}})
     })
   }
 }
 
+// UPDATE CONVERSATION MESSAGES
 export function updateConvo(data, props) {
   console.log('updating convo data', data.content);
   console.log('updating convo props', props);
@@ -270,6 +272,7 @@ export function updateConvo(data, props) {
   }
 }
 
+// FETCH USERS IN THE DB THAT THE CURRENT USER IS NOT FRIENDS WITH
 export function fetchNonContacts(props) {
   console.log('in fetch non contacts', props);
   let token = localStorage.getItem("token");
@@ -296,6 +299,7 @@ export function fetchNonContacts(props) {
   }
 }
 
+// ADD A FRIEND AND CREATE FRIENDSHIP INSTANCE (CALLED FROM ADD CONTACT SLIVER)
 export function addFriend(props, nonAmigaId) {
   let token = localStorage.getItem("token");
   let id = props.user.id
@@ -322,6 +326,7 @@ export function addFriend(props, nonAmigaId) {
   }
 }
 
+// UPDATE USER ATTRIBUTES (CALLED FROM PROFILE EDIT)
 export function updateUser(props, userInfo) {
   let token = localStorage.getItem("token");
   let id = props.user.id
@@ -351,6 +356,7 @@ export function updateUser(props, userInfo) {
   }
 }
 
+// REMOVE FRIEND (CALLED FROM CONTACT SLIVER)
 export function removeFriend(props, contact) {
   console.log(props);
   console.log(contact);
@@ -380,6 +386,7 @@ export function removeFriend(props, contact) {
   }
 }
 
+// RENAME CONVERSATION AND SEND PATCH TO CONVERSATIONS/:ID
 export function renameConversation(title, props) {
   console.log('title', title);
   console.log('props', props);
@@ -405,8 +412,4 @@ export function renameConversation(title, props) {
     })
   }
 
-}
-
-export default {
-  sayHi
 }
