@@ -11,17 +11,10 @@ class Conversation extends Component {
   state = {
     renameClicked: false
   }
-  // componentDidMount() {
-  //   this.props.getUser()
-  //   console.log(this.props);
-  //   console.log(this.props.match.params.id);
-  //   const conversation_id = this.props.match.params.id
-  //   this.props.renderConversation(conversation_id)
-  // }
 
-  handleClick = (text) => {
+  handleClick = (name, text) => {
     // text-to-speech audio
-    let msg = new SpeechSynthesisUtterance(`${text}`);
+    let msg = new SpeechSynthesisUtterance(`${name} says ${text}`);
     window.speechSynthesis.speak(msg);
   }
 
@@ -34,15 +27,12 @@ class Conversation extends Component {
   }
 
   render() {
-    console.log(this.props.current_conversation)
-    console.log(this.state.renameClicked)
     let date = new Date()
     return (
       <div>
       {/* action cable consumer */}
       {this.props.current_conversation && <ActionCableConsumer
         onReceived={(data) => {
-          console.log(data);
           this.props.updateConvo(data, this.props)
           this.props.renderConversation(this.props)
         }}
@@ -62,7 +52,6 @@ class Conversation extends Component {
 
         {/* MESSAGES */}
         {this.props.current_conversation_messages ? this.props.current_conversation_messages.map(message => {
-          console.log(message)
           let arr = message.split(":")
           let name = arr[0]
           let text = arr[1]
@@ -70,7 +59,7 @@ class Conversation extends Component {
             <div>
                 <p>{name}:</p>
                 <p>{text}</p>
-                <button onClick={() => this.handleClick(text)}>Play</button>
+                <button onClick={() => this.handleClick(name, text)}>Play</button>
             </div>
           )})
            : null}

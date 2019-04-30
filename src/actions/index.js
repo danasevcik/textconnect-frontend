@@ -225,30 +225,6 @@ export function renderConversation(props) {
       })
     }
   }
-  // else if (typeof conversation_id === 'string') {
-  //   console.log('here');
-  //   let conversation_id = conversation_id
-  //   return dispatch => {
-  //     fetch(`http://localhost:3000/api/v1/conversations/${conversation_id}`, {
-  //       method: "POST",
-  //       headers: {
-  //         "content-type": "application/json",
-  //         accepts: "application/json",
-  //         Authorization: `Bearer ${token}`
-  //       },
-  //       body: JSON.stringify({
-  //         user: {
-  //           user_id: id
-  //         }
-  //       })
-  //     })
-  //     .then(resp => resp.json())
-  //     .then(data => {
-  //       console.log(data);
-  //       dispatch({type: SET_CURRENT_CONVO, payload: {messages: data.messages, conversation_id: data.conversation_id, conversation: data.conversation}})
-  //     })
-  //   }
-  // }
   }
 
 

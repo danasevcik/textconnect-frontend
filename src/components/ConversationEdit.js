@@ -25,7 +25,6 @@ class ConversationEdit extends Component {
 
   render() {
     let token = localStorage.getItem("token")
-    console.log('here', !!token);
     if (!token) {
       return null
     } else if (!!token) {
