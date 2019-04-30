@@ -178,7 +178,6 @@ export function startConversation(props) {
 
 // RENDER CONVO AND SET CURRENT CONVO/MESSAGES
 export function renderConversation(props) {
-  console.log('RENDER CONVO ACTION', props)
   let token = localStorage.getItem("token");
   if (props.conversation) {
     let conversation_id = props.conversation.id

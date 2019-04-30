@@ -30,8 +30,6 @@ const initialState = {user: null, token: null, contacts: [], conversations: [], 
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {
-    case SAY_HI:
-      return {...state, greeting: action.payload}
     case CREATE_USER:
       return {...state, user: action.payload.user, token: action.payload.jwt}
     case FIND_USER:

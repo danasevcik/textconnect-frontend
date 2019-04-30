@@ -14,8 +14,18 @@ class Conversation extends Component {
 
   handleClick = (name, text) => {
     // text-to-speech audio
-    let msg = new SpeechSynthesisUtterance(`${name} says ${text}`);
-    window.speechSynthesis.speak(msg);
+    console.log(name);
+    console.log('text', text);
+    console.log(this.props.user.username);
+    // debugger
+    if (name == this.props.user.username) {
+      let name = 'you'
+      let msg = new SpeechSynthesisUtterance(`${name} said ${text}`);
+      window.speechSynthesis.speak(msg);
+    } else {
+      let msg = new SpeechSynthesisUtterance(`${name} said ${text}`);
+      window.speechSynthesis.speak(msg);
+    }
   }
 
   handleRename = (props) => {
