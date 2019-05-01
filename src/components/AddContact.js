@@ -10,11 +10,12 @@ class AddContact extends Component {
   }
 
   changeHandler = e => {
-    this.setState({[e.target.name]: e.target.value}, () => console.log(this.state.searchTerm));
+    this.setState({[e.target.name]: e.target.value});
   };
 
   render() {
     // map through "non-amigas" and render AddContactSliver for each
+    // check if the search term is included in username 
     let non_amigas = this.props.non_amigas.map(non_amiga => {
       if (non_amiga.username.includes(this.state.searchTerm)) {
         return <AddContactSliver key={non_amiga.id} non_amiga={non_amiga}/>

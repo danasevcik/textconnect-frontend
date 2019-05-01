@@ -4,13 +4,33 @@ import ContactSliver from './ContactSliver'
 
 class ContactBook extends Component {
 
+  state = {
+    searchTerm: ""
+  }
+
+  changeHandler = e => {
+    this.setState({[e.target.name]: e.target.value});
+  };
+
   render() {
     // map through "amigas" and render ContactSliver for each
     let contacts = this.props.contacts.map(contact => {
-      return <ContactSliver key={contact.id} contact={contact}/>
+      if (contact.username.includes(this.state.searchTerm)) {
+        return <ContactSliver key={contact.id} contact={contact}/>
+      }
     })
     return (
       <div>
+        <div>
+          <h1>SearchContacts</h1>
+          <input
+            type="text"
+            placeholder="search"
+            name="searchTerm"
+            value={this.state.searchTerm}
+            onChange={this.changeHandler}
+            />
+          </div>
         {contacts}
       </div>
     )
