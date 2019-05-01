@@ -14,6 +14,7 @@ class ContactBook extends Component {
 
   render() {
     // map through "amigas" and render ContactSliver for each
+    // check if the search term is included in username
     let contacts = this.props.contacts.map(contact => {
       if (contact.username.includes(this.state.searchTerm)) {
         return <ContactSliver key={contact.id} contact={contact}/>
