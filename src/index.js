@@ -26,7 +26,7 @@ import {
 } from './actions/types'
 import thunk from 'redux-thunk'
 
-const initialState = {user: null, token: null, contacts: [], conversations: [], non_amigas: []}
+const initialState = {user: null, token: null, contacts: [], conversations: [], non_amigas: [], current_conversation_messages: []}
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {

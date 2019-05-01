@@ -87,6 +87,7 @@ export function getUser() {
       })
       .then(resp => resp.json())
       .then(data => {
+        console.log(data.user);
         dispatch({type: GET_USER, payload: {user: data.user, jwt: localStorage.token}})
       });
     } else {

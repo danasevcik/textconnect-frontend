@@ -12,18 +12,55 @@ import AddContactContainer from './containers/AddContactContainer'
 import ChatsContainer from './containers/ChatsContainer'
 import { connect } from 'react-redux';
 import * as actions from './actions'
+import FlashMassage from 'react-flash-message';
+import { ActionCableConsumer } from 'react-actioncable-provider'
+import FlashMessage from './components/FlashMessage'
 
 class App extends Component {
+
+  state = {
+    flash: false,
+    message: ""
+  }
 
   componentDidMount() {
     // get user on refresh
     this.props.getUser()
   }
 
+  showMessage = (data) => {
+    console.log('HERE', data);
+    // maybe fetch to backend to get user who sent this message
+    // based on message id
+    // maybe show "New Message From 'name'"
+    this.setState({flash: true, message: data.content})
+  }
+
   render() {
+    console.log(this.state);
+    // let conversations = this.props.user
     // define routes
     return (
       <div className="App">
+        {this.props.user && this.props.user.conversations.map(conversation => {
+          return (<ActionCableConsumer
+          onReceived={(data) => {
+            this.showMessage(data)
+          }}
+          channel={{channel: 'MessagesChannel', conversation_id: conversation.id}}
+          />)
+        })}
+        {/*<ActionCableConsumer
+        onReceived={(data) => {
+          console.log(data.content);
+        }}
+        channel={{channel: 'MessagesChannel', conversation_id: this.props.current_conversation.id}}
+        />*/}
+        {this.state.flash &&
+          <FlashMassage duration={3000} persistOnHover={true}>
+            <p>{this.state.message}</p>
+          </FlashMassage>
+        }
         <h1>TEXTCONNECT</h1>
         <Menu />
         <Login />
@@ -68,11 +105,8 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({user, token}) => {
-  return {
-    user,
-    token
-  }
+const mapStateToProps = (state) => {
+  return state
 }
 
 export default withRouter(connect(mapStateToProps, actions)(App));
