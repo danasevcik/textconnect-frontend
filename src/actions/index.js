@@ -13,7 +13,8 @@ import {
   UPDATE_USER,
   REMOVE_FRIEND,
   RENAME_CONVERSATION,
-  UNREAD_MESSAGES
+  UNREAD_MESSAGES,
+  MARK_AS_READ
 } from './types'
 
 // CREATE A USER WITH USERNAME, PASSWORD AND LANGUAGE
@@ -414,8 +415,6 @@ export function renameConversation(title, props) {
 
 // GET UNREAD MESSAGES FOR EACH CONVO (CALLED FROM CHAT SLIVER)
 export function getUnread(conversation, user) {
-  console.log('conversation', conversation);
-  console.log('user', user);
   let token = localStorage.getItem("token");
   return dispatch => {
     fetch(`http://localhost:3000/api/v1/get-unread-messages`, {
@@ -434,6 +433,31 @@ export function getUnread(conversation, user) {
     .then(unread_messages => {
       console.log(unread_messages);
       dispatch({type: UNREAD_MESSAGES, payload: {conversation: conversation, user: user, unread_messages: unread_messages}})
+    })
+  }
+}
+
+// MARK MESSAGES AS READ (CALLED WHEN CHAT OPENS)
+export function markAsRead(conversation, user, messages) {
+  let token = localStorage.getItem("token");
+  return dispatch => {
+    fetch(`http://localhost:3000/api/v1/mark-as-read`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        conversation: conversation,
+        user: user,
+        messages: messages
+      })
+    })
+    .then(resp => resp.json())
+    .then(unread_messages => {
+      console.log(unread_messages);
+      dispatch({type: MARK_AS_READ, payload: {conversation: conversation, user: user, unread_messages: unread_messages}})
     })
   }
 }

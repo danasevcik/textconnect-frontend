@@ -23,10 +23,11 @@ import {
   UPDATE_USER,
   REMOVE_FRIEND,
   RENAME_CONVERSATION,
-  UNREAD_MESSAGES
+  UNREAD_MESSAGES,
+  MARK_AS_READ
 } from './actions/types'
 import thunk from 'redux-thunk'
-
+const initialUnread = {conversation: {id:0} }
 const initialState = {user: null, token: null, contacts: [], conversations: [], non_amigas: [], current_conversation_messages: [], unread: []}
 
 const reducer = (state = initialState, action) => {
@@ -60,7 +61,26 @@ const reducer = (state = initialState, action) => {
     case RENAME_CONVERSATION:
       return {...state, current_conversation: action.payload.conversation.conversation}
     case UNREAD_MESSAGES:
-      return {...state, unread: [...state.unread, {user: action.payload.user, conversation: action.payload.conversation, unread_messages: action.payload.unread_messages}] }
+      if (state.unread.length > 0) {
+        let unreadObject = [...state.unread].map(unreadObj => {
+          if (unreadObj.conversation.id === action.payload.conversation.id) {
+            let updatedObj = action.payload
+            return unreadObj
+          }
+        })
+      } else {
+        return {...state, unread: [...state.unread, {user: action.payload.user, conversation: action.payload.conversation, unread_messages: action.payload.unread_messages}]}
+      }
+
+    case MARK_AS_READ:
+      let newStateUnread = [...state.unread].map(unreadObj => {
+        if (unreadObj.conversation.id === action.payload.conversation.id) {
+          let updatedObj = {...unreadObj, unread_messages: 0}
+          return updatedObj
+        }
+      })
+      return {...state, unread: newStateUnread}
+
     default:
       return state
   }

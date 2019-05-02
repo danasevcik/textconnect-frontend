@@ -10,7 +10,8 @@ class Conversation extends Component {
   // local state to toggle conversation title edit form
   state = {
     renameClicked: false,
-    haveUserInfo: false
+    haveUserInfo: false,
+    markedAsRead: false
   }
 
   handleClick = (name, text) => {
@@ -43,23 +44,35 @@ class Conversation extends Component {
     })
   }
 
+  markAsRead() {
+    if (this.props.user) {
+      this.props.markAsRead(this.props.current_conversation, this.props.user, this.props.current_conversation_messages)
+    }
+    this.setState({
+      markedAsRead: true
+    })
+  }
+
   render() {
     let date = new Date()
     return (
       <div>
-      {/* GET CONVO ON REFRESH */}
-      {(!this.state.haveUserInfo && this.props.user) ? this.getConversation() : null}
+        {/* GET CONVO ON REFRESH */}
+        {(!this.state.haveUserInfo && this.props.user) ? this.getConversation() : null}
 
-      {/* ACTION CABLE CONSUMER */}
-      {this.props.current_conversation &&
-        (<ActionCableConsumer
-        onReceived={(data) => {
-          this.props.updateConvo(data, this.props)
-          this.props.renderConversation(this.props)
-        }}
-        channel={{channel: 'MessagesChannel', conversation_id: this.props.current_conversation.id}}
-        />)
-      }
+        {/* ACTION CABLE CONSUMER */}
+        {this.props.current_conversation &&
+          (<ActionCableConsumer
+          onReceived={(data) => {
+            this.props.updateConvo(data, this.props)
+            this.props.renderConversation(this.props)
+          }}
+          channel={{channel: 'MessagesChannel', conversation_id: this.props.current_conversation.id}}
+          />)
+        }
+
+        {/* SEND PATCH REQUEST TO CHANGE ALL CURRENT MESSAGES TO READ */}
+        {(this.props.current_conversation && !this.state.markedAsRead) && this.markAsRead()}
 
         {/* TITLE */}
         <h1>{this.props.current_conversation && this.props.current_conversation.title}</h1>

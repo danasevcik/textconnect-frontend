@@ -10,8 +10,6 @@ class ChatSliver extends Component {
   }
 
   getUnreadInProps() {
-    console.log('in get unread');
-    console.log('this.props.user', this.props.user);
     if (this.props.user) {
       this.props.getUnread(this.props.conversation, this.props.user)
     }
@@ -21,9 +19,7 @@ class ChatSliver extends Component {
   }
 
   render() {
-    console.log('haveUnreadInfo', this.state.haveUnreadInfo);
-    console.log('this.props', this.props);
-
+    console.log(this.props);
     // print button with link conversation for each chat
     return (
       <div>
@@ -31,11 +27,13 @@ class ChatSliver extends Component {
           <Link to={`/Conversation/${this.props.conversation.id}`}>
             {(!this.state.haveUnreadInfo && this.props.user) ? this.getUnreadInProps() : null}
             <button onClick={() => this.props.renderConversation(this.props)}>{this.props.conversation.title}</button>
-            <p>Unread Messages: {this.props.unread ? this.props.unread.map(unreadObj => {
+            <p>Unread Messages: {this.props.unread.length > 0 ? this.props.unread.map(unreadObj => {
+                console.log('each unread object', unreadObj);
+                console.log('props', this.props);
                 if (unreadObj.conversation.id === this.props.conversation.id) {
                   return unreadObj.unread_messages
                 }
-              }) : null }</p>
+              }) : 0 }</p>
           </Link>
         </div>
     </div>
