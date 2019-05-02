@@ -20,7 +20,7 @@ class App extends Component {
 
   state = {
     flash: false,
-    message: ""
+    user: ""
   }
 
   componentDidMount() {
@@ -29,42 +29,57 @@ class App extends Component {
   }
 
   showMessage = (data) => {
-    console.log('HERE', data);
-    // maybe fetch to backend to get user who sent this message
-    // based on message id
-    // maybe show "New Message From 'name'"
-    this.setState({flash: true, message: data.content})
+    // fetch to backend to get the user who sent the message
+    // set state in order to trigger render
+    let token = localStorage.getItem("token");
+    fetch('http://localhost:3000/api/v1/message-author', {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        data: data
+      })
+    })
+    .then(resp => resp.json())
+    .then(user => {
+      if (user.username !== this.props.user.username) {
+        this.setState({flash: true, user: user.username})
+      }
+    })
+    .then(this.setState({flash: false, user: ""}))
   }
 
   render() {
-    console.log(this.state);
-    // let conversations = this.props.user
-    // define routes
     return (
       <div className="App">
+
+        {/* ACTION CABLE CONSUMER FOR EVERY CONVO THAT THIS USER HAS */}
         {this.props.user && this.props.user.conversations.map(conversation => {
           return (<ActionCableConsumer
-          onReceived={(data) => {
-            this.showMessage(data)
-          }}
-          channel={{channel: 'MessagesChannel', conversation_id: conversation.id}}
-          />)
+             onReceived={(data) => {
+               this.showMessage(data)
+             }}
+             channel={{channel: 'MessagesChannel', conversation_id: conversation.id}}
+             />)
         })}
-        {/*<ActionCableConsumer
-        onReceived={(data) => {
-          console.log(data.content);
-        }}
-        channel={{channel: 'MessagesChannel', conversation_id: this.props.current_conversation.id}}
-        />*/}
+
+        <h1>TEXTCONNECT</h1>
+
+        {/* FLASH MESSAGE */}
         {this.state.flash &&
           <FlashMassage duration={3000} persistOnHover={true}>
-            <p>{this.state.message}</p>
+            <p>NEW MESSAGE FROM {this.state.user.toUpperCase()}</p>
           </FlashMassage>
         }
-        <h1>TEXTCONNECT</h1>
+
         <Menu />
         <Login />
         <Signup />
+
+        {/* ROUTES */}
         <Switch>
           <Route
             path='/Conversation/:id'
