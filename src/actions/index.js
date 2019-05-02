@@ -12,7 +12,8 @@ import {
   ADD_FRIEND,
   UPDATE_USER,
   REMOVE_FRIEND,
-  RENAME_CONVERSATION
+  RENAME_CONVERSATION,
+  UNREAD_MESSAGES
 } from './types'
 
 // CREATE A USER WITH USERNAME, PASSWORD AND LANGUAGE
@@ -407,6 +408,32 @@ export function renameConversation(title, props) {
     .then(resp => resp.json())
     .then(data => {
       dispatch({type: RENAME_CONVERSATION, payload: {conversation: data}})
+    })
+  }
+}
+
+// GET UNREAD MESSAGES FOR EACH CONVO (CALLED FROM CHAT SLIVER)
+export function getUnread(conversation, user) {
+  console.log('conversation', conversation);
+  console.log('user', user);
+  let token = localStorage.getItem("token");
+  return dispatch => {
+    fetch(`http://localhost:3000/api/v1/get-unread-messages`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        conversation: conversation,
+        user: user
+      })
+    })
+    .then(resp => resp.json())
+    .then(unread_messages => {
+      console.log(unread_messages);
+      dispatch({type: UNREAD_MESSAGES, payload: {conversation: conversation, user: user, unread_messages: unread_messages}})
     })
   }
 }

@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 import * as actions from './actions'
 import FlashMassage from 'react-flash-message';
 import { ActionCableConsumer } from 'react-actioncable-provider'
-import FlashMessage from './components/FlashMessage'
+// import FlashMessage from './components/FlashMessage'
 
 class App extends Component {
 
@@ -54,15 +54,18 @@ class App extends Component {
   }
 
   render() {
+    console.log('in app', this.props);
     return (
       <div className="App">
 
         {/* ACTION CABLE CONSUMER FOR EVERY CONVO THAT THIS USER HAS */}
         {this.props.user && this.props.user.conversations.map(conversation => {
+
           return (
             <ActionCableConsumer
                onReceived={(data) => {
                  this.showMessage(data, conversation)
+                 console.log(this.props);
                }}
                channel={{channel: 'MessagesChannel', conversation_id: conversation.id}}
              />)
@@ -70,7 +73,7 @@ class App extends Component {
 
         <h1>TEXTCONNECT</h1>
 
-        {/* FLASH MESSAGE */}
+        {/* FLASH MESSAGE AND LINK TO CONVO */}
         {this.state.flash &&
           <Link to={`/Conversation/${this.state.conversation.id}`}>
             <FlashMassage duration={3000} persistOnHover={true}>

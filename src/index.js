@@ -22,11 +22,12 @@ import {
   ADD_FRIEND,
   UPDATE_USER,
   REMOVE_FRIEND,
-  RENAME_CONVERSATION
+  RENAME_CONVERSATION,
+  UNREAD_MESSAGES
 } from './actions/types'
 import thunk from 'redux-thunk'
 
-const initialState = {user: null, token: null, contacts: [], conversations: [], non_amigas: [], current_conversation_messages: []}
+const initialState = {user: null, token: null, contacts: [], conversations: [], non_amigas: [], current_conversation_messages: [], unread: []}
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {
@@ -58,6 +59,8 @@ const reducer = (state = initialState, action) => {
       return {...state, contacts: [...state.contacts].filter(contactObj => contactObj.id !== action.payload.amiga.id), non_amigas: [...state.non_amigas, action.payload.amiga]}
     case RENAME_CONVERSATION:
       return {...state, current_conversation: action.payload.conversation.conversation}
+    case UNREAD_MESSAGES:
+      return {...state, unread: [...state.unread, {user: action.payload.user, conversation: action.payload.conversation, unread_messages: action.payload.unread_messages}] }
     default:
       return state
   }
