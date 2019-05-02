@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, withRouter } from "react-router-dom";
+import { Route, Switch, withRouter, Link } from "react-router-dom";
 import './App.css';
 import Menu from './components/Menu.js'
 import Login from './components/Login.js'
@@ -20,7 +20,8 @@ class App extends Component {
 
   state = {
     flash: false,
-    user: ""
+    user: "",
+    conversation: ""
   }
 
   componentDidMount() {
@@ -28,7 +29,7 @@ class App extends Component {
     this.props.getUser()
   }
 
-  showMessage = (data) => {
+  showMessage = (data, conversation) => {
     // fetch to backend to get the user who sent the message
     // set state in order to trigger render
     let token = localStorage.getItem("token");
@@ -46,10 +47,10 @@ class App extends Component {
     .then(resp => resp.json())
     .then(user => {
       if (user.username !== this.props.user.username) {
-        this.setState({flash: true, user: user.username})
+        this.setState({flash: true, user: user.username, conversation: conversation})
       }
     })
-    .then(this.setState({flash: false, user: ""}))
+    .then(this.setState({flash: false, user: "", conversation: ""}))
   }
 
   render() {
@@ -58,11 +59,12 @@ class App extends Component {
 
         {/* ACTION CABLE CONSUMER FOR EVERY CONVO THAT THIS USER HAS */}
         {this.props.user && this.props.user.conversations.map(conversation => {
-          return (<ActionCableConsumer
-             onReceived={(data) => {
-               this.showMessage(data)
-             }}
-             channel={{channel: 'MessagesChannel', conversation_id: conversation.id}}
+          return (
+            <ActionCableConsumer
+               onReceived={(data) => {
+                 this.showMessage(data, conversation)
+               }}
+               channel={{channel: 'MessagesChannel', conversation_id: conversation.id}}
              />)
         })}
 
@@ -70,9 +72,11 @@ class App extends Component {
 
         {/* FLASH MESSAGE */}
         {this.state.flash &&
-          <FlashMassage duration={3000} persistOnHover={true}>
-            <p>NEW MESSAGE FROM {this.state.user.toUpperCase()}</p>
-          </FlashMassage>
+          <Link to={`/Conversation/${this.state.conversation.id}`}>
+            <FlashMassage duration={3000} persistOnHover={true}>
+              <p onClick={() => this.props.renderConversation(this.props)}>NEW MESSAGE FROM {this.state.user.toUpperCase()}</p>
+            </FlashMassage>
+          </Link>
         }
 
         <Menu />
