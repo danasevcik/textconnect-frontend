@@ -27,7 +27,7 @@ import {
   MARK_AS_READ
 } from './actions/types'
 import thunk from 'redux-thunk'
-const initialUnread = {conversation: {id:0} }
+// const initialUnread = {conversation: {id:0} }
 const initialState = {user: null, token: null, contacts: [], conversations: [], non_amigas: [], current_conversation_messages: [], unread: []}
 
 const reducer = (state = initialState, action) => {
@@ -60,15 +60,47 @@ const reducer = (state = initialState, action) => {
       return {...state, contacts: [...state.contacts].filter(contactObj => contactObj.id !== action.payload.amiga.id), non_amigas: [...state.non_amigas, action.payload.amiga]}
     case RENAME_CONVERSATION:
       return {...state, current_conversation: action.payload.conversation.conversation}
+
     case UNREAD_MESSAGES:
-      if (state.unread.length > 0) {
-        let unreadObject = [...state.unread].map(unreadObj => {
-          if (unreadObj.conversation.id === action.payload.conversation.id) {
-            let updatedObj = action.payload
-            return unreadObj
-          }
+      if (state.unread.length > 0 ) {
+        let convoIds = state.unread.map(unreadObj => {
+          return unreadObj.conversation.id
         })
+        // console.log(convoIds);
+        if (convoIds.includes(action.payload.conversation.id)) {
+          let unreadArrOfObjects = [...state.unread].map(unreadObj => {
+            // console.log(unreadObj);
+            if (unreadObj.conversation.id === action.payload.conversation.id) {
+              // console.log(action.payload);
+              let updatedObj = action.payload
+              // console.log(unreadObj);
+              return updatedObj
+            } else {
+              return unreadObj
+            }
+          })
+
+          return {
+            ...state,
+            unread: unreadArrOfObjects
+          }
+        } else {
+
+          let unread = [...state.unread, {
+            user: action.payload.user,
+            conversation: action.payload.conversation,
+            unread_messages: action.payload.unread_messages
+          }]
+
+          console.log('UNREAD', unread)
+          return {
+            ...state,
+            unread
+          }
+        }
       } else {
+        // console.log('here?');
+        // console.log(action.payload);
         return {...state, unread: [...state.unread, {user: action.payload.user, conversation: action.payload.conversation, unread_messages: action.payload.unread_messages}]}
       }
 
@@ -77,6 +109,8 @@ const reducer = (state = initialState, action) => {
         if (unreadObj.conversation.id === action.payload.conversation.id) {
           let updatedObj = {...unreadObj, unread_messages: 0}
           return updatedObj
+        } else {
+          return unreadObj
         }
       })
       return {...state, unread: newStateUnread}

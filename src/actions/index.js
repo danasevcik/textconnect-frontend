@@ -415,6 +415,7 @@ export function renameConversation(title, props) {
 
 // GET UNREAD MESSAGES FOR EACH CONVO (CALLED FROM CHAT SLIVER)
 export function getUnread(conversation, user) {
+  // console.log('how many times is this called');
   let token = localStorage.getItem("token");
   return dispatch => {
     fetch(`http://localhost:3000/api/v1/get-unread-messages`, {
@@ -431,7 +432,7 @@ export function getUnread(conversation, user) {
     })
     .then(resp => resp.json())
     .then(unread_messages => {
-      console.log(unread_messages);
+      // debugger
       dispatch({type: UNREAD_MESSAGES, payload: {conversation: conversation, user: user, unread_messages: unread_messages}})
     })
   }
@@ -456,7 +457,7 @@ export function markAsRead(conversation, user, messages) {
     })
     .then(resp => resp.json())
     .then(unread_messages => {
-      console.log(unread_messages);
+      // console.log(unread_messages);
       dispatch({type: MARK_AS_READ, payload: {conversation: conversation, user: user, unread_messages: unread_messages}})
     })
   }
