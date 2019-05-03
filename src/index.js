@@ -66,41 +66,31 @@ const reducer = (state = initialState, action) => {
         let convoIds = state.unread.map(unreadObj => {
           return unreadObj.conversation.id
         })
-        // console.log(convoIds);
         if (convoIds.includes(action.payload.conversation.id)) {
           let unreadArrOfObjects = [...state.unread].map(unreadObj => {
-            // console.log(unreadObj);
             if (unreadObj.conversation.id === action.payload.conversation.id) {
-              // console.log(action.payload);
               let updatedObj = action.payload
-              // console.log(unreadObj);
               return updatedObj
             } else {
               return unreadObj
             }
           })
-
           return {
             ...state,
             unread: unreadArrOfObjects
           }
         } else {
-
           let unread = [...state.unread, {
             user: action.payload.user,
             conversation: action.payload.conversation,
             unread_messages: action.payload.unread_messages
           }]
-
-          console.log('UNREAD', unread)
           return {
             ...state,
             unread
           }
         }
       } else {
-        // console.log('here?');
-        // console.log(action.payload);
         return {...state, unread: [...state.unread, {user: action.payload.user, conversation: action.payload.conversation, unread_messages: action.payload.unread_messages}]}
       }
 
