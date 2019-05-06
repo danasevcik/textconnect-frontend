@@ -71,8 +71,10 @@ class App extends Component {
         })}
 
         <span>
-          <h1>TEXT CONNECT</h1>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png" id="start-img"></img>
+          <h1 id="header">
+            WELCOME TO TEXT CONNECT
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png" id="start-img"></img>
+          </h1>
         </span>
 
         {/* FLASH MESSAGE AND LINK TO CONVO */}

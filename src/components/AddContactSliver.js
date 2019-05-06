@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import * as actions from '../actions'
+import { Button, Icon } from 'semantic-ui-react'
 
 class AddContactSliver extends Component {
 
@@ -32,8 +33,13 @@ class AddContactSliver extends Component {
     // print username and add friend button for each
     return (
       <div>
-        <h3>{this.props.non_amiga.username}</h3>
-        <button onClick={() => this.addFriend(this.props, this.props.non_amiga.id)}>+Add Friend</button>
+        <h3 id="add-contact-username">{this.props.non_amiga.username}</h3>
+          <Button animated id="add-friend-button" onClick={() => this.addFriend(this.props, this.props.non_amiga.id)}>
+            <Button.Content visible>Add Friend</Button.Content>
+            <Button.Content hidden>
+              <Icon name='plus' />
+            </Button.Content>
+          </Button>
       </div>
     )
   }

@@ -4,6 +4,9 @@ import MessageForm from './MessageForm'
 import { ActionCableConsumer } from 'react-actioncable-provider'
 import * as actions from '../actions'
 import ConversationEdit from './ConversationEdit'
+import { Grid, Menu, Segment } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
+
 
 class Conversation extends Component {
 
@@ -56,53 +59,78 @@ class Conversation extends Component {
   render() {
     let date = new Date()
     return (
-      <div>
-        {/* GET CONVO ON REFRESH */}
-        {(!this.state.haveUserInfo && this.props.user) ? this.getConversation() : null}
+      <Grid id="conversation-container" style={{overflow: 'auto', height: 488 }}>
+        <Grid.Column width={10}>
+          <div>
+            {/* GET CONVO ON REFRESH */}
+            {(!this.state.haveUserInfo && this.props.user) ? this.getConversation() : null}
 
-        {/* ACTION CABLE CONSUMER */}
-        {this.props.current_conversation &&
-          (<ActionCableConsumer
-          onReceived={(data) => {
-            this.props.updateConvo(data, this.props)
-            this.props.renderConversation(this.props)
-          }}
-          channel={{channel: 'MessagesChannel', conversation_id: this.props.current_conversation.id}}
-          />)
-        }
+            {/* ACTION CABLE CONSUMER */}
+            {this.props.current_conversation &&
+              (<ActionCableConsumer
+              onReceived={(data) => {
+                this.props.updateConvo(data, this.props)
+                this.props.renderConversation(this.props)
+              }}
+              channel={{channel: 'MessagesChannel', conversation_id: this.props.current_conversation.id}}
+              />)
+            }
 
-        {/* SEND PATCH REQUEST TO CHANGE ALL CURRENT MESSAGES TO READ */}
-        {(this.props.current_conversation && !this.state.markedAsRead) && this.markAsRead()}
+            {/* SEND PATCH REQUEST TO CHANGE ALL CURRENT MESSAGES TO READ */}
+            {(this.props.current_conversation && !this.state.markedAsRead) && this.markAsRead()}
 
-        {/* TITLE */}
-        <h1>{this.props.current_conversation && this.props.current_conversation.title}</h1>
-
-        {/* RENAME CONVERSATION TITLE BUTTON */}
-        {this.props.current_conversation && <button onClick={() => this.handleRename(this.props)}>Rename</button>}
-
-        {/* RENAME CONVERSATION FORM */}
-        {(this.props.current_conversation && this.state.renameClicked) && <ConversationEdit handleSubmit={this.handleSubmit}/>}
-
-        {/* TIME STAMP */}
-        <h3>{this.props.current_conversation && date.toDateString() }</h3>
-
-        {/* MESSAGES */}
-        {this.props.current_conversation_messages ? this.props.current_conversation_messages.map(message => {
-          let arr = message.split(":")
-          let name = arr[0]
-          let text = arr[1]
-          return (
+            {/* TITLE */}
             <div>
-                <p>{name}:</p>
-                <p>{text}</p>
-                <button onClick={() => this.handleClick(name, text)}>Play</button>
+              <h1 id="conversation-title">{this.props.current_conversation && this.props.current_conversation.title}</h1>
             </div>
-          )})
-           : null}
 
-        {/* MESSAGE FORM */}
-        {this.props.current_conversation ? <MessageForm conversationId={this.props.current_conversation.id}/> : null}
-      </div>
+            {/* TIME STAMP */}
+            <div>
+              <h3 id="conversation-date">{this.props.current_conversation && date.toDateString() }</h3>
+            </div>
+
+            {/* RENAME CONVERSATION TITLE BUTTON */}
+            {this.props.current_conversation &&
+              <Button animated id="rename-conversation-button" onClick={() => this.handleRename(this.props)}>
+                <Button.Content visible>Rename Conversation</Button.Content>
+                <Button.Content hidden>
+                  <Icon name='edit' />
+                </Button.Content>
+              </Button>
+            }
+
+            {/* RENAME CONVERSATION FORM */}
+            {(this.props.current_conversation && this.state.renameClicked) && <ConversationEdit handleSubmit={this.handleSubmit}/>}
+
+            {/* MESSAGES */}
+            {this.props.current_conversation_messages ? this.props.current_conversation_messages.map(message => {
+              let arr = message.split(":")
+              let name = arr[0]
+              let text = arr[1]
+              return (
+                <div id="message-bubble">
+                  <div>
+                    <p id="sender-name">{name}:</p>
+                  </div>
+                  <div>
+                    <p id="message-text">{text}</p>
+                  </div>
+                  <Button animated id="play-message-button" onClick={() => this.handleClick(name, text)}>
+                    <Button.Content visible>
+                      <Icon name='play circle'/>
+                    </Button.Content>
+                    <Button.Content hidden>Play Message</Button.Content>
+                  </Button>
+                </div>
+              )})
+               : null}
+            <p></p>
+
+            {/* MESSAGE FORM */}
+            {this.props.current_conversation ? <MessageForm conversationId={this.props.current_conversation.id}/> : null}
+          </div>
+        </Grid.Column>
+      </Grid>
     )
   }
 }

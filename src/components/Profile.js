@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import ProfileEdit from './ProfileEdit'
 import { Grid, Menu, Segment } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 
 class Profile extends Component {
 
@@ -19,7 +20,7 @@ class Profile extends Component {
 
   render() {
     return (
-      <Grid id="profile-container">
+      <Grid id="profile-container" style={{overflow: 'auto', height: 488 }}>
         <Grid.Column width={10}>
           <div>
             {/* USERNAME */}
@@ -35,7 +36,14 @@ class Profile extends Component {
             {/* PHOTO */}
             {(this.props.user && this.props.user.photo) && <img src={this.props.user.photo} alt="profile pic"/>}
             {/* EDIT FORM BUTTON */}
-            {this.props.user && <button onClick={() => this.handleClick()}>Edit Profile</button>}
+            {this.props.user &&
+              <Button animated id="edit-profile-button" onClick={() => this.handleClick()}>
+                <Button.Content hidden>
+                  <Icon name='edit'/>
+                </Button.Content>
+                <Button.Content visible>Edit Profile</Button.Content>
+              </Button>
+            }
             {/* EDIT FORM RENDER */}
             {(this.props.user && this.state.clicked) && <ProfileEdit handleSubmit={this.handleSubmit}/>}
 

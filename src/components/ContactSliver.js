@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import * as actions from '../actions'
+import { Button, Icon } from 'semantic-ui-react'
 
 class ContactSliver extends Component {
 
@@ -8,9 +9,20 @@ class ContactSliver extends Component {
     // print username, start conversation button, and remove friend button for each contact
     return (
       <div>
-        <h3>{this.props.contact.username}</h3>
-          <button onClick={() => this.props.startConversation(this.props)}>+Start Conversation</button>
-          <button onClick={() => this.props.removeFriend(this.props, this.props.contact)}>Remove Friend</button>
+        <h3 id="contact-username">{this.props.contact.username}</h3>
+          <Button animated id="start-conversation-button" onClick={() => this.props.startConversation(this.props)}>
+            <Button.Content visible>Start Conversation</Button.Content>
+            <Button.Content hidden>
+              <Icon name='plus' />
+            </Button.Content>
+          </Button>
+          <p></p>
+          <Button animated id="start-conversation-button" onClick={() => this.props.removeFriend(this.props, this.props.contact)}>
+            <Button.Content visible>Remove Friend</Button.Content>
+            <Button.Content hidden>
+              <Icon name='minus' />
+            </Button.Content>
+          </Button>
       </div>
     )
   }

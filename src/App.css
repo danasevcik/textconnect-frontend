@@ -39,18 +39,26 @@
 }
 
 #start-img {
-  width: 30px;
+  width: 20px;
 }
 
 .column.docs-icon-set-column {
-  color: rgb(243, 218, 85);
+  color: rgb(236, 216, 73);
   text-align: left;
   padding-left: 20px;
-  padding-bottom: 65px;
+  padding-bottom: 10px;
   z-index: 1;
   transition: 1s;
   height: 100%;
   size: 10px;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: grey;
 }
 
 #contacts-nav-bar {
@@ -58,7 +66,9 @@
   padding-left: 20px;
   padding-bottom: 65px;
   font-size: 25px;
+  font-weight: bold;
   position: relative;
+  color: black;
 }
 
 #add-contacts-nav-bar {
@@ -66,6 +76,7 @@
   padding-left: 20px;
   padding-bottom: 65px;
   font-size: 25px;
+  font-weight: bold;
   position: relative;
 
 }
@@ -75,6 +86,7 @@
   padding-left: 20px;
   padding-bottom: 65px;
   font-size: 25px;
+  font-weight: bold;
   position: relative;
 
 }
@@ -84,6 +96,7 @@
   padding-left: 20px;
   padding-bottom: 65px;
   font-size: 25px;
+  font-weight: bold;
 }
 
 #logout-nav-bar {
@@ -91,6 +104,7 @@
   padding-left: 20px;
   padding-bottom: 65px;
   font-size: 25px;
+  font-weight: bold;
 }
 
 #nav-bar {
@@ -114,9 +128,8 @@
   margin-left: 200px;
   margin-right: 200px;
   margin-top: 0px;
-  text-align: left;
-  padding-left: 350px;
-  /* line-height: 123px; */
+  text-align: center;
+  padding-left: 250px;
 }
 
 #add-contact-container {
@@ -129,9 +142,22 @@
   margin-left: 200px;
   margin-right: 200px;
   margin-top: 0px;
-  text-align: left;
-  padding-left: 350px;
-  /* line-height: 123px; */
+  text-align: center;
+  padding-left: 250px;
+}
+
+#conversation-container {
+  z-index: 3;
+  border: 1px;
+  border-style: solid;
+  border-radius: 10px;
+  position: relative;
+  float: center;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 0px;
+  text-align: center;
+  padding-left: 250px;
 }
 
 #contact-container {
@@ -144,8 +170,8 @@
   margin-left: 200px;
   margin-right: 200px;
   margin-top: 0px;
-  text-align: left;
-  padding-left: 350px;
+  text-align: center;
+  padding-left: 250px;
 }
 
 #profile-container {
@@ -158,11 +184,105 @@
   margin-left: 200px;
   margin-right: 200px;
   margin-top: 0px;
-  text-align: left;
-  padding-left: 350px;
+  text-align: center;
+  padding-left: 250px;
 }
 
 #search-chats {
-  color: rgb(243, 218, 85);
+  /* color: rgb(236, 216, 73); */
   /* margin-top: 100px; */
+}
+
+#unread {
+  font-size: 25px;
+}
+
+#convo-title {
+  font-size: 20px;
+}
+
+#conversation-button {
+  width: 350px;
+  font-size: 17px;
+}
+
+#contact-username {
+  font-size: 30px;
+}
+
+#add-contact-username {
+  font-size: 30px;
+}
+
+#start-conversation-button {
+  width: 350px;
+  font-size: 17px;
+}
+
+#remove-friend-button {
+  width: 350px;
+}
+
+#add-friend-button {
+  width: 350px;
+  font-size: 17px;
+}
+
+#header {
+  font-size: 60px;
+  padding-top: 90px;
+}
+
+#message-form {
+  width: 350px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+#send-message-button {
+  width: 200px;
+  font-size: 20px;
+}
+
+#rename-conversation-button {
+  width: 150px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#conversation-title {
+  font-size: 35px;
+  text-decoration: underline;
+}
+
+#conversation-date {
+  font-size: 25px;
+}
+
+#message-bubble {
+  border-bottom: 1px solid;
+}
+
+#sender-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#message-text {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#play-message-button {
+  width: 50px;
+  margin-bottom: 5px;
+}
+
+#edit-profile-button {
+  width: 350px;
+}
+
+#save-edits-profile-button {
+  width: 350px;
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import * as actions from '../actions'
+import { Button, Icon } from 'semantic-ui-react'
 
 class ConversationEdit extends Component {
 
@@ -28,16 +29,24 @@ class ConversationEdit extends Component {
     return (
       <div>
         <form onSubmit={this.submitHandler}>
-          <input
-            type="title"
-            placeholder="title"
-            name="title"
-            value={this.state.title}
-            onChange={this.changeHandler}
-            />
-          <button onClick={
-              this.submitHandler
-            }>Save These Changes</button>
+          <div class="ui category search">
+              <input id="message-form"
+                class="prompt"
+                type="text"
+                placeholder="Rename Conversation"
+                name="title"
+                value={this.state.title}
+                onChange={this.changeHandler}
+                />
+              <i aria-hidden="false" class="ellipsis horizontal"></i>
+          </div>
+          <p></p>
+          <Button animated id="rename-conversation-button" onClick={this.submitHandler}>
+            <Button.Content visible>Save These Changes</Button.Content>
+            <Button.Content hidden>
+              <Icon name='edit' />
+            </Button.Content>
+          </Button>
           </form>
         </div>
       )

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import * as actions from '../actions'
 import { ActionCableConsumer } from 'react-actioncable-provider'
+import { Button, Icon } from 'semantic-ui-react'
 
 class ChatSliver extends Component {
 
@@ -38,14 +39,21 @@ class ChatSliver extends Component {
                  channel={{channel: 'MessagesChannel', conversation_id: conversation.id}}
                />)
           })}
+          <p></p>
           <Link to={`/Conversation/${this.props.conversation.id}`}>
-            <button onClick={() => this.props.renderConversation(this.props)}>{this.props.conversation.title}</button>
-            <p>Unread Messages: {(this.props.unread.length > 0 && this.props)
+            <Button animated id="conversation-button" onClick={() => this.props.renderConversation(this.props)}>
+              <Button.Content visible id="convo-title">{this.props.conversation.title}</Button.Content>
+              <Button.Content hidden>
+                <Icon name='child' />
+                <Icon name='child' />
+              </Button.Content>
+            </Button>
+            <p id="unread">Unread Messages: {(this.props.unread.length > 0 && this.props)
                 ? this.props.unread.map(unreadObj => {
                   if (unreadObj.conversation.id === this.props.conversation.id) {
                   return unreadObj.unread_messages
                 }
-              }) 
+              })
               : 0 }
             </p>
           </Link>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import * as actions from '../actions'
+import { Button, Icon } from 'semantic-ui-react'
 
 class MessageForm extends Component {
 
@@ -27,14 +28,24 @@ class MessageForm extends Component {
     return (
       <div>
         <form onSubmit={this.submitHandler}>
-          <input
-            type="text"
-            placeholder="Type your message here..."
-            name="message"
-            value={this.state.message}
-            onChange={this.changeHandler}
-            />
-          <button onClick={this.submitHandler}>Submit</button>
+          <div class="ui category search">
+              <input id="message-form"
+                class="prompt"
+                type="text"
+                placeholder="Type Your Message Here..."
+                name="message"
+                value={this.state.message}
+                onChange={this.changeHandler}
+                />
+              <i aria-hidden="false" class="ellipsis horizontal"></i>
+          </div>
+          <p></p>
+          <Button animated id="send-message-button" onClick={this.submitHandler}>
+            <Button.Content visible>Send Message</Button.Content>
+            <Button.Content hidden>
+              <Icon name='compose' />
+            </Button.Content>
+          </Button>
           </form>
         </div>
       )

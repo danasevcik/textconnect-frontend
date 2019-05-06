@@ -21,7 +21,7 @@ class ContactContainer extends Component {
 
   render() {
     return (
-      <Grid id="contact-container">
+      <Grid id="contact-container" style={{overflow: 'auto', height: 488 }}>
         <Grid.Column width={10}>
           <div>
             {(!this.state.haveUserInfo && this.props.user) ? this.getContacts() : null}

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import * as actions from '../actions'
+import { Button, Icon } from 'semantic-ui-react'
 
 class ProfileEdit extends Component {
 
@@ -36,45 +37,69 @@ class ProfileEdit extends Component {
     return (
       <div>
         <h1>ProfileEdit</h1>
-        <form onSubmit={this.submitHandler}>
-          <input
-            type="text"
-            placeholder="name"
-            name="name"
-            value={this.state.name}
-            onChange={this.changeHandler}
-            />
-          <input
-            type="number"
-            placeholder="age"
-            name="age"
-            value={this.state.age}
-            onChange={this.changeHandler}
-            />
-          <input
-            type="text"
-            placeholder="bio"
-            name="bio"
-            value={this.state.bio}
-            onChange={this.changeHandler}
-            />
-          <input
-            type="text"
-            placeholder="phone number"
-            name="phone_number"
-            value={this.state.phone_number}
-            onChange={this.changeHandler}
-            />
-          <input
-            type="text"
-            placeholder="your photo"
-            name="photo"
-            value={this.state.photo}
-            onChange={this.changeHandler}
-            />
-          <button onClick={
-              this.submitHandler
-            }>Save These Changes</button>
+        <form class="ui form" onSubmit={this.submitHandler}>
+          <div class="fields">
+            <div class="ten wide field">
+              <label>Name</label>
+              <input
+                type="text"
+                placeholder="name"
+                name="name"
+                value={this.state.name}
+                onChange={this.changeHandler}
+                />
+            </div>
+            <div class="six wide field">
+              <label>Age</label>
+              <input
+                type="number"
+                placeholder="age"
+                name="age"
+                value={this.state.age}
+                onChange={this.changeHandler}
+                />
+            </div>
+          </div>
+          <div class="fields">
+            <div class="sixteen wide field">
+              <label>Bio</label>
+              <input
+                type="text"
+                placeholder="bio"
+                name="bio"
+                value={this.state.bio}
+                onChange={this.changeHandler}
+                />
+            </div>
+          </div>
+          <div class="fields">
+            <div class="eight wide field">
+              <label>Phone Numer</label>
+              <input
+                type="text"
+                placeholder="phone number"
+                name="phone_number"
+                value={this.state.phone_number}
+                onChange={this.changeHandler}
+                />
+            </div>
+            <div class="eight wide field">
+              <label>Photo</label>
+              <input
+                type="text"
+                placeholder="your photo"
+                name="photo"
+                value={this.state.photo}
+                onChange={this.changeHandler}
+                />
+            </div>
+          </div>
+          <Button animated id="save-edits-profile-button" onClick={this.submitHandler}>
+            <Button.Content hidden>
+              <Icon name='edit'/>
+            </Button.Content>
+            <Button.Content visible>Save These Changes</Button.Content>
+          </Button>
           </form>
         </div>
       )

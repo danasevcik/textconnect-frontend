@@ -21,7 +21,7 @@ class ChatsContainer extends Component {
 
   render() {
     return (
-      <Grid id="chats-container">
+      <Grid id="chats-container" style={{overflow: 'auto', height: 488 }}>
         <Grid.Column width={10}>
           <div>
             {(!this.state.haveUserInfo && this.props.user) ? this.getChats() : null}
