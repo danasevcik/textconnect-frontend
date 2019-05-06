@@ -70,7 +70,10 @@ class App extends Component {
              />)
         })}
 
-        <h1>TEXTCONNECT</h1>
+        <span>
+          <h1>TEXT CONNECT</h1>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png" id="start-img"></img>
+        </span>
 
         {/* FLASH MESSAGE AND LINK TO CONVO */}
         {this.state.flash &&

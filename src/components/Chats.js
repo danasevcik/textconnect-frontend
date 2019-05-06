@@ -23,17 +23,21 @@ class Chats extends Component {
     })
     return (
       <div>
-        <div>
-          <h1>SearchChats</h1>
-          <input
-            type="text"
-            placeholder="search"
-            name="searchTerm"
-            value={this.state.searchTerm}
-            onChange={this.changeHandler}
-            />
+        <h1>Search Chats</h1>
+        <div class="ui category search">
+          <div class="ui icon input">
+            <input id="search-chats"
+              class="prompt"
+              type="text"
+              placeholder="Search Chats"
+              name="searchTerm"
+              value={this.state.searchTerm}
+              onChange={this.changeHandler}
+              />
+            <i aria-hidden="true" class="search icon"></i>
           </div>
-        {conversations}
+          {conversations}
+        </div>
       </div>
     )
   }

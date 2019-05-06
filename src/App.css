@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  font-family: 'Amatic SC', cursive;
+}
+
+*, h1, h2, h3, h4, h5, h6{
+  font-family: 'Amatic SC', cursive;
+  /* font-size: 20px */
 }
 
 .App-logo {
@@ -32,6 +38,10 @@
   }
 }
 
+#start-img {
+  width: 30px;
+}
+
 .column.docs-icon-set-column {
   color: rgb(243, 218, 85);
   text-align: left;
@@ -40,13 +50,14 @@
   z-index: 1;
   transition: 1s;
   height: 100%;
+  size: 10px;
 }
 
 #contacts-nav-bar {
   text-align: left;
   padding-left: 20px;
   padding-bottom: 65px;
-  font-size: 15px;
+  font-size: 25px;
   position: relative;
 }
 
@@ -54,7 +65,7 @@
   text-align: left;
   padding-left: 20px;
   padding-bottom: 65px;
-  font-size: 15px;
+  font-size: 25px;
   position: relative;
 
 }
@@ -63,7 +74,7 @@
   text-align: left;
   padding-left: 20px;
   padding-bottom: 65px;
-  font-size: 15px;
+  font-size: 25px;
   position: relative;
 
 }
@@ -72,14 +83,14 @@
   text-align: left;
   padding-left: 20px;
   padding-bottom: 65px;
-  font-size: 15px;
+  font-size: 25px;
 }
 
 #logout-nav-bar {
   text-align: left;
   padding-left: 20px;
   padding-bottom: 65px;
-  font-size: 15px;
+  font-size: 25px;
 }
 
 #nav-bar {
@@ -149,4 +160,9 @@
   margin-top: 0px;
   text-align: left;
   padding-left: 350px;
+}
+
+#search-chats {
+  color: rgb(243, 218, 85);
+  /* margin-top: 100px; */
 }

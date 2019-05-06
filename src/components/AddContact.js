@@ -15,7 +15,7 @@ class AddContact extends Component {
 
   render() {
     // map through "non-amigas" and render AddContactSliver for each
-    // check if the search term is included in username 
+    // check if the search term is included in username
     let non_amigas = this.props.non_amigas.map(non_amiga => {
       if (non_amiga.username.includes(this.state.searchTerm)) {
         return <AddContactSliver key={non_amiga.id} non_amiga={non_amiga}/>
@@ -23,17 +23,21 @@ class AddContact extends Component {
     })
     return (
       <div>
-        <div>
-          <h1>SearchAddContacts</h1>
-          <input
-            type="text"
-            placeholder="search"
-            name="searchTerm"
-            value={this.state.searchTerm}
-            onChange={this.changeHandler}
-            />
+        <h1>Add Friends</h1>
+        <div class="ui category search">
+          <div class="ui icon input">
+            <input
+              class="prompt"
+              type="text"
+              placeholder="Search For Friends"
+              name="searchTerm"
+              value={this.state.searchTerm}
+              onChange={this.changeHandler}
+              />
+            <i aria-hidden="true" class="search icon"></i>
           </div>
-        {non_amigas}
+          {non_amigas}
+        </div>
       </div>
     )
   }

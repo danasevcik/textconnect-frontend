@@ -22,17 +22,21 @@ class ContactBook extends Component {
     })
     return (
       <div>
-        <div>
-          <h1>SearchContacts</h1>
-          <input
-            type="text"
-            placeholder="search"
-            name="searchTerm"
-            value={this.state.searchTerm}
-            onChange={this.changeHandler}
-            />
+        <h1>Contact Book</h1>
+        <div class="ui category search">
+          <div class="ui icon input">
+            <input
+              class="prompt"
+              type="text"
+              placeholder="Search Contacts"
+              name="searchTerm"
+              value={this.state.searchTerm}
+              onChange={this.changeHandler}
+              />
+            <i aria-hidden="true" class="search icon"></i>
           </div>
-        {contacts}
+          {contacts}
+        </div>
       </div>
     )
   }
