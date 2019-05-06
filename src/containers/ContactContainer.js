@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import ContactBook from '../components/ContactBook'
 import * as actions from '../actions'
+import { Grid, Menu, Segment } from 'semantic-ui-react'
 
 class ContactContainer extends Component {
 
@@ -20,10 +21,14 @@ class ContactContainer extends Component {
 
   render() {
     return (
-      <div>
-        {(!this.state.haveUserInfo && this.props.user) ? this.getContacts() : null}
-        <ContactBook />
-      </div>
+      <Grid id="contact-container">
+        <Grid.Column width={10}>
+          <div>
+            {(!this.state.haveUserInfo && this.props.user) ? this.getContacts() : null}
+            <ContactBook />
+          </div>
+        </Grid.Column>
+      </Grid>
     )
   }
 }

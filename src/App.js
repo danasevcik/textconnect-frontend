@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter, Link } from "react-router-dom";
 import './App.css';
-import Menu from './components/Menu.js'
+import MenuButton from './components/Menu.js'
 import Login from './components/Login.js'
 import Signup from './components/Signup.js'
 import Profile from './components/Profile.js'
@@ -14,7 +14,6 @@ import { connect } from 'react-redux';
 import * as actions from './actions'
 import FlashMassage from 'react-flash-message';
 import { ActionCableConsumer } from 'react-actioncable-provider'
-// import FlashMessage from './components/FlashMessage'
 
 class App extends Component {
 
@@ -82,7 +81,7 @@ class App extends Component {
           </Link>
         }
 
-        <Menu />
+        <MenuButton />
         <Login />
         <Signup />
 

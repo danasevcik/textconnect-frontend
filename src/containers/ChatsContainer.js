@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import Chats from '../components/Chats'
 import * as actions from '../actions'
+import { Grid, Menu, Segment } from 'semantic-ui-react'
 
 class ChatsContainer extends Component {
 
@@ -20,10 +21,14 @@ class ChatsContainer extends Component {
 
   render() {
     return (
-      <div>
-        {(!this.state.haveUserInfo && this.props.user) ? this.getChats() : null}
-        <Chats />
-      </div>
+      <Grid id="chats-container">
+        <Grid.Column width={10}>
+          <div>
+            {(!this.state.haveUserInfo && this.props.user) ? this.getChats() : null}
+            <Chats />
+          </div>
+        </Grid.Column>
+      </Grid>
     )
   }
 }

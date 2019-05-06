@@ -31,3 +31,122 @@
     transform: rotate(360deg);
   }
 }
+
+.column.docs-icon-set-column {
+  color: rgb(243, 218, 85);
+  text-align: left;
+  padding-left: 20px;
+  padding-bottom: 65px;
+  z-index: 1;
+  transition: 1s;
+  height: 100%;
+}
+
+#contacts-nav-bar {
+  text-align: left;
+  padding-left: 20px;
+  padding-bottom: 65px;
+  font-size: 15px;
+  position: relative;
+}
+
+#add-contacts-nav-bar {
+  text-align: left;
+  padding-left: 20px;
+  padding-bottom: 65px;
+  font-size: 15px;
+  position: relative;
+
+}
+
+#chats-nav-bar {
+  text-align: left;
+  padding-left: 20px;
+  padding-bottom: 65px;
+  font-size: 15px;
+  position: relative;
+
+}
+
+#profile-nav-bar {
+  text-align: left;
+  padding-left: 20px;
+  padding-bottom: 65px;
+  font-size: 15px;
+}
+
+#logout-nav-bar {
+  text-align: left;
+  padding-left: 20px;
+  padding-bottom: 65px;
+  font-size: 15px;
+}
+
+#nav-bar {
+  border: 1px;
+  border-style: solid;
+  border-radius: 10px;
+  padding-top: 65px;
+  padding-right: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  position: absolute;
+}
+
+#chats-container {
+  z-index: 3;
+  border: 1px;
+  border-style: solid;
+  border-radius: 10px;
+  position: relative;
+  float: center;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 0px;
+  text-align: left;
+  padding-left: 350px;
+  /* line-height: 123px; */
+}
+
+#add-contact-container {
+  z-index: 3;
+  border: 1px;
+  border-style: solid;
+  border-radius: 10px;
+  position: relative;
+  float: center;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 0px;
+  text-align: left;
+  padding-left: 350px;
+  /* line-height: 123px; */
+}
+
+#contact-container {
+  z-index: 3;
+  border: 1px;
+  border-style: solid;
+  border-radius: 10px;
+  position: relative;
+  float: center;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 0px;
+  text-align: left;
+  padding-left: 350px;
+}
+
+#profile-container {
+  z-index: 3;
+  border: 1px;
+  border-style: solid;
+  border-radius: 10px;
+  position: relative;
+  float: center;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 0px;
+  text-align: left;
+  padding-left: 350px;
+}
