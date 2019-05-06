@@ -195,6 +195,7 @@ a:hover {
 
 #unread {
   font-size: 25px;
+  font-weight: bold;
 }
 
 #convo-title {
@@ -269,7 +270,7 @@ a:hover {
 }
 
 #message-text {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   margin-bottom: 5px;
 }
@@ -285,4 +286,5 @@ a:hover {
 
 #save-edits-profile-button {
   width: 350px;
+  font-size: 17px;
 }

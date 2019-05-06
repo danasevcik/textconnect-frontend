@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import * as actions from './actions'
 import FlashMassage from 'react-flash-message';
 import { ActionCableConsumer } from 'react-actioncable-provider'
+import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react'
 
 class App extends Component {
 
@@ -54,6 +55,8 @@ class App extends Component {
 
   render() {
     // console.log('in app', this.props);
+    let token = localStorage.getItem("token")
+
     return (
       <div className="App">
 
@@ -87,8 +90,21 @@ class App extends Component {
         }
 
         <MenuButton />
-        <Login />
-        <Signup />
+        {!token &&
+          <div>
+            <Segment style={{opacity:"0.8"}}>
+              <Grid columns={2} relaxed='very' stackable>
+                <Grid.Column>
+                  <Login />
+                </Grid.Column>
+                <Grid.Column>
+                  <Signup />
+                </Grid.Column>
+              </Grid>
+              <Divider vertical>Or</Divider>
+            </Segment>
+          </div>
+        }
 
         {/* ROUTES */}
         <Switch>

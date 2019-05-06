@@ -7,7 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-image: url('https://media.decovry.com/media/catalog/product/cache/1/image/600x/9df78eab33525d08d6e5fb8d27136e95/h/e/hello_2.jpg'), url('https://www.futurity.org/wp/wp-content/uploads/2017/12/speech-bubbles-language_1600.jpg');
   background-color: rgb(236, 237, 239) !important;
-  background-blend-mode: darken, hard-light;
+  background-blend-mode: darken,color-burn;
   background-repeat: no-repeat, repeat;
   background-size: 200px, 1400px;
   background-position: 50% -35px, 750px;

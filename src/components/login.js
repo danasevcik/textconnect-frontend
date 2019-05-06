@@ -33,22 +33,28 @@ class Login extends Component {
       return (
         <div>
           <h1>Login</h1>
-          <form onSubmit={this.submitHandler}>
-            <input
-              type="text"
-              placeholder="username"
-              name="username"
-              value={this.state.username}
-              onChange={this.changeHandler}
-              />
-            <input
-              type="password"
-              placeholder="password"
-              name="password"
-              value={this.state.password}
-              onChange={this.changeHandler}
-              />
-            <button onClick={
+          <form onSubmit={this.submitHandler} class="ui small form">
+            <div class="equal width fields">
+              <div class="field">
+                <input
+                  type="text"
+                  placeholder="Username"
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.changeHandler}
+                  />
+              </div>
+              <div class="field">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.changeHandler}
+                  />
+              </div>
+            </div>
+            <button class="ui button" onClick={
                 this.submitHandler
               }>Submit</button>
             </form>
