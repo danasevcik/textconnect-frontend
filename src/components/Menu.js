@@ -7,7 +7,7 @@ class MenuButton extends Component {
 
   // local state to toggle navbar
   state = {
-    clicked: false
+    clicked: true
   }
 
   handleClick = (e) => {

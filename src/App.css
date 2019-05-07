@@ -1,10 +1,10 @@
 .App {
   text-align: center;
-  font-family: 'Amatic SC', cursive;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 
 *, h1, h2, h3, h4, h5, h6{
-  font-family: 'Amatic SC', cursive;
+  font-family: 'Open Sans Condensed', sans-serif;
   /* font-size: 20px */
 }
 
@@ -64,8 +64,9 @@ a:hover {
 #contacts-nav-bar {
   text-align: left;
   padding-left: 20px;
-  padding-bottom: 65px;
-  font-size: 25px;
+  padding-top: 50px;
+  padding-bottom: 100px;
+  font-size: 20px;
   font-weight: bold;
   position: relative;
   color: black;
@@ -74,8 +75,8 @@ a:hover {
 #add-contacts-nav-bar {
   text-align: left;
   padding-left: 20px;
-  padding-bottom: 65px;
-  font-size: 25px;
+  padding-bottom: 100px;
+  font-size: 20px;
   font-weight: bold;
   position: relative;
 
@@ -84,8 +85,8 @@ a:hover {
 #chats-nav-bar {
   text-align: left;
   padding-left: 20px;
-  padding-bottom: 65px;
-  font-size: 25px;
+  padding-bottom: 100px;
+  font-size: 20px;
   font-weight: bold;
   position: relative;
 
@@ -94,8 +95,8 @@ a:hover {
 #profile-nav-bar {
   text-align: left;
   padding-left: 20px;
-  padding-bottom: 65px;
-  font-size: 25px;
+  padding-bottom: 100px;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -103,7 +104,7 @@ a:hover {
   text-align: left;
   padding-left: 20px;
   padding-bottom: 65px;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -116,6 +117,8 @@ a:hover {
   margin-left: 20px;
   margin-right: 20px;
   position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  height: 750px;
 }
 
 #chats-container {
@@ -125,11 +128,13 @@ a:hover {
   border-radius: 10px;
   position: relative;
   float: center;
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 20%;
+  margin-right: 20%;
   margin-top: 0px;
   text-align: center;
-  padding-left: 250px;
+  /* padding-left: 20%; */
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 70%;
 }
 
 #add-contact-container {
@@ -139,11 +144,14 @@ a:hover {
   border-radius: 10px;
   position: relative;
   float: center;
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 20%;
+  margin-right: 20%;
   margin-top: 0px;
   text-align: center;
-  padding-left: 250px;
+  /* padding-left: 20%; */
+  /* background-color: rgba(234, 232, 196, 0.2); */
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 70%;
 }
 
 #conversation-container {
@@ -153,11 +161,14 @@ a:hover {
   border-radius: 10px;
   position: relative;
   float: center;
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 20%;
+  margin-right: 20%;
   margin-top: 0px;
   text-align: center;
-  padding-left: 250px;
+  /* padding-left: 20%; */
+  /* background-color: rgba(234, 232, 196, 0.2); */
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 70%;
 }
 
 #contact-container {
@@ -167,11 +178,14 @@ a:hover {
   border-radius: 10px;
   position: relative;
   float: center;
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 20%;
+  margin-right: 20%;
   margin-top: 0px;
   text-align: center;
-  padding-left: 250px;
+  /* padding-left: 20%; */
+  /* background-color: rgba(234, 232, 196, 0.2); */
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 70%;
 }
 
 #profile-container {
@@ -181,11 +195,13 @@ a:hover {
   border-radius: 10px;
   position: relative;
   float: center;
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 20%;
+  margin-right: 20%;
   margin-top: 0px;
   text-align: center;
-  padding-left: 250px;
+  /* padding-left: 20%; */
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 70%;
 }
 
 #search-chats {
@@ -194,8 +210,8 @@ a:hover {
 }
 
 #unread {
-  font-size: 25px;
-  font-weight: bold;
+  font-size: 20px;
+  /* font-weight: bold; */
 }
 
 #convo-title {
@@ -203,7 +219,7 @@ a:hover {
 }
 
 #conversation-button {
-  width: 350px;
+  /* width: 350px; */
   font-size: 17px;
 }
 
@@ -222,6 +238,7 @@ a:hover {
 
 #remove-friend-button {
   width: 350px;
+  font-size: 17px;
 }
 
 #add-friend-button {
@@ -261,23 +278,38 @@ a:hover {
 }
 
 #message-bubble {
-  border-bottom: 1px solid;
+  /* border-bottom: 1px solid; */
+  min-height: 42px;
+  /* min-height: 60px; */
+  position: relative;
+  margin-top: 5px;
 }
 
 #sender-name {
   font-size: 20px;
   font-weight: bold;
+  display: inline;
+  position: absolute;
+  left: 50px;
+}
+
+#message-text-container{
+  width: 60%;
+  margin: auto;
+  height: 100%;
 }
 
 #message-text {
   font-size: 30px;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin: 0px auto 5px auto;
+  display: inline;
 }
 
 #play-message-button {
-  width: 50px;
-  margin-bottom: 5px;
+  position: absolute;
+  right: 50px;
+  top: 0px;
 }
 
 #edit-profile-button {
@@ -295,4 +327,5 @@ a:hover {
   border-radius: 10px;
   font-size: 30px;
   font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.8);
 }

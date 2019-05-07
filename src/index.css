@@ -1,19 +1,18 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Amatic SC', cursive;
+  font-family: 'Open Sans Condensed', sans-serif;
   /* font-size: 18px; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url('https://media.decovry.com/media/catalog/product/cache/1/image/600x/9df78eab33525d08d6e5fb8d27136e95/h/e/hello_2.jpg'), url('https://www.futurity.org/wp/wp-content/uploads/2017/12/speech-bubbles-language_1600.jpg');
   background-color: rgb(236, 237, 239) !important;
-  background-blend-mode: darken,color-burn;
+  background-blend-mode: darken,hard-light;
   background-repeat: no-repeat, repeat;
-  background-size: 200px, 1400px;
-  background-position: 50% -35px, 750px;
+  background-size: 200px, 1000px;
+  background-position: 50% -35px, -500px;
 }
 
 code {
-  font-family: 'Amatic SC', cursive;
-
+  font-family: 'Open Sans Condensed', sans-serif;
 }

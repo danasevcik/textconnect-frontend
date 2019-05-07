@@ -45,6 +45,7 @@ const reducer = (state = initialState, action) => {
     case GET_CONVERSATIONS:
       return {...state, conversations: action.payload.conversations}
     case SET_CURRENT_CONVO:
+      console.log('SET CURRENT CONVERSATION RAN')
       return {...state, current_conversation_messages: action.payload.messages, current_conversation_id: action.payload.conversation_id, current_conversation: action.payload.conversation}
     case CREATE_MESSAGE:
       return {...state, current_conversation_messages: [...state.current_conversation_messages, {text: action.payload.message}]}

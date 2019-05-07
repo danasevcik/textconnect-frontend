@@ -174,13 +174,12 @@ export function startConversation(props) {
 // RENDER CONVO AND SET CURRENT CONVO/MESSAGES
 export function renderConversation(props, conversationId) {
   let token = localStorage.getItem("token");
+  console.log('RENDER CONVO PROPS')
   if (props.conversation) {
-    console.log('here?');
-    console.log(props.conversation);
     let conversation_id = props.conversation.id
     let id = props.user.id
     return dispatch => {
-      fetch(`http://localhost:3000/api/v1/conversations/${conversation_id}`, {
+      return fetch(`http://localhost:3000/api/v1/conversations/${conversation_id}`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -195,17 +194,16 @@ export function renderConversation(props, conversationId) {
       })
       .then(resp => resp.json())
       .then(data => {
-        dispatch({type: SET_CURRENT_CONVO, payload: {messages: data.messages, conversation_id: data.conversation_id, conversation: data.conversation}})
+        return dispatch({type: SET_CURRENT_CONVO, payload: {messages: data.messages, conversation_id: data.conversation_id, conversation: data.conversation}})
+        // window.location.reload()
       })
     }
     // return;
   } else if (props.current_conversation_id) {
-    console.log('here??');
-    console.log(props.current_conversation_id);
     let conversation_id = props.current_conversation_id
     let id = props.user.id
     return dispatch => {
-      fetch(`http://localhost:3000/api/v1/conversations/${conversation_id}`, {
+      return fetch(`http://localhost:3000/api/v1/conversations/${props.match.params.id}`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -220,16 +218,16 @@ export function renderConversation(props, conversationId) {
       })
       .then(resp => resp.json())
       .then(data => {
-        dispatch({type: SET_CURRENT_CONVO, payload: {messages: data.messages, conversation_id: data.conversation_id, conversation: data.conversation}})
+        return dispatch({type: SET_CURRENT_CONVO, payload: {messages: data.messages, conversation_id: data.conversation_id, conversation: data.conversation}})
+        // window.location.reload()
       })
     }
   }
   // RENDER CONVO ON REFRESH
   else {
-    console.log('here???');
     let id = props.user.id
     return dispatch => {
-      fetch(`http://localhost:3000/api/v1/conversations/${conversationId}`, {
+      return fetch(`http://localhost:3000/api/v1/conversations/${conversationId}`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -244,10 +242,14 @@ export function renderConversation(props, conversationId) {
       })
       .then(resp => resp.json())
       .then(data => {
-        dispatch({type: SET_CURRENT_CONVO, payload: {messages: data.messages, conversation_id: data.conversation_id, conversation: data.conversation}})
+        return dispatch({type: SET_CURRENT_CONVO, payload: {messages: data.messages, conversation_id: data.conversation_id, conversation: data.conversation}})
       })
     }
   }
+}
+
+export function renderConvoMaybeItWillWork() {
+
 }
 
 // CREATE MESSAGE AND PERSIST IN DB

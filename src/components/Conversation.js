@@ -59,8 +59,8 @@ class Conversation extends Component {
   render() {
     let date = new Date()
     return (
-      <Grid id="conversation-container" style={{overflow: 'auto', height: 488 }}>
-        <Grid.Column width={10}>
+      <Grid id="conversation-container" style={{overflow: 'auto', height: 750 }}>
+        <Grid.Column width={16}>
           <div>
             {/* GET CONVO ON REFRESH */}
             {(!this.state.haveUserInfo && this.props.user) ? this.getConversation() : null}
@@ -109,11 +109,10 @@ class Conversation extends Component {
               let text = arr[1]
               return (
                 <div id="message-bubble">
-                  <div>
-                    <p id="sender-name">{name}:</p>
-                  </div>
-                  <div>
-                    <p id="message-text">{text}</p>
+
+                  <div id="sender-name">{name}:</div>
+                  <div id="message-text-container">
+                    <div id="message-text">{text}</div>
                   </div>
                   <Button animated id="play-message-button" onClick={() => this.handleClick(name, text)}>
                     <Button.Content visible>
@@ -121,6 +120,7 @@ class Conversation extends Component {
                     </Button.Content>
                     <Button.Content hidden>Play Message</Button.Content>
                   </Button>
+
                 </div>
               )})
                : null}

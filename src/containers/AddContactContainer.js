@@ -21,12 +21,10 @@ class AddContactContainer extends Component {
 
   render() {
     return (
-      <Grid id="add-contact-container" style={{overflow: 'auto', height: 488 }}>
-        <Grid.Column width={10}>
-          <div>
+      <Grid id="add-contact-container" style={{overflow: 'auto', height: 750 }}>
+        <Grid.Column width={16}>
             {(!this.state.haveUserInfo && this.props.user) ? this.getNonContacts() : null}
             <AddContact />
-          </div>
         </Grid.Column>
       </Grid>
     )

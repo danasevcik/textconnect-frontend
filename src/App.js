@@ -109,34 +109,34 @@ class App extends Component {
 
         {/* ROUTES */}
         <Switch>
-          <Route
-            path='/Conversation/:id'
-            render={(routerProps) => <Conversation {...routerProps}/>}
-          />
-          <Route
-            path='/Login'
-            render={() => <Login />}
-          />
-          <Route
-            path='/Signup'
-            render={() => <Signup />}
-          />
-          <Route
-            path='/Contacts'
-            render={() => <ContactContainer />}
-          />
-          <Route
-            path='/Add-Contacts'
-            render={() => <AddContactContainer />}
-          />
-          <Route
-            path='/Chats'
-            render={() => <ChatsContainer />}
-          />
-          <Route
-            path='/Profile'
-            render={() => <Profile />}
-          />
+            <Route
+              path='/Conversation/:id'
+              component={Conversation}
+              />
+            <Route
+              path='/Login'
+              component={Login}
+              />
+            <Route
+              path='/Signup'
+              component={Signup}
+              />
+            <Route
+              path='/Contacts'
+              component={ContactContainer}
+              />
+            <Route
+              path='/Add-Contacts'
+              component={AddContactContainer}
+              />
+            <Route
+              path='/Chats'
+              component={ChatsContainer}
+              />
+            <Route
+              path='/Profile'
+              component={Profile}
+              />
           <Route
             path='/'
             render={() => <Error />}

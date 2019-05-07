@@ -20,8 +20,8 @@ class Profile extends Component {
 
   render() {
     return (
-      <Grid id="profile-container" style={{overflow: 'auto', height: 488 }}>
-        <Grid.Column width={10}>
+      <Grid id="profile-container" style={{overflow: 'auto', height: 750 }}>
+        <Grid.Column width={16}>
             {/* USERNAME */}
             {this.props.user && <h1 style={{fontSize:"50px"}}>Hi, {this.props.user.username}!</h1>}
             <div class="ui equal width grid">
@@ -74,7 +74,7 @@ class Profile extends Component {
                   {(this.props.user && this.props.user.photo) && <img style={{width:"75px"}} src={this.props.user.photo} alt="profile pic"/>}
                 </div>
               </div>
-              
+
               <div class="row">
                 <div class="column">
                   {/* EDIT FORM BUTTON */}
