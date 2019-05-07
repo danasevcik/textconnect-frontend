@@ -55,6 +55,7 @@ class App extends Component {
 
   render() {
     // console.log('in app', this.props);
+    console.log('APP.JS PROPS:', this.props);
     let token = localStorage.getItem("token")
 
     return (
@@ -83,8 +84,8 @@ class App extends Component {
         {/* FLASH MESSAGE AND LINK TO CONVO */}
         {this.state.flash &&
           <Link to={`/Conversation/${this.state.conversation.id}`}>
-            <FlashMassage duration={3000} persistOnHover={true}>
-              <p onClick={() => this.props.renderConversation(this.props)}>NEW MESSAGE FROM {this.state.user.toUpperCase()}</p>
+            <FlashMassage duration={5000} persistOnHover={true}>
+              <p id="flash-message" onClick={() => this.props.renderConversation(this.props)}>NEW MESSAGE FROM {this.state.user.toUpperCase()}</p>
             </FlashMassage>
           </Link>
         }

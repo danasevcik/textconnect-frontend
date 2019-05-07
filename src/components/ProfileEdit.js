@@ -36,14 +36,13 @@ class ProfileEdit extends Component {
     // print profile edit form
     return (
       <div>
-        <h1>ProfileEdit</h1>
         <form class="ui form" onSubmit={this.submitHandler}>
           <div class="fields">
             <div class="ten wide field">
               <label>Name</label>
               <input
                 type="text"
-                placeholder="name"
+                placeholder="Name"
                 name="name"
                 value={this.state.name}
                 onChange={this.changeHandler}
@@ -53,7 +52,7 @@ class ProfileEdit extends Component {
               <label>Age</label>
               <input
                 type="number"
-                placeholder="age"
+                placeholder="Age"
                 name="age"
                 value={this.state.age}
                 onChange={this.changeHandler}
@@ -65,7 +64,7 @@ class ProfileEdit extends Component {
               <label>Bio</label>
               <input
                 type="text"
-                placeholder="bio"
+                placeholder="Bio"
                 name="bio"
                 value={this.state.bio}
                 onChange={this.changeHandler}
@@ -77,7 +76,7 @@ class ProfileEdit extends Component {
               <label>Phone Numer</label>
               <input
                 type="text"
-                placeholder="phone number"
+                placeholder="Phone Number"
                 name="phone_number"
                 value={this.state.phone_number}
                 onChange={this.changeHandler}
@@ -87,7 +86,7 @@ class ProfileEdit extends Component {
               <label>Photo</label>
               <input
                 type="text"
-                placeholder="your photo"
+                placeholder="Your Photo"
                 name="photo"
                 value={this.state.photo}
                 onChange={this.changeHandler}

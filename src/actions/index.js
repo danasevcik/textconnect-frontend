@@ -175,6 +175,8 @@ export function startConversation(props) {
 export function renderConversation(props, conversationId) {
   let token = localStorage.getItem("token");
   if (props.conversation) {
+    console.log('here?');
+    console.log(props.conversation);
     let conversation_id = props.conversation.id
     let id = props.user.id
     return dispatch => {
@@ -196,7 +198,10 @@ export function renderConversation(props, conversationId) {
         dispatch({type: SET_CURRENT_CONVO, payload: {messages: data.messages, conversation_id: data.conversation_id, conversation: data.conversation}})
       })
     }
+    // return;
   } else if (props.current_conversation_id) {
+    console.log('here??');
+    console.log(props.current_conversation_id);
     let conversation_id = props.current_conversation_id
     let id = props.user.id
     return dispatch => {
@@ -221,6 +226,7 @@ export function renderConversation(props, conversationId) {
   }
   // RENDER CONVO ON REFRESH
   else {
+    console.log('here???');
     let id = props.user.id
     return dispatch => {
       fetch(`http://localhost:3000/api/v1/conversations/${conversationId}`, {

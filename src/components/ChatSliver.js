@@ -25,6 +25,7 @@ class ChatSliver extends Component {
     if (!this.state.haveUnreadInfo && this.props.user) {
       this.getUnreadInProps()
     }
+    console.log('CHAT SLIVER PROPS', this.props);
     return (
       <div>
         <div>
