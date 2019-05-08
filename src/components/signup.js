@@ -41,7 +41,7 @@ class Signup extends Component {
               <div class="field">
                 <input
                   type="text"
-                  placeholder="username"
+                  placeholder="Username"
                   name="username"
                   value={this.state.username}
                   onChange={this.changeHandler}
@@ -50,14 +50,14 @@ class Signup extends Component {
               <div class="field">
                 <input
                   type="password"
-                  placeholder="password"
+                  placeholder="Password"
                   name="password"
                   value={this.state.password}
                   onChange={this.changeHandler}
                   />
               </div>
               <div class="field">
-              <select onChange={this.changeHandler} name="language" style={{height:"36px"}}>
+              <select onChange={this.changeHandler} name="language" style={{height:"36px", fontSize:"10px"}}>
                 <option value="">Please Select Language</option>
                 <option value="af">Afrikaans</option>
                 <option value="sq">Albanian</option>

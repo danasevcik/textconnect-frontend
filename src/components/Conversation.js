@@ -103,27 +103,54 @@ class Conversation extends Component {
             {(this.props.current_conversation && this.state.renameClicked) && <ConversationEdit handleSubmit={this.handleSubmit}/>}
 
             {/* MESSAGES */}
+            <div id='messageBubbles'>
             {this.props.current_conversation_messages ? this.props.current_conversation_messages.map(message => {
               let arr = message.split(":")
               let name = arr[0]
               let text = arr[1]
               return (
                 <div id="message-bubble">
+                  {this.props.user.username === name ?
+                    (
+                      <div className="sender-is-current-user">
+                        <div id="sender-name">{name.toUpperCase()}:</div>
+                        <div id="message-text-container">
+                          <div id="message-text">{text}</div>
+                        </div>
+                        <Button animated id="play-message-button" onClick={() => this.handleClick(name, text)}>
+                          <Button.Content visible>
+                            <Icon name='play circle'/>
+                          </Button.Content>
+                          <Button.Content hidden>Play Message</Button.Content>
+                        </Button>
+                      </div>
 
-                  <div id="sender-name">{name}:</div>
-                  <div id="message-text-container">
-                    <div id="message-text">{text}</div>
-                  </div>
-                  <Button animated id="play-message-button" onClick={() => this.handleClick(name, text)}>
-                    <Button.Content visible>
-                      <Icon name='play circle'/>
-                    </Button.Content>
-                    <Button.Content hidden>Play Message</Button.Content>
-                  </Button>
+                    )
+                  :
+                    ( <div className="sender-is-not-current-user">
+                        <div id="sender-name">{name.toUpperCase()}:</div>
+                        <div id="message-text-container">
+                          <div id="message-text">{text}</div>
+                        </div>
+                        <Button animated id="play-message-button" onClick={() => this.handleClick(name, text)}>
+                          <Button.Content visible>
+                            <Icon name='play circle'/>
+                          </Button.Content>
+                          <Button.Content hidden>Play Message</Button.Content>
+                        </Button>
+                      </div>
+
+                    )
+
+                  }
+
+
+
 
                 </div>
               )})
                : null}
+             </div>
             <p></p>
 
             {/* MESSAGE FORM */}
