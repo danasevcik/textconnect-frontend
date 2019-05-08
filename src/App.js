@@ -83,9 +83,11 @@ class App extends Component {
 
         {/* FLASH MESSAGE AND LINK TO CONVO */}
         {this.state.flash &&
-          <FlashMassage duration={5000} persistOnHover={true}>
-            <p id="flash-message" onClick={() => this.props.renderConversation(this.props)}>NEW MESSAGE FROM {this.state.user.toUpperCase()}</p>
-          </FlashMassage>
+          <Link to={`/Conversation/${this.state.conversation.id}`}>
+            <FlashMassage duration={5000} persistOnHover={true}>
+              <p id="flash-message" onClick={() => this.props.renderConversation(this.props)}>NEW MESSAGE FROM {this.state.user.toUpperCase()}</p>
+            </FlashMassage>
+          </Link>
         }
 
         <MenuButton />

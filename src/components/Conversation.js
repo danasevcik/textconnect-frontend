@@ -58,9 +58,18 @@ class Conversation extends Component {
 
   render() {
     let date = new Date()
+    if (this.props.user) {
+      let sendMessageButton = document.getElementById('send-message-button')
+      // if button exists, scroll it into view
+      if (sendMessageButton) {
+        sendMessageButton.scrollIntoView()
+      }
+    }
+
     return (
       <Grid id="conversation-container" style={{overflow: 'auto', height: 750 }}>
         <Grid.Column width={16}>
+
           <div>
             {/* GET CONVO ON REFRESH */}
             {(!this.state.haveUserInfo && this.props.user) ? this.getConversation() : null}
@@ -78,6 +87,9 @@ class Conversation extends Component {
 
             {/* SEND PATCH REQUEST TO CHANGE ALL CURRENT MESSAGES TO READ */}
             {(this.props.current_conversation && !this.state.markedAsRead) && this.markAsRead()}
+
+            {/* DIV FOR CONVO TITLE, TIME STAMP, AND RENAME BUTTON */}
+            <div id="top-of-convo">
 
             {/* TITLE */}
             <div>
@@ -101,9 +113,10 @@ class Conversation extends Component {
 
             {/* RENAME CONVERSATION FORM */}
             {(this.props.current_conversation && this.state.renameClicked) && <ConversationEdit handleSubmit={this.handleSubmit}/>}
+            </div>
 
             {/* MESSAGES */}
-            <div id='messageBubbles'>
+            <div id='message-bubbles'>
             {this.props.current_conversation_messages ? this.props.current_conversation_messages.map(message => {
               let arr = message.split(":")
               let name = arr[0]
@@ -121,7 +134,7 @@ class Conversation extends Component {
                           <Button.Content visible>
                             <Icon name='play circle'/>
                           </Button.Content>
-                          <Button.Content hidden>Play Message</Button.Content>
+                          <Button.Content hidden id="play-message-text">Play Message</Button.Content>
                         </Button>
                       </div>
 
@@ -141,12 +154,7 @@ class Conversation extends Component {
                       </div>
 
                     )
-
                   }
-
-
-
-
                 </div>
               )})
                : null}
