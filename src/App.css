@@ -59,6 +59,7 @@ a {
 
 a:hover {
   color: grey;
+  font-size: 30px;
 }
 
 #contacts-nav-bar {
@@ -351,11 +352,11 @@ a:hover {
 }
 
 @-webkit-keyframes slide {
-    100% { right: 0; }
+  100% { right: 0; }
 }
 
 @keyframes slide {
-    100% { right: 0; }
+  100% { right: 0; }
 }
 
 #login-singup {
@@ -363,6 +364,7 @@ a:hover {
   border: 5px;
   border-style: solid;
   border-radius: 25px;
+  /* opacity: 1; */
   box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -391,7 +393,7 @@ a:hover {
 }
 
 .sender-is-not-current-user {
-  background-color: rgba(220, 219, 222, 0.7);
+  background-color: rgba(220, 219, 222, 0.8);
   border-radius: 20px;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -407,7 +409,7 @@ a:hover {
   width: 0;
   height: 0;
   border: 20px solid transparent;
-  border-top-color: rgba(220, 219, 222, 0.7);
+  border-top-color: rgba(220, 219, 222, 0.8);
   border-bottom: 0;
   border-left: 0;
   margin-left: -10px;
