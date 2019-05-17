@@ -102,7 +102,7 @@ class App extends Component {
                   <Signup />
                 </Grid.Column>
               </Grid>
-              <Divider vertical>Or</Divider>
+              {/*<Divider vertical>Or</Divider>*/}
             </Segment>
           </div>
         }
