@@ -78,9 +78,12 @@ class Conversation extends Component {
             {this.props.current_conversation &&
               (<ActionCableConsumer
               onReceived={(data) => {
+                // update current conversation messages
                 this.props.updateConvo(data, this.props)
+                // rerender convo
                 this.props.renderConversation(this.props)
               }}
+              {/* set channel and convo id */}
               channel={{channel: 'MessagesChannel', conversation_id: this.props.current_conversation.id}}
               />)
             }

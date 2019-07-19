@@ -25,6 +25,7 @@ class Login extends Component {
   };
 
   render() {
+    console.log(this.state);
     // if there is no token, show login form
     let token = localStorage.getItem("token")
     if (!!token) {
