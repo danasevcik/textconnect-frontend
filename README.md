@@ -43,3 +43,8 @@ Text Connect allows users to:
 1. Visit the backend repo [here]('https://github.com/danasevcik/textconnect-backend') and follow instructions on the readme. The backend server should be started before the next steps are run.
 2. Clone this repository and run ```npm install```.
 3. Run using ```npm start```.
+
+
+![two people holding hands](https://media.giphy.com/media/LwHaQCGZMdD9Ghalrl/giphy.gif)
+
+## Enjoy!
