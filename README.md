@@ -1,6 +1,8 @@
 # Text Connect
 
-Text Connect is a messaging application that allows users to communicate across different languages.
+Text Connect is a messaging application that allows users to communicate between 104 languages.
+
+![earth gif](https://media.giphy.com/media/l1KVcrdl7rJpFnY2s/giphy.gif)
 
 ## Motivation
 
@@ -10,7 +12,7 @@ Text Connect was built to connect people who speak different languages. Regardle
 You can watch a live demo of the app [here]('https://www.youtube.com/watch?v=GezKCrnQ5iE').
 
 ## Technology Used
-This project was built using a Ruby on Rails backend. The Github repo can be found [here]('https://github.com/danasevcik/textconnect-backend')
+This project was built using a Ruby on Rails backend. The Github repo can be found [here]('https://github.com/danasevcik/textconnect-backend').
 * React
 * Redux
 * JWT Authorization
