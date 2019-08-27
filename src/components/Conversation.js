@@ -83,11 +83,10 @@ class Conversation extends Component {
                 // rerender convo
                 this.props.renderConversation(this.props)
               }}
-              {/* set channel and convo id */}
+
               channel={{channel: 'MessagesChannel', conversation_id: this.props.current_conversation.id}}
               />)
             }
-
             {/* SEND PATCH REQUEST TO CHANGE ALL CURRENT MESSAGES TO READ */}
             {(this.props.current_conversation && !this.state.markedAsRead) && this.markAsRead()}
 
