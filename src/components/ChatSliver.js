@@ -7,6 +7,7 @@ import { Button, Icon } from 'semantic-ui-react'
 
 class ChatSliver extends Component {
 
+  // local state to determine if unread has been fetched yet
   state = {
     haveUnreadInfo: false
   }
@@ -22,6 +23,8 @@ class ChatSliver extends Component {
   }
 
   render() {
+    // if haveUnreadInfo is false in state and we have a user
+    // call getUnreadInProps
     if (!this.state.haveUnreadInfo && this.props.user) {
       this.getUnreadInProps()
     }
@@ -34,7 +37,6 @@ class ChatSliver extends Component {
               <ActionCableConsumer
                  onReceived={(data) => {
                    this.props.getUnread(conversation, this.props.user)
-                   console.log(this.props);
                  }}
                  key={conversation.id}
                  channel={{channel: 'MessagesChannel', conversation_id: conversation.id}}
