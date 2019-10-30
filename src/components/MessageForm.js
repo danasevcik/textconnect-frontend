@@ -28,16 +28,16 @@ class MessageForm extends Component {
     return (
       <div>
         <form onSubmit={this.submitHandler}>
-          <div class="ui category search">
+          <div className="ui category search">
               <input id="message-form"
-                class="prompt"
+                className="prompt"
                 type="text"
                 placeholder="Type Your Message Here..."
                 name="message"
                 value={this.state.message}
                 onChange={this.changeHandler}
                 />
-              <i aria-hidden="false" class="ellipsis horizontal"></i>
+              <i aria-hidden="false" className="ellipsis horizontal"></i>
           </div>
           <p></p>
           <Button animated id="send-message-button" onClick={this.submitHandler}>

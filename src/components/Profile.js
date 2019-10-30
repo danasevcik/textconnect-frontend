@@ -24,10 +24,10 @@ class Profile extends Component {
         <Grid.Column width={16}>
             {/* USERNAME */}
             {this.props.user && <h1 style={{fontSize:"50px"}}>Hi, {this.props.user.username}!</h1>}
-            <div class="ui equal width grid">
+            <div className="ui equal width grid">
 
-              <div class="row">
-                <div class="column">
+              <div className="row">
+                <div className="column">
                   {/* NAME */}
                   {(this.props.user && this.props.user.name) &&
                     <div>
@@ -36,7 +36,7 @@ class Profile extends Component {
                     </div>
                   }
                 </div>
-                <div class="column">
+                <div className="column">
                   {/* AGE */}
                   {(this.props.user && this.props.user.age) &&
                     <div>
@@ -47,8 +47,8 @@ class Profile extends Component {
                 </div>
               </div>
 
-              <div class="row">
-                <div class="column">
+              <div className="row">
+                <div className="column">
                   {/* BIO */}
                   {(this.props.user && this.props.user.bio) &&
                     <div>
@@ -57,7 +57,7 @@ class Profile extends Component {
                     </div>
                   }
                 </div>
-                <div class="column">
+                <div className="column">
                   {/* PHONE NUMBER */}
                   {(this.props.user && this.props.user.phone_number) &&
                     <div>
@@ -68,15 +68,15 @@ class Profile extends Component {
                 </div>
               </div>
 
-              <div class="row">
-                <div class="column">
+              <div className="row">
+                <div className="column">
                   {/* PHOTO */}
                   {(this.props.user && this.props.user.photo) && <img style={{width:"75px"}} src={this.props.user.photo} alt="profile pic"/>}
                 </div>
               </div>
 
-              <div class="row">
-                <div class="column">
+              <div className="row">
+                <div className="column">
                   {/* EDIT FORM BUTTON */}
                   {this.props.user &&
                     <Button animated id="edit-profile-button" onClick={() => this.handleClick()}>

@@ -27,9 +27,13 @@ import {
   MARK_AS_READ
 } from './actions/types'
 import thunk from 'redux-thunk'
-// const initialUnread = {conversation: {id:0} }
+
+// define initial state
 const initialState = {user: null, token: null, contacts: [], conversations: [], non_amigas: [], current_conversation_messages: [], unread: []}
 
+// define reducer and pass in the initial state and action
+// will get called when an action is dispatched
+// switch on action type
 const reducer = (state = initialState, action) => {
   switch(action.type) {
     case CREATE_USER:
@@ -45,7 +49,6 @@ const reducer = (state = initialState, action) => {
     case GET_CONVERSATIONS:
       return {...state, conversations: action.payload.conversations}
     case SET_CURRENT_CONVO:
-      console.log('SET CURRENT CONVERSATION RAN')
       return {...state, current_conversation_messages: action.payload.messages, current_conversation_id: action.payload.conversation_id, current_conversation: action.payload.conversation}
     case CREATE_MESSAGE:
       return {...state, current_conversation_messages: [...state.current_conversation_messages, {text: action.payload.message}]}

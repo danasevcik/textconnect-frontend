@@ -6,7 +6,6 @@ import {
   GET_CONTACTS,
   GET_CONVERSATIONS,
   SET_CURRENT_CONVO,
-  CREATE_MESSAGE,
   UPDATE_CONVO,
   FETCH_NON_CONTACTS,
   ADD_FRIEND,
@@ -89,7 +88,6 @@ export function getUser() {
       })
       .then(resp => resp.json())
       .then(data => {
-        console.log(data.user);
         dispatch({type: GET_USER, payload: {user: data.user, jwt: localStorage.token}})
       });
     } else {
@@ -166,7 +164,7 @@ export function startConversation(props) {
     })
     .then(resp => resp.json())
     .then(data => {
-      console.log(data);
+      // console.log(data);
     })
   }
 }
@@ -174,7 +172,6 @@ export function startConversation(props) {
 // RENDER CONVO AND SET CURRENT CONVO/MESSAGES
 export function renderConversation(props, conversationId) {
   let token = localStorage.getItem("token");
-  console.log('RENDER CONVO PROPS')
   if (props.conversation) {
     let conversation_id = props.conversation.id
     let id = props.user.id
@@ -200,7 +197,7 @@ export function renderConversation(props, conversationId) {
     }
     // return;
   } else if (props.current_conversation_id) {
-    let conversation_id = props.current_conversation_id
+    // let conversation_id = props.current_conversation_id
     let id = props.user.id
     return dispatch => {
       return fetch(`http://localhost:3000/api/v1/conversations/${props.match.params.id}`, {
@@ -276,7 +273,7 @@ export function createMessage(message, props) {
     })
     .then(resp => resp.json())
     .then(message => {
-      console.log(message);
+      // console.log(message);
       // dont have to force re-render of Conversation component b/c action cable unsubscribe fix
       // dispatch({type: CREATE_MESSAGE, payload: {message: message.content}})
     })

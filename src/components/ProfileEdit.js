@@ -36,9 +36,9 @@ class ProfileEdit extends Component {
     // print profile edit form
     return (
       <div>
-        <form class="ui form" onSubmit={this.submitHandler}>
-          <div class="fields">
-            <div class="ten wide field">
+        <form className="ui form" onSubmit={this.submitHandler}>
+          <div className="fields">
+            <div className="ten wide field">
               <label>Name</label>
               <input
                 type="text"
@@ -48,7 +48,7 @@ class ProfileEdit extends Component {
                 onChange={this.changeHandler}
                 />
             </div>
-            <div class="six wide field">
+            <div className="six wide field">
               <label>Age</label>
               <input
                 type="number"
@@ -59,8 +59,8 @@ class ProfileEdit extends Component {
                 />
             </div>
           </div>
-          <div class="fields">
-            <div class="sixteen wide field">
+          <div className="fields">
+            <div className="sixteen wide field">
               <label>Bio</label>
               <input
                 type="text"
@@ -71,8 +71,8 @@ class ProfileEdit extends Component {
                 />
             </div>
           </div>
-          <div class="fields">
-            <div class="eight wide field">
+          <div className="fields">
+            <div className="eight wide field">
               <label>Phone Numer</label>
               <input
                 type="text"
@@ -82,7 +82,7 @@ class ProfileEdit extends Component {
                 onChange={this.changeHandler}
                 />
             </div>
-            <div class="eight wide field">
+            <div className="eight wide field">
               <label>Photo</label>
               <input
                 type="text"

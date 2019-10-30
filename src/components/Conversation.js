@@ -83,6 +83,7 @@ class Conversation extends Component {
                 // rerender convo
                 this.props.renderConversation(this.props)
               }}
+              key={this.props.current_conversation.id}
 
               channel={{channel: 'MessagesChannel', conversation_id: this.props.current_conversation.id}}
               />)

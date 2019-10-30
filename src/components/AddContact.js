@@ -23,17 +23,17 @@ class AddContact extends Component {
     return (
       <div>
         <h1>Add Friends</h1>
-        <div class="ui category search">
-          <div class="ui icon input">
+        <div className="ui category search">
+          <div className="ui icon input">
             <input
-              class="prompt"
+              className="prompt"
               type="text"
               placeholder="Search For Friends"
               name="searchTerm"
               value={this.state.searchTerm}
               onChange={this.changeHandler}
               />
-            <i aria-hidden="true" class="search icon"></i>
+            <i aria-hidden="true" className="search icon"></i>
           </div>
           {non_amigas}
         </div>

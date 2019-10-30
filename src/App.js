@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter, Link } from "react-router-dom";
 import './App.css';
-import MenuButton from './components/Menu.js'
+import MenuButton from './components/MenuButton.js'
 import Login from './components/Login.js'
 import Signup from './components/Signup.js'
 import Profile from './components/Profile.js'
@@ -18,6 +18,7 @@ import { Grid, Segment } from 'semantic-ui-react'
 
 class App extends Component {
 
+  // local state to flash incoming message
   state = {
     flash: false,
     user: "",
@@ -29,6 +30,7 @@ class App extends Component {
     this.props.getUser()
   }
 
+  // function to show flash message
   showMessage = (data, conversation) => {
     // fetch to backend to get the user who sent the message
     // set state in order to trigger render
@@ -59,7 +61,9 @@ class App extends Component {
     return (
       <div className="App">
 
-        {/* ACTION CABLE CONSUMER FOR EVERY CONVO THAT THIS USER HAS */}
+        {/* ACTION CABLE CONSUMER FOR EVERY CONVO THAT THIS USER HAS
+          every time a message is received, showMessage will be called
+         */}
         {this.props.user && this.props.user.conversations.map(conversation => {
 
           return (
@@ -67,6 +71,7 @@ class App extends Component {
                onReceived={(data) => {
                  this.showMessage(data, conversation)
                }}
+               key={conversation.id}
                channel={{channel: 'MessagesChannel', conversation_id: conversation.id}}
              />)
         })}
@@ -78,7 +83,7 @@ class App extends Component {
           </h1>
         </span>
 
-        {/* FLASH MESSAGE AND LINK TO CONVO */}
+        {/* FLASH MESSAGE AND LINK TO CONVO if flash in state is true */}
         {this.state.flash &&
           <Link to={`/Conversation/${this.state.conversation.id}`}>
             <FlashMassage duration={5000} persistOnHover={true}>
@@ -88,6 +93,7 @@ class App extends Component {
         }
 
         <MenuButton />
+        {/* If there is no token, show login or signup page */}
         {!token &&
           <div>
             <Segment style={{opacity:"0.8"}} id="login-singup">

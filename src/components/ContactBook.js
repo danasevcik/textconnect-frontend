@@ -26,14 +26,14 @@ class ContactBook extends Component {
         <div className="ui category search">
           <div className="ui icon input">
             <input
-              class="prompt"
+              className="prompt"
               type="text"
               placeholder="Search Contacts"
               name="searchTerm"
               value={this.state.searchTerm}
               onChange={this.changeHandler}
               />
-            <i aria-hidden="true" class="search icon"></i>
+            <i aria-hidden="true" className="search icon"></i>
           </div>
           {contacts}
         </div>

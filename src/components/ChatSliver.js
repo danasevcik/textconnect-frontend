@@ -25,7 +25,6 @@ class ChatSliver extends Component {
     if (!this.state.haveUnreadInfo && this.props.user) {
       this.getUnreadInProps()
     }
-    console.log('CHAT SLIVER PROPS', this.props);
     return (
       <div>
         <div>
@@ -37,6 +36,7 @@ class ChatSliver extends Component {
                    this.props.getUnread(conversation, this.props.user)
                    console.log(this.props);
                  }}
+                 key={conversation.id}
                  channel={{channel: 'MessagesChannel', conversation_id: conversation.id}}
                />)
           })}
