@@ -155,4 +155,5 @@ const mapStateToProps = (state) => {
   return state
 }
 
+// inject everything from actions folder
 export default withRouter(connect(mapStateToProps, actions)(App));

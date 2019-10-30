@@ -6,6 +6,7 @@ import { Grid } from 'semantic-ui-react'
 
 class ContactContainer extends Component {
 
+  // local state to indicate whether contacts have been fetched yet
   state = {
     haveUserInfo: false
   }
@@ -24,7 +25,7 @@ class ContactContainer extends Component {
       <Grid id="contact-container" style={{overflow: 'auto', height: 750 }}>
         <Grid.Column width={16}>
 
-            {(!this.state.haveUserInfo && this.props.user) ? this.getContacts() : null}
+            {(!this.state.haveUserInfo && this.props.user) && this.getContacts()}
             <ContactBook />
 
         </Grid.Column>

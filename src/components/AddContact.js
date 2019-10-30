@@ -4,6 +4,8 @@ import AddContactSliver from './AddContactSliver'
 
 class AddContact extends Component {
 
+  // local state to define empty search term to start
+  // search term will change as user types (via change handler)
   state = {
     searchTerm: ""
   }

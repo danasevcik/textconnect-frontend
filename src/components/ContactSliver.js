@@ -6,7 +6,7 @@ import { Button, Icon } from 'semantic-ui-react'
 class ContactSliver extends Component {
 
   render() {
-    // print username, start conversation button, and remove friend button for each contact
+    // render username, start conversation button, and remove friend button for each contact
     return (
       <div>
         <h3 id="contact-username">{this.props.contact.username}</h3>

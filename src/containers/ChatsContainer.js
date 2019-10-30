@@ -6,6 +6,7 @@ import { Grid } from 'semantic-ui-react'
 
 class ChatsContainer extends Component {
 
+  // local state to indicate whether conversations have been fetched yet
   state = {
     haveUserInfo: false
   }
@@ -23,7 +24,7 @@ class ChatsContainer extends Component {
     return (
       <Grid id="chats-container" style={{overflow: 'auto', height: 750 }}>
         <Grid.Column width={16}>
-          {(!this.state.haveUserInfo && this.props.user) ? this.getChats() : null}
+          {(!this.state.haveUserInfo && this.props.user) && this.getChats()}
           <Chats />
         </Grid.Column>
       </Grid>

@@ -5,8 +5,9 @@ import { Button, Icon } from 'semantic-ui-react'
 
 class AddContactSliver extends Component {
 
+  // post to /friendships and create friendship
+  // once the friendship is created - call fetchNonContacts
   addFriend = (props, nonAmigaId) => {
-    // post to /friendships and create friendship
     let token = localStorage.getItem("token");
     let id = props.user.id
     fetch(`http://localhost:3000/api/v1/friendships`, {

@@ -5,13 +5,14 @@ import * as actions from '../actions'
 
 class NavBar extends Component {
 
+  // on logout, remove token from local storage
   logout = () => {
     localStorage.removeItem("token")
     this.props.logout()
   }
 
   render() {
-    // print links to each route
+    // render links to each route
     return (
       <div id="nav-bar">
         <div id="contacts-nav-bar">
@@ -51,4 +52,5 @@ const mapStateToProps = ({user, token}) => {
   }
 }
 
+// inject everything from actions folder
 export default connect(mapStateToProps, actions)(NavBar)
