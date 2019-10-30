@@ -68,7 +68,6 @@ class App extends Component {
             <ActionCableConsumer
                onReceived={(data) => {
                  this.showMessage(data, conversation)
-                 console.log(this.props);
                }}
                channel={{channel: 'MessagesChannel', conversation_id: conversation.id}}
              />)

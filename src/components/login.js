@@ -35,8 +35,8 @@ class Login extends Component {
         <div>
           <h1>Login</h1>
           <form onSubmit={this.submitHandler} class="ui small form">
-            <div class="equal width fields">
-              <div class="field">
+            <div className="equal width fields">
+              <div className="field">
                 <input
                   type="text"
                   placeholder="Username"

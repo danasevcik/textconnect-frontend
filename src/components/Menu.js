@@ -23,10 +23,10 @@ class MenuButton extends Component {
       <Grid>
         <Grid.Column width={3}>
             <div id="menu">
-              {!!token && <div class="column docs-icon-set-column" onClick={this.handleClick}>
-                <i aria-hidden="true" class="align justify big icon">
+              {!!token && <div className="column docs-icon-set-column" onClick={this.handleClick}>
+                <i aria-hidden="true" className="align justify big icon">
                 </i>
-                <p class="name"></p>
+                <p className="name"></p>
               </div>}
             </div>
             {(!!token && this.state.clicked) ? <NavBar /> : null}

@@ -44,7 +44,6 @@ Text Connect allows users to:
 2. Clone this repository and run ```npm install```.
 3. Run using ```npm start```.
 
-
 ![two people holding hands](https://media.giphy.com/media/LwHaQCGZMdD9Ghalrl/giphy.gif)
 
 ## Enjoy!
