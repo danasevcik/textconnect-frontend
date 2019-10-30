@@ -78,9 +78,7 @@ class Conversation extends Component {
             {this.props.current_conversation &&
               (<ActionCableConsumer
               onReceived={(data) => {
-                // update current conversation messages
-                this.props.updateConvo(data, this.props)
-                // rerender convo
+                // rerender convo to show most up to date messages
                 this.props.renderConversation(this.props)
               }}
               key={this.props.current_conversation.id}

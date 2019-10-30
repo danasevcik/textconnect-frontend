@@ -4,25 +4,18 @@ import * as actions from '../actions'
 
 class SearchAddContacts extends Component {
 
+  // local state for search term
   state = {
     searchTerm: ""
   };
 
+  // on change, call handleChange in add contact component
   changeHandler = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
     this.props.handleChange(this.state.searchTerm)
   };
-
-  // submitHandler = e => {
-  //   e.preventDefault();
-  //   this.props.updateUser(this.props, this.state)
-  //   this.props.handleSubmit(e)
-  //   this.setState({
-  //     searchTerm: ""
-  //   });
-  // };
 
   render() {
     // print profile edit form

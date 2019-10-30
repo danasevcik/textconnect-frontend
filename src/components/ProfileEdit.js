@@ -5,6 +5,8 @@ import { Button, Icon } from 'semantic-ui-react'
 
 class ProfileEdit extends Component {
 
+  // local state to hold user info
+  // default is the user's information from the store
   state = {
     name: this.props.user.name,
     age: this.props.user.age,
@@ -19,6 +21,8 @@ class ProfileEdit extends Component {
     });
   };
 
+  // on submit, call updateUser
+  // reset form to the new user info dispatched to the store
   submitHandler = e => {
     e.preventDefault();
     this.props.updateUser(this.props, this.state)

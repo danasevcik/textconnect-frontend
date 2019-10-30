@@ -246,10 +246,6 @@ export function renderConversation(props, conversationId) {
   }
 }
 
-export function renderConvoMaybeItWillWork() {
-
-}
-
 // CREATE MESSAGE AND PERSIST IN DB
 export function createMessage(message, props) {
   let token = localStorage.getItem("token");
@@ -282,11 +278,12 @@ export function createMessage(message, props) {
 }
 
 // UPDATE CONVERSATION MESSAGES
+// removed this function - it was causing conversation to rerender too early 
 export function updateConvo(data, props) {
-  return dispatch => {
-    // Update current_conversation_messages in the store
-    dispatch({type: UPDATE_CONVO, payload: {message: data.content}})
-  }
+  // return dispatch => {
+  //   // Update current_conversation_messages in the store
+  //   dispatch({type: UPDATE_CONVO, payload: {message: data.content}})
+  // }
 }
 
 // FETCH USERS IN THE DB THAT THE CURRENT USER IS NOT FRIENDS WITH

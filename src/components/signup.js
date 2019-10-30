@@ -4,6 +4,7 @@ import * as actions from '../actions'
 
 class Signup extends Component {
 
+  // controlled form for username, password and language
   state = {
     username: "",
     password: "",
@@ -16,6 +17,8 @@ class Signup extends Component {
     });
   };
 
+  // on submit, call createUser
+  // clear form
   submitHandler = e => {
     e.preventDefault();
     this.props.createUser(this.state)

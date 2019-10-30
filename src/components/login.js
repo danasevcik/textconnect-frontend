@@ -4,6 +4,7 @@ import * as actions from '../actions'
 
 class Login extends Component {
 
+  // controlled form for username and password
   state = {
     username: "",
     password: ""
@@ -15,6 +16,8 @@ class Login extends Component {
     });
   };
 
+  // on submit, call findUser function
+  // clear form
   submitHandler = e => {
     e.preventDefault();
     this.props.findUser(this.state)
@@ -34,7 +37,7 @@ class Login extends Component {
       return (
         <div>
           <h1>Login</h1>
-          <form onSubmit={this.submitHandler} class="ui small form">
+          <form onSubmit={this.submitHandler} className="ui small form">
             <div className="equal width fields">
               <div className="field">
                 <input
@@ -45,7 +48,7 @@ class Login extends Component {
                   onChange={this.changeHandler}
                   />
               </div>
-              <div class="field">
+              <div className="field">
                 <input
                   type="password"
                   placeholder="Password"
@@ -55,7 +58,7 @@ class Login extends Component {
                   />
               </div>
             </div>
-            <button class="ui button" onClick={
+            <button className="ui button" onClick={
                 this.submitHandler
               }>Submit</button>
             </form>

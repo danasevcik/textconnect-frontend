@@ -6,6 +6,7 @@ import { Button, Icon } from 'semantic-ui-react'
 
 class Profile extends Component {
 
+  // local state to toggle rendering profile edit component
   state = {
     clicked: false
   }
@@ -14,6 +15,7 @@ class Profile extends Component {
     this.setState({clicked: !this.state.clicked})
   }
 
+  // on submit, hide the edit form
   handleSubmit = e => {
     this.setState({clicked: !this.state.clicked})
   }

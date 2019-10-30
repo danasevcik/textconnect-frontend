@@ -5,6 +5,7 @@ import { Button, Icon } from 'semantic-ui-react'
 
 class ConversationEdit extends Component {
 
+  // controlled form for title name
   state = {
     title: ""
   };
@@ -15,6 +16,8 @@ class ConversationEdit extends Component {
     });
   };
 
+  // on submit, call rename conversation
+  // reset form to clear search term
   submitHandler = e => {
     e.preventDefault();
     this.props.renameConversation(this.state, this.props)
@@ -29,16 +32,16 @@ class ConversationEdit extends Component {
     return (
       <div>
         <form onSubmit={this.submitHandler}>
-          <div class="ui category search">
+          <div className="ui category search">
               <input id="message-form"
-                class="prompt"
+                className="prompt"
                 type="text"
                 placeholder="Rename Conversation"
                 name="title"
                 value={this.state.title}
                 onChange={this.changeHandler}
                 />
-              <i aria-hidden="false" class="ellipsis horizontal"></i>
+              <i aria-hidden="false" className="ellipsis horizontal"></i>
           </div>
           <p></p>
           <Button animated id="rename-conversation-button" onClick={this.submitHandler}>

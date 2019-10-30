@@ -5,6 +5,7 @@ import { Button, Icon } from 'semantic-ui-react'
 
 class MessageForm extends Component {
 
+  // controlled form for message
   state = {
     message: ""
   };
@@ -15,6 +16,8 @@ class MessageForm extends Component {
     });
   };
 
+  // on submit, call createMessage
+  // clear form
   submitHandler = e => {
     e.preventDefault();
     this.props.createMessage(this.state, this.props)
