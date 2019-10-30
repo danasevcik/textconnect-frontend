@@ -29,7 +29,7 @@ class MenuButton extends Component {
                 <p className="name"></p>
               </div>}
             </div>
-            {(!!token && this.state.clicked) ? <NavBar /> : null}
+            {(!!token && this.state.clicked) && <NavBar />}
         </Grid.Column>
       </Grid>
     )

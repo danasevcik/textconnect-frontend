@@ -72,7 +72,7 @@ class Conversation extends Component {
 
           <div>
             {/* GET CONVO ON REFRESH */}
-            {(!this.state.haveUserInfo && this.props.user) ? this.getConversation() : null}
+            {(!this.state.haveUserInfo && this.props.user) && this.getConversation()}
 
             {/* ACTION CABLE CONSUMER */}
             {this.props.current_conversation &&
@@ -120,7 +120,7 @@ class Conversation extends Component {
 
             {/* MESSAGES */}
             <div id='message-bubbles'>
-            {this.props.current_conversation_messages ? this.props.current_conversation_messages.map(message => {
+            {this.props.current_conversation_messages && this.props.current_conversation_messages.map(message => {
               let arr = message.split(":")
               let name = arr[0]
               let text = arr[1]
@@ -160,12 +160,12 @@ class Conversation extends Component {
                   }
                 </div>
               )})
-               : null}
+              }
              </div>
             <p></p>
 
             {/* MESSAGE FORM */}
-            {this.props.current_conversation ? <MessageForm conversationId={this.props.current_conversation.id}/> : null}
+            {this.props.current_conversation && <MessageForm conversationId={this.props.current_conversation.id}/>}
           </div>
         </Grid.Column>
       </Grid>
