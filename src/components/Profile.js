@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import ProfileEdit from './ProfileEdit'
-import { Grid, Menu, Segment } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import { Button, Icon } from 'semantic-ui-react'
 
 class Profile extends Component {

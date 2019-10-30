@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import AddContactSliver from './AddContactSliver'
-import SearchAddContacts from './SearchAddContacts'
 
 class AddContact extends Component {
 

@@ -23,8 +23,8 @@ class ContactBook extends Component {
     return (
       <div>
         <h1>Contact Book</h1>
-        <div class="ui category search">
-          <div class="ui icon input">
+        <div className="ui category search">
+          <div className="ui icon input">
             <input
               class="prompt"
               type="text"

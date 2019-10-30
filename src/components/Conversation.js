@@ -4,7 +4,7 @@ import MessageForm from './MessageForm'
 import { ActionCableConsumer } from 'react-actioncable-provider'
 import * as actions from '../actions'
 import ConversationEdit from './ConversationEdit'
-import { Grid, Menu, Segment } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import { Button, Icon } from 'semantic-ui-react'
 
 

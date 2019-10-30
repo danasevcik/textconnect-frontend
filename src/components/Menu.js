@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import NavBar from './NavBar'
-import { Grid, Menu, Segment } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 class MenuButton extends Component {
 

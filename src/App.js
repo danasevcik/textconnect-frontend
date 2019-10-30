@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 import * as actions from './actions'
 import FlashMassage from 'react-flash-message';
 import { ActionCableConsumer } from 'react-actioncable-provider'
-import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react'
+import { Grid, Segment } from 'semantic-ui-react'
 
 class App extends Component {
 
@@ -54,8 +54,6 @@ class App extends Component {
   }
 
   render() {
-    // console.log('in app', this.props);
-    console.log('APP.JS PROPS:', this.props);
     let token = localStorage.getItem("token")
 
     return (
@@ -76,7 +74,7 @@ class App extends Component {
         <span>
           <h1 id="header">
             WELCOME TO TEXT CONNECT
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png" id="start-img"></img>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png" id="start-img" alt="start-img"></img>
           </h1>
         </span>
 

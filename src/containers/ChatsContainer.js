@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import Chats from '../components/Chats'
 import * as actions from '../actions'
-import { Grid, Menu, Segment } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 class ChatsContainer extends Component {
 
