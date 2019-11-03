@@ -267,11 +267,10 @@ export function createMessage(message, props) {
       })
     })
     .then(resp => resp.json())
-    .then(message => {
+    // .then(message => {
       // console.log(message);
-      // dont have to force re-render of Conversation component b/c action cable unsubscribe fix
-      // dispatch({type: CREATE_MESSAGE, payload: {message: message.content}})
-    })
+      // dont have to force re-render Conversation component b/c action cable unsubscribe fix
+    // })
   }
 }
 

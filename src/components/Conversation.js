@@ -28,7 +28,7 @@ class Conversation extends Component {
       window.speechSynthesis.speak(msg);
     }
   }
-  
+
   // toggle conversation rename form
   handleRename = (props) => {
     this.setState({renameClicked: !this.state.renameClicked})
@@ -39,6 +39,7 @@ class Conversation extends Component {
     this.setState({renameClicked: !this.state.renameClicked})
   }
 
+  // get conversation on refresh
   getConversation() {
     if (this.props.user) {
       let conversationId = this.props.match.params.id
@@ -49,6 +50,7 @@ class Conversation extends Component {
     })
   }
 
+  // send patch request to change all current messages to read
   markAsRead() {
     if (this.props.user) {
       this.props.markAsRead(this.props.current_conversation, this.props.user, this.props.current_conversation_messages)
@@ -81,7 +83,9 @@ class Conversation extends Component {
               (<ActionCableConsumer
               onReceived={(data) => {
                 // rerender convo to show most up to date messages
+                // mark all messages as read
                 this.props.renderConversation(this.props)
+                this.markAsRead()
               }}
               key={this.props.current_conversation.id}
 
