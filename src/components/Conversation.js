@@ -28,11 +28,13 @@ class Conversation extends Component {
       window.speechSynthesis.speak(msg);
     }
   }
-
+  
+  // toggle conversation rename form
   handleRename = (props) => {
     this.setState({renameClicked: !this.state.renameClicked})
   }
 
+  // toggle conversation rename form
   handleSubmit = e => {
     this.setState({renameClicked: !this.state.renameClicked})
   }

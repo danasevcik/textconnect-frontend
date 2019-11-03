@@ -6,7 +6,6 @@ import {
   GET_CONTACTS,
   GET_CONVERSATIONS,
   SET_CURRENT_CONVO,
-  UPDATE_CONVO,
   FETCH_NON_CONTACTS,
   ADD_FRIEND,
   UPDATE_USER,
@@ -196,7 +195,6 @@ export function renderConversation(props, conversationId) {
         // window.location.reload()
       })
     }
-    // return;
   } else if (props.current_conversation_id) {
     // otherwise, if current conversation id exists, fetch based on url
     let id = props.user.id
@@ -278,7 +276,7 @@ export function createMessage(message, props) {
 }
 
 // UPDATE CONVERSATION MESSAGES
-// removed this function - it was causing conversation to rerender too early 
+// removed this function - it was causing conversation to rerender too early
 export function updateConvo(data, props) {
   // return dispatch => {
   //   // Update current_conversation_messages in the store

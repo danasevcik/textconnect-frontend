@@ -83,13 +83,11 @@ class App extends Component {
           </h1>
         </span>
 
-        {/* FLASH MESSAGE AND LINK TO CONVO if flash in state is true */}
+        {/* FLASH MESSAGE if flash in state is true */}
         {this.state.flash &&
-          <Link to={`/Conversation/${this.state.conversation.id}`}>
-            <FlashMassage duration={5000} persistOnHover={true}>
-              <p id="flash-message" onClick={() => this.props.renderConversation(this.props)}>NEW MESSAGE FROM {this.state.user.toUpperCase()}</p>
-            </FlashMassage>
-          </Link>
+          <FlashMassage duration={5000} persistOnHover={true}>
+            <p id="flash-message">NEW MESSAGE FROM {this.state.user.toUpperCase()}</p>
+          </FlashMassage>
         }
 
         <MenuButton />
