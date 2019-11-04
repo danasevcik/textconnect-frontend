@@ -172,6 +172,7 @@ export function startConversation(props) {
 export function renderConversation(props, conversationId) {
   let token = localStorage.getItem("token");
   // if props.conversation exists, fetch to conversation id and set current convo
+  // posts to the show method in conversations controller
   if (props.conversation) {
     let conversation_id = props.conversation.id
     let id = props.user.id
