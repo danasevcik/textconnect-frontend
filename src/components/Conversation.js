@@ -7,7 +7,6 @@ import ConversationEdit from './ConversationEdit'
 import { Grid } from 'semantic-ui-react'
 import { Button, Icon } from 'semantic-ui-react'
 
-
 class Conversation extends Component {
 
   // local state to toggle conversation title edit form
@@ -19,6 +18,7 @@ class Conversation extends Component {
 
   handleClick = (name, text) => {
     // text-to-speech audio
+    // use built in speech synthesis utterance from browser
     if (name === this.props.user.username) {
       let name = 'you'
       let msg = new SpeechSynthesisUtterance(`${name} said ${text}`);
